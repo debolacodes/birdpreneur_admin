@@ -1,4 +1,5 @@
 import React, {useContext} from 'react'
+import { Link } from 'react-router-dom';
 import {mainFunctions} from "../providers/MainProvider";
 
 export default function Login() {
@@ -25,7 +26,9 @@ export default function Login() {
                         <input type="password" />
                         <span className='togglepassword'>Hide</span>
                     </div>
-                    <div className='more-info'>Forgot Password</div>
+                    <Link to="/forgotpassword">
+                        <div className='more-info'>Forgot Password</div>
+                    </Link>
                 </div>
 
                 <div className='btn_ btn_orange' onClick={()=>login()}>LOGIN</div>
