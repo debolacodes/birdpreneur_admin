@@ -25,7 +25,7 @@ export default function AllRoutes() {
           <Route exact path="/dashboard" element={<SuperAdminDashboard/>} />
           <Route exact path="/revenue" element={<SuperAdminRevenue/>} />
           <Route exact path="/products" element={<SuperAdminProducts/>} />
-          <Route exact path="/stores" element={<SuperAdminProducts/>} />
+          <Route exact path="/stores" element={<SuperAdminStores/>} />
           <Route exact path="/customers" element={<SuperAdminCustomers/>} />
           <Route exact path="/customers/:id" element={<SuperAdminCustomerDetails/>} />
       </Routes>

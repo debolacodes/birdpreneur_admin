@@ -148,7 +148,18 @@ a:link, a:visited, a:hover, a:active{
     width:80%;
     margin:auto;
     position: relative;
+    padding-top: 13px;
 }
+.half-container{
+    height: 100%;
+}
+.full-width{
+    /* width: 100%; */
+    height: 100%;
+    display: flex;
+    align-items:stretch
+}
+
 
 /* top bar */
 .topbar{
@@ -398,7 +409,11 @@ a:link, a:visited, a:hover, a:active{
     background-repeat: no-repeat;
     margin-left: 5px;
 }
-
+.sidetab-title-wrapper{
+    width: 200px;
+    /* padding-left: 71px; */
+    padding-top: 34px;
+}
 .tab-title-wrapper{
     display: flex;
     flex-wrap: wrap;
@@ -406,7 +421,6 @@ a:link, a:visited, a:hover, a:active{
     padding:20px 0;
 }
 .tab-title-wrapper .page-title{
-    font-family: 'Helvetica Neue';
     font-style: normal;
     font-weight: 500;
     font-size: 14px;
@@ -420,6 +434,31 @@ a:link, a:visited, a:hover, a:active{
 
 .tab-title-wrapper .page-title.active{
     border-bottom: 2px solid #000000;
+}
+.sidetab-title-wrapper .page-title{
+    width: 100%;
+    height: 24px;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 24px;
+    color: #979797;
+    margin-bottom: 18px;
+    cursor: pointer;
+    display: flex;
+    align-items: stretch;
+}
+.sidetab-title-wrapper .page-title .border-left{
+    width:3px;
+    background: none;
+    margin-right: 11px;
+}
+.sidetab-title-wrapper .page-title.active{
+    color:#C76400;
+}
+.sidetab-title-wrapper .page-title.active .border-left{
+    border: unset;
+    border-left: 3px solid #C76400
 }
 
 .bar-chart-wrapper{

@@ -63,6 +63,10 @@ export default function Revenue() {
         <div className="mainbar">
             <TopBar title="Revenue"/>
             <div className="mainbar-container">
+              <div className="page-filter">
+                <div className="button"><div className="text">All Stores</div><div className="icon down"></div></div>
+                <div className="button"><div className="text">This Year</div><div className="icon down"></div></div>
+              </div>
               <Title title="Overview"/>
               <div className="wrapper">
                 <SummaryBox title="Total Purchases" value="2,405" />
