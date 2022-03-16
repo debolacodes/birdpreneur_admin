@@ -17,7 +17,7 @@ export default function MainProvider(props) {
     const USE_PURCHASECODE_MODAL = "usepurchasecode"
     const PURCHASE_DETAILS_MODAL = "purchasedetails"
 
-    const [showModal, setShowModal] = useState(true);
+    const [showModal, setShowModal] = useState(false);
     const [modalPage, setModalPage] = useState("");
     const [modalData, setModalData] = useState({});
 
