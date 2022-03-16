@@ -9,9 +9,6 @@ import Sidebar from '../../components/Sidebar';
 import Tables from '../../components/Tables';
 
 export default function Dashboard() {
-  const SALES_CHART_TAB = {id:"sales", title:"Quantity of Sales"};
-  const VISITS_CHART_TAB = {id:"visits", title:"Number of Visits"};
-  const [activeChartTab, setActiveChartTab ] = useState(SALES_CHART_TAB);
 
   const TOP_5_SALES =  [
     { name: 'KFC Wuse', value: 780 },
@@ -31,17 +28,14 @@ export default function Dashboard() {
     {
       name: 'Jan',
       sales: 4000,
-      amt: 2400,
     },
     {
       name: 'Feb',
       sales: 3000,
-      amt: 2210,
     },
     {
       name: 'Mar',
       sales: 2000,
-      amt: 2290,
     },
     {
       name: 'Apr',
@@ -50,48 +44,92 @@ export default function Dashboard() {
     {
       name: 'May',
       sales: 1890,
-      amt: 2181,
     },
     {
       name: 'June',
       sales: 2390,
-      amt: 2500,
     },
     {
       name: 'July',
       sales: 3490,
-      amt: 2100,
     },
     {
       name: 'Aug',
       sales: 3000,
-      amt: 2210,
     },
     {
       name: 'Sept',
       sales: 2000,
-      amt: 2290,
     },
     {
       name: 'Oct',
       sales: 2780,
     },
     {
-      name: 'May',
-      sales: 1890,
-      amt: 2181,
-    },
-    {
       name: 'Nov',
       sales: 2390,
-      amt: 2500,
     },
     {
       name: 'Dec',
       sales: 3490,
-      amt: 2100,
     },
   ];
+
+  const VISITS_DATA = [
+    {
+      name: 'Jan',
+      visits: 600,
+    },
+    {
+      name: 'Feb',
+      visits: 400,
+    },
+    {
+      name: 'Mar',
+      visits: 8000,
+    },
+    {
+      name: 'Apr',
+      visits: 200,
+    },
+    {
+      name: 'May',
+      visits: 1890,
+      
+    },
+    {
+      name: 'June',
+      visits: 2390,
+    },
+    {
+      name: 'July',
+      visits: 3490,
+    },
+    {
+      name: 'Aug',
+      visits: 3000,
+    },
+    {
+      name: 'Sept',
+      visits: 2000,
+    },
+    {
+      name: 'Oct',
+      visits: 2780,
+    },
+    {
+      name: 'Nov',
+      visits: 290,
+    },
+    {
+      name: 'Dec',
+      visits: 490,
+    },
+  ];
+
+  const SALES_CHART_TAB = {id:"sales", title:"Quantity of Sales", data:SALES_DATA};
+  const VISITS_CHART_TAB = {id:"visits", title:"Number of Visits", data:VISITS_DATA};
+  const [activeChartTab, setActiveChartTab ] = useState(SALES_CHART_TAB);
   return (
     <div className='body'>
         <Sidebar />
@@ -122,7 +160,7 @@ export default function Dashboard() {
             active={activeChartTab} 
             setActive={setActiveChartTab} />
           <div className='col-12'>
-            <BarChartComponent data={SALES_DATA}/>
+            <BarChartComponent data={activeChartTab.data} dataKey={activeChartTab.id}/>
           </div>
           
           <Tables />

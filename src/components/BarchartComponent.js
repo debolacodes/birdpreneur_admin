@@ -24,7 +24,7 @@ export default function BarChartComponent(props) {
         <YAxis />
         <Tooltip />
         {/* <Legend /> */}
-        <Line type="monotone" dataKey="sales" stroke="#C76400" />
+        <Line type="monotone" dataKey={props.dataKey} stroke="#C76400" />
       </LineChart>
       </ResponsiveContainer>
     </div>
