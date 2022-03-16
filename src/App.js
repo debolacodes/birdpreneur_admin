@@ -1,24 +1,23 @@
-import logo from './logo.svg';
-import './App.css';
+import React, {useContext} from 'react'
+
+
+import Modal from './components/Modal';
+
+import {mainFunctions} from "./providers/MainProvider";
+import AllRoutes from './route/AllRoutes';
 
 function App() {
+  const {
+    showModal
+  } = useContext(mainFunctions)
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+      {showModal &&
+        <Modal />
+      }
+      <AllRoutes />
+      </div>
   );
 }
 
