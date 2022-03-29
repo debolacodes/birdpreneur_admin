@@ -1,5 +1,6 @@
 import React from 'react'
 import {Routes, Route} from 'react-router-dom'
+import { useSelector } from "react-redux";
 
 import Login from '../pages/Login';
 import ForgotPassword from '../pages/ForgotPassword';
@@ -13,7 +14,14 @@ import SuperAdminCustomers from "../pages/superAdmin/Customers"
 import SuperAdminProducts from "../pages/superAdmin/Products"
 import SuperAdminCustomerDetails from "../pages/superAdmin/CustomerDetails"
 import SuperAdminStores from "../pages/superAdmin/Stores"
+
+// admin pages
+import AdminDashboard from "../pages/admin/Dashboard";
+
 export default function AllRoutes() {
+	const { role } = useSelector(
+		(state) => state.auth
+	);
   return (
     <div className='body'>
         <Routes>
@@ -22,7 +30,12 @@ export default function AllRoutes() {
           <Route exact path="/forgotpassword" element={<ForgotPassword/>} />
           <Route exact path="/changepassword" element={<ChangePassword/>} />
           <Route exact path="/account" element={<AccountSettings/>} />
-          <Route exact path="/dashboard" element={<SuperAdminDashboard/>} />
+          <Route exact path="/dashboard" element={role === "admin" 
+            ? <AdminDashboard /> 
+            : "superadmin" 
+            ? <SuperAdminDashboard/> 
+            : "cashier"
+            && <SuperAdminDashboard/> } />
           <Route exact path="/revenue" element={<SuperAdminRevenue/>} />
           <Route exact path="/products" element={<SuperAdminProducts/>} />
           <Route exact path="/stores" element={<SuperAdminStores/>} />
