@@ -145,10 +145,10 @@ a:link, a:visited, a:hover, a:active{
     overflow-x: hidden;
 }
 .mainbar-container{
-    width:80%;
-    margin:auto;
+    /* width:80%; */
+    margin: 0.813rem 5.063rem;
     position: relative;
-    padding-top: 13px;
+    /* padding-top: 13px; */
 }
 .half-container{
     height: 100%;
@@ -397,8 +397,12 @@ a:link, a:visited, a:hover, a:active{
     border-radius: 6px;
     padding: 6px 16px;
     display: flex;
+    justify-content: space-between;
     align-items: center;
     cursor: pointer;
+}
+.page-filter .button .text{
+    font-size: 14px;
 }
 .page-filter .button .icon{
     width:16px;
@@ -695,4 +699,17 @@ select:focus{
     background-repeat: no-repeat;
     background-position: center;
     cursor:pointer;
+}
+
+.status.success {
+    color: #00CD74;
+}
+.status.pending {
+    color: #FF9500;
+}
+.status.failed {
+    color: #FF0000;
+}
+.pagination-active{
+    color: #C76400;
 }

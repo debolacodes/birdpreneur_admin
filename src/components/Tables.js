@@ -1,66 +1,180 @@
-import React from 'react'
-import Title from './Title'
+import React, { useEffect, useState } from "react";
+import Title from './Title';
+import {ReactComponent as TableSort} from '../assets/icons/table_sort.svg';
+import { isElement } from "../utils";
+import Pagination from "./Pagination";
+import { testTableColumns, testTableDataSource } from "./enum";
 
-export default function Tables() {
+export default function Tables({
+  title="My Stores",
+  handleSearch,
+  columns=testTableColumns,
+	dataSource=testTableDataSource,
+	pageSize = 10,
+	showPagination = false,
+	showPageSize = false,
+	totalPages,
+	setCurrentPage,
+}) {
+	const [_columns, _setColumns] = useState([]);
+	const [_dataSource, _setDataSource] = useState([]);
+	const [pages, setPages] = useState(0);
+	const [activeIndex, setActiveIndex] = useState(1);
+	const [canExpand, setCanExpand] = useState(false);
+
+  useEffect(() => {
+		const _columns = columns.map((column) => {
+			return {
+				...column,
+				sortState: "ASC",
+			};
+		});
+		_setColumns(_columns);
+		_setDataSource(
+			dataSource.slice(
+				(activeIndex - 1) * pageSize,
+				activeIndex * pageSize < dataSource.length
+					? activeIndex * pageSize
+					: (activeIndex - 1) * pageSize +
+							(dataSource.length - (activeIndex - 1) * pageSize)
+			)
+		);
+		totalPages
+			? setPages(totalPages)
+			: setPages(Math.ceil(dataSource.length / pageSize));
+		setCurrentPage && setCurrentPage(activeIndex);
+		// eslint-disable-next-line react-hooks/exhaustive-deps
+	}, [activeIndex, columns, dataSource, pageSize]);
+
+  const handleSort = (column) => {
+		if (column.sortState === "DEC") {
+			_setDataSource(
+				_dataSource.sort((a, b) =>
+					a[column.dataIndex].toString() > b[column.dataIndex].toString()
+						? 1
+						: -1
+				)
+			);
+			const _cs = _columns.map((c) => {
+				return {
+					...c,
+					sortState:
+						c.dataIndex === column.dataIndex ? "ASC" : c.sortState,
+				};
+			});
+			_setColumns(_cs);
+		} else {
+			_setDataSource(
+				_dataSource.sort((a, b) =>
+					a[column.dataIndex].toString() < b[column.dataIndex].toString()
+						? 1
+						: -1
+				)
+			);
+			const _cs = _columns.map((c) => {
+				return {
+					...c,
+					sortState:
+						c.dataIndex === column.dataIndex ? "DEC" : c.sortState,
+				};
+			});
+			_setColumns(_cs);
+		}
+	};
+
   return (
     <div>
-        <div className='row'>
-            <div className='col-sm-6'><Title title="My Stores"></Title></div>
-            <div className='col-sm-6 table-filters'>
-              <div className='search_wrapper'>
-                <div className='icon search'></div>
-                <input className='search_input' placeholder='Search...' type="text"/>
-              </div>
+      <div className='row'>
+        <div className='col-sm-6'>
+          <Title title={title}></Title>
+        </div>
+        <div className='col-sm-6 table-filters'>
+          {handleSearch && (
+            <div className='search_wrapper'>
+              <div className='icon search'></div>
+              <input 
+                className='search_input' 
+                placeholder='Search...' 
+                type="text"
+                onChange={(e) =>
+                  handleSearch(e.currentTarget.value)
+                }
+              />
             </div>
-          </div>
-          <div className='table'>
-            <table>
-              <thead>
-                <tr>
-                  <td>Store ID</td>
-                  <td>Store Name</td>
-                  <td>Location</td>
-                  <td>Store Manager</td>
-                  <td>Revenue Made</td>
-                  <td>Total Customers</td>
+          )}
+        </div>
+      </div>
+      <div className='table'>
+        <table>
+          <thead>
+            <tr>
+              {_columns && _columns.length > 0 ? (
+                _columns.map((column) => (
+                  <td
+                    key={column.key}
+                  >
+                    <div 
+                      onClick={() => column.sort && handleSort(column)}
+                      className={"d-flex align-items-center"}
+                    >
+                      {column.title}  
+                      {column.title && column.sort && (
+                        <span className={"ml-2"}>
+                          <TableSort />
+                        </span>
+                      )}
+                    </div>
+                  </td>
+                ))
+              ) : (
+                <></>
+              )}
+            </tr>
+          </thead>
+          <tbody>
+            {_dataSource && _dataSource.length > 0 ? (
+              _dataSource.map((data) => (
+                <tr data-testid="rg-table-body-tr" key={data.key}>
+                  {_columns && _columns.length > 0 ? (
+                    _columns.map((column, index) => {
+                      return isElement(data[column.dataIndex]) ? (
+                        <td
+                          key={index}
+                        >
+                          {data[column.dataIndex]}
+                        </td>
+                      ) : (
+                        <td
+                          key={index}
+                        >
+                          <div>
+                            {data[column.dataIndex]}
+                          </div>
+                        </td>
+                      );
+                    })
+                  ) : (
+                    <></>
+                  )}
                 </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <td>ID: 43178</td>
-                  <td>KFC Wuse</td>
-                  <td>10 ijaoye street jibowu, Lagos State</td>
-                  <td>Morenike Oni</td>
-                  <td>₦345,000</td>
-                  <td>433</td>
-                </tr>
-                <tr>
-                  <td>ID: 43178</td>
-                  <td>KFC Wuse</td>
-                  <td>10 ijaoye street jibowu, Lagos State</td>
-                  <td>Morenike Oni</td>
-                  <td>₦345,000</td>
-                  <td>433</td>
-                </tr>
-                <tr>
-                  <td>ID: 43178</td>
-                  <td>KFC Wuse</td>
-                  <td>10 ijaoye street jibowu, Lagos State</td>
-                  <td>Morenike Oni</td>
-                  <td>₦345,000</td>
-                  <td>433</td>
-                </tr>
-                <tr>
-                  <td>ID: 43178</td>
-                  <td>KFC Wuse</td>
-                  <td>10 ijaoye street jibowu, Lagos State</td>
-                  <td>Morenike Oni</td>
-                  <td>₦345,000</td>
-                  <td>433</td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
+              ))
+            ) : (
+              <></>
+            )}
+          </tbody>
+        </table>
+      </div>
+			{showPagination && (
+				<Pagination
+					pages={pages}
+					pageSize={pageSize}
+					rowsLength={dataSource.length}
+					_setActiveIndex={(index) => setActiveIndex(index)}
+					showPageSize={showPageSize}
+					expand={canExpand}
+					handleExpand={(bool) => setCanExpand(bool)}
+				/>
+			)}
     </div>
   )
 }

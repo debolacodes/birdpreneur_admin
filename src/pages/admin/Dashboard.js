@@ -1,29 +1,14 @@
-import React, {useState} from 'react'
-import PieChart from "../../components/PieChartComponent";
+import React from 'react'
 import SummaryBox from "../../components/SummaryBox";
-import TabTitle from '../../components/TabTitle';
 import Title from "../../components/Title";
 import TopBar from "../../components/TopBar";
 import BarChartComponent from '../../components/BarchartComponent';
 import Sidebar from '../../components/Sidebar';
 import Tables from '../../components/Tables';
+import { formatToCurrency, getDateTimeFormatUK } from "../../utils";
 
 export default function Dashboard() {
 
-  const TOP_5_SALES =  [
-    { name: 'KFC Wuse', value: 780 },
-    { name: 'KFC Egbeda', value: 740 },
-    { name: 'KFC VI 2', value: 700 },
-    { name: 'KFC VI', value: 600 },
-    { name: 'KFC Banana Island', value: 523 },
-  ];
-  const TOP_5_SALES_PERIOD =  [
-    { name: 'January', value: 1080 },
-    { name: 'November', value: 910 },
-    { name: 'March', value: 880 },
-    { name: 'June', value: 810 },
-    { name: 'August', value: 723 },
-  ];
   const SALES_DATA = [
     {
       name: 'Jan',
@@ -74,90 +59,145 @@ export default function Dashboard() {
       sales: 3490,
     },
   ];
-
-  const VISITS_DATA = [
+  const tableColumns = [
     {
-      name: 'Jan',
-      visits: 600,
+      title: "Trans ID",
+      dataIndex: "id",
+      sort: false,
     },
     {
-      name: 'Feb',
-      visits: 400,
+      title: "Purchase",
+      dataIndex: "purchase",
+      sort: false,
     },
     {
-      name: 'Mar',
-      visits: 8000,
+      title: "Customer Name",
+      dataIndex: "customerName",
+      sort: false,
     },
     {
-      name: 'Apr',
-      visits: 200,
+      title: "Purchase Value",
+      dataIndex: "purchaseValue",
+      sort: false,
     },
     {
-      name: 'May',
-      visits: 1890,
-      
+      title: "Rewards Value",
+      dataIndex: "rewardsValue",
+      sort: false,
     },
     {
-      name: 'June',
-      visits: 2390,
+      title: "Date",
+      dataIndex: "date",
+      sort: false,
     },
     {
-      name: 'July',
-      visits: 3490,
-    },
-    {
-      name: 'Aug',
-      visits: 3000,
-    },
-    {
-      name: 'Sept',
-      visits: 2000,
-    },
-    {
-      name: 'Oct',
-      visits: 2780,
-    },
-    {
-      name: 'Nov',
-      visits: 290,
-    },
-    {
-      name: 'Dec',
-      visits: 490,
+      title: "Status",
+      dataIndex: "status",
+      sort: false,
     },
   ];
+  const tableData = [
+    {
+      id: 43178,
+      purchase: "DJI Mavic Pro 2",
+      customerName: "Adunoluwa Adeyemi",
+      purchaseValue: 345000,
+      rewardsValue: 345000,
+      date: new Date(),
+      status: "Success",
+    },
+    {
+      id: 43178,
+      purchase: "DJI Mavic Pro 2",
+      customerName: "Adunoluwa Adeyemi",
+      purchaseValue: 345000,
+      rewardsValue: 345000,
+      date: new Date(),
+      status: "Pending",
+    },
+    {
+      id: 43178,
+      purchase: "DJI Mavic Pro 2",
+      customerName: "Adunoluwa Adeyemi",
+      purchaseValue: 345000,
+      rewardsValue: 345000,
+      date: new Date(),
+      status: "Failed",
+    }
+  ];
+  const dataSource =
+		tableData &&
+      tableData.length > 0
+        ? tableData.map((row) => {
+					return {
+						id: row.id,
+						purchase: (
+							<div>
+								{row.purchase}
+							</div>
+						),
+						customerName: (
+							<div>
+								{row.customerName}
+							</div>
+						),
+						purchaseValue: (
+							<div>
+								₦{formatToCurrency(row.purchaseValue, 1)}
+							</div>
+						),
+						rewardsValue: (
+							<div>
+								₦{formatToCurrency(row.rewardsValue, 1)}
+							</div>
+						),
+						date: (
+							<div>
+								{getDateTimeFormatUK(row.date)}
+							</div>
+						),
+						status: (
+							<div className={`status ${row.status === "Success"
+                ? "success"
+                : row.status === "Pending"
+                ? "pending"
+                : "failed"
+              }`}>
+								{row.status }
+							</div>
+						),
+					};
+			  })
+			: [];
 
-  const SALES_CHART_TAB = {id:"sales", title:"Quantity of Sales", data:SALES_DATA};
-  const [activeChartTab, setActiveChartTab ] = useState(SALES_CHART_TAB);
+  const SALES_CHART_TAB = {id:"sales", title:"Transaction Overview", data:SALES_DATA};
   return (
     <div className='body'>
-        <Sidebar />
-        <div className="mainbar">
+      <Sidebar />
+      <div className="mainbar">
         <TopBar title="Dashboard" />
         <div className="mainbar-container">
-          <div className="page-filter">
-            <div className="button"><div className="text">All Stores</div><div className="icon down"></div></div>
+          <div className="page-filter justify-content-end">
             <div className="button"><div className="text">This Year</div><div className="icon down"></div></div>
           </div>
-          <Title title="Admin"/>
+          <Title title="Overview"/>
           <div className="wrapper">
             <SummaryBox title="Total Stores" value="2,403"/>
             <SummaryBox title="Total Sales Made" value="500,000"/>
             <SummaryBox title="Overall Active Customers" value="2,403"/>
           </div>
-          <TabTitle pages={[SALES_CHART_TAB]} 
-            active={activeChartTab} 
-            setActive={setActiveChartTab} />
+          <Title title={SALES_CHART_TAB.title}/>
           <div className='col-12'>
-            <BarChartComponent data={activeChartTab.data} dataKey={activeChartTab.id}/>
+            <BarChartComponent data={SALES_CHART_TAB.data} dataKey={SALES_CHART_TAB.id}/>
           </div>
           
-          <Tables />
-
-        
-        
+          <Tables 
+            title="Recent Transactions"
+            columns={tableColumns}
+            dataSource={dataSource}
+          />
         </div>
-        </div>
+      </div>
     </div>
   )
 }
