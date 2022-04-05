@@ -31,7 +31,7 @@ export default function PieChartComponent(props) {
       <div className='piechart_details'>
       {props.data.map((thisData, index)=>{
         return(
-        <div className='piechart_details_item'>
+        <div className='piechart_details_item' key={`pieehart-details-${index}`}>
           <div className='piechart_color_icon' style={{backgroundColor:COLORS[index % COLORS.length]}}></div>
           <span className='name'>{thisData.name} - </span>
           <span className='value'>{thisData.value} Sales</span>

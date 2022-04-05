@@ -23,6 +23,8 @@ export default function AllRoutes() {
 	const { role } = useSelector(
 		(state) => state.auth
 	);
+
+  console.log(role)
   return (
     <div className='body'>
         <Routes>
