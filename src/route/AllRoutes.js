@@ -18,6 +18,10 @@ import SuperAdminStores from "../pages/superAdmin/Stores"
 // admin pages
 import AdminDashboard from "../pages/admin/Dashboard";
 import AdminRevenue from "../pages/admin/Revenue"
+import AdminStoreCashiers from "../pages/admin/StoreCashiers"
+import AdminCustomers from "../pages/admin/Customers"
+import AdminCustomerDetails from "../pages/admin/CustomerDetails"
+import AdminProducts from "../pages/admin/Products"
 
 export default function AllRoutes() {
 	const { role } = useSelector(
@@ -38,15 +42,33 @@ export default function AllRoutes() {
             : "superadmin" 
             ? <SuperAdminDashboard/> 
             : "cashier"
-            && <SuperAdminDashboard/> } />
+            && <SuperAdminDashboard/> } 
+          />
           <Route exact path="/revenue" element={role === "admin" 
             ? <AdminRevenue /> 
             : "superadmin" 
-            && <SuperAdminRevenue/> }/>
-          <Route exact path="/products" element={<SuperAdminProducts/>} />
-          <Route exact path="/stores" element={<SuperAdminStores/>} />
-          <Route exact path="/customers" element={<SuperAdminCustomers/>} />
-          <Route exact path="/customers/:id" element={<SuperAdminCustomerDetails/>} />
+            && <SuperAdminRevenue/> }
+          />
+          <Route exact path="/products" element={role === "admin" 
+            ? <AdminProducts /> 
+            : "superadmin" 
+            && <SuperAdminProducts/> }
+          />
+          <Route exact path="/stores" element={role === "admin" 
+            ? <AdminStoreCashiers /> 
+            : "superadmin" 
+            && <SuperAdminStores/> }
+          />
+          <Route exact path="/customers" element={role === "admin" 
+            ? <AdminCustomers /> 
+            : "superadmin" 
+            && <SuperAdminCustomers/> }
+          />
+          <Route exact path="/customers/:id" element={role === "admin" 
+            ? <AdminCustomerDetails /> 
+            : "superadmin" 
+            && <SuperAdminCustomerDetails/> }
+          />
       </Routes>
     </div>
   )

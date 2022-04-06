@@ -1,7 +1,7 @@
 import * as types from "../types";
 
 const initialState = {
-  role: "superadmin",
+  role: "admin",
   currentUser: {
   },
   loading: false,
@@ -13,7 +13,7 @@ const reducer = (state = initialState, { type, payload }) => {
 		case types.LOGIN.REQUEST:
       return { ...state, loading: true };
     case types.LOGIN.SUCCESS:
-      return { ...state, loading: false, currentUser: payload };
+      return { ...state, loading: false, role: payload };
     case types.LOGIN.FAILED:
       return { ...state, loading: false, error: payload };
     default:
