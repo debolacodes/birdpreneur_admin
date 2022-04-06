@@ -84,7 +84,7 @@ function Pagination ({
 				<div>
 					<nav
 						className={
-							"position-relative d-inline-flex shadow-sm"
+							"position-relative d-inline-flex"
 						}
 					>
 						<div
