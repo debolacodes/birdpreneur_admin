@@ -111,7 +111,7 @@ export default function Tables({
               {_columns && _columns.length > 0 ? (
                 _columns.map((column) => (
                   <td
-                    key={column.key}
+                    key={column.dataIndex}
                   >
                     <div 
                       onClick={() => column.sort && handleSort(column)}
@@ -133,8 +133,8 @@ export default function Tables({
           </thead>
           <tbody>
             {_dataSource && _dataSource.length > 0 ? (
-              _dataSource.map((data) => (
-                <tr data-testid="rg-table-body-tr" key={data.key}>
+              _dataSource.map((data, key) => (
+                <tr data-testid="rg-table-body-tr" key={key}>
                   {_columns && _columns.length > 0 ? (
                     _columns.map((column, index) => {
                       return isElement(data[column.dataIndex]) ? (

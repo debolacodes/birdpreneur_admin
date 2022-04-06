@@ -723,7 +723,7 @@ select:focus{
     color: #FF0000;
 }
 .pagination-active{
-    color: #C76400;
+    color: #C76400 !important;
 }
 
 
