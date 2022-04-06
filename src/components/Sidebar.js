@@ -1,11 +1,20 @@
-import React from 'react'
+import React, {useContext} from 'react'
 import { Link } from 'react-router-dom'
 import { useLocation } from 'react-router-dom'
+import {mainFunctions} from "../providers/MainProvider";
+
 
 export default function Sidebar() {
+    const {
+        showSidebar,
+        setShowSidebar
+    } = useContext(mainFunctions)
   let location = useLocation();
   return (
-    <div className='sidebar_'>
+    <div className={`sidebar_ ${showSidebar ? "show_sidebar" : ""}`}>
+        {showSidebar &&
+        <div className="close_menu_bar" onClick={()=>setShowSidebar(false)}></div>    
+        }
         <div className='logo'></div>
         <div className='title'>KFC Engagement Wallet</div>
         <div className='side-nav'>

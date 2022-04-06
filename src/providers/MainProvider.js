@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom"
 
 
 export default function MainProvider(props) {
+    
     let navigate = useNavigate();
     // modal pages
     const ADD_STORE_SUPER_MODAL = "addstore";
@@ -16,6 +17,8 @@ export default function MainProvider(props) {
     const DATERANGE_MODAL = "daterange"
     const USE_PURCHASECODE_MODAL = "usepurchasecode"
     const PURCHASE_DETAILS_MODAL = "purchasedetails"
+
+    const [showSidebar, setShowSidebar] = useState(false)
 
     const [showModal, setShowModal] = useState(false);
     const [modalPage, setModalPage] = useState("");
@@ -52,7 +55,9 @@ export default function MainProvider(props) {
             setModalData,
             login,
             resetpassword,
-            changepassword
+            changepassword,
+            showSidebar, 
+            setShowSidebar
         }}
         >
             {props.children}

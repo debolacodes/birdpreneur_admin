@@ -140,18 +140,18 @@ export default function Dashboard() {
             <div className="button"><div className="text">All Stores</div><div className="icon down"></div></div>
             <div className="button"><div className="text">This Year</div><div className="icon down"></div></div>
           </div>
-          <Title title="Overview"/>
+          <Title title="Overview" marginBottom="0"/>
           <div className="wrapper">
             <SummaryBox title="Total Stores" value="2,403"/>
             <SummaryBox title="Total Sales Made" value="500,000"/>
             <SummaryBox title="Overall Active Customers" value="2,403"/>
           </div>
           <div className="row">
-            <div className="col-sm-6">
+            <div className="col-xs-12 col-md-6 col-sm-12">
               <Title title="Top 5 Stores"/>
               <PieChart data={TOP_5_SALES}/>
             </div>
-            <div className="col-sm-6">
+            <div className="col-xs-12 col-md-6 col-sm-12">
               <Title title="Top Sales Period"/>
               <PieChart data={TOP_5_SALES_PERIOD}/>
             </div>
