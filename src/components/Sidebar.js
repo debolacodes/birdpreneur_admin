@@ -2,6 +2,7 @@ import React, {useContext} from 'react'
 import { Link } from 'react-router-dom'
 import { useLocation } from 'react-router-dom'
 import {mainFunctions} from "../providers/MainProvider";
+import { useSelector } from "react-redux";
 
 
 export default function Sidebar() {
@@ -10,6 +11,10 @@ export default function Sidebar() {
         setShowSidebar
     } = useContext(mainFunctions)
   let location = useLocation();
+
+	const { role } = useSelector(
+		(state) => state.auth
+	);
   return (
     <div className={`sidebar_ ${showSidebar ? "show_sidebar" : ""}`}>
         {showSidebar &&
@@ -48,7 +53,7 @@ export default function Sidebar() {
             <Link to="/stores">
                 <div className={`side-nav-item ${location.pathname === "/stores" ? "active" : ""}`}>
                     <div className='icon stores'></div>
-                    <div className='text'>Stores</div>
+                    <div className='text'>{role === "admin"  ? "Store Cashiers" : "Stores"}</div>
                 </div>
             </Link>
 

@@ -1,8 +1,11 @@
 import React, {useState} from 'react'
 import { useNavigate } from "react-router-dom"
+import { useDispatch } from "react-redux";
+import { roleAsync } from "../redux/actions";
 
 
 export default function MainProvider(props) {
+	const dispatch = useDispatch();
     
     let navigate = useNavigate();
     // modal pages
@@ -24,7 +27,14 @@ export default function MainProvider(props) {
     const [modalPage, setModalPage] = useState("");
     const [modalData, setModalData] = useState({});
 
-    const login = () =>{
+    const login = (userData) =>{
+        if(userData.email === "admin@izifin.com"){
+            dispatch(roleAsync("admin"));
+        }else if(userData.email === "superadmin@izifin.com"){
+            dispatch(roleAsync("superadmin"));
+        }else{
+            dispatch(roleAsync("cashier"));
+        }
         navigate("/dashboard")
     }
     const resetpassword = () =>{
