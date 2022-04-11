@@ -107,7 +107,7 @@ export default function Products() {
               <div className="page-filter justify-content-end">
                 <div className="button"><div className="text">This Year</div><div className="icon down"></div></div>
               </div>
-              <div className="wrapper">
+              <div className="wrapper pt-5">
                 <SummaryBox title="Total Products" value="2,405" />
               </div>
               <div className='col-sm-12'>

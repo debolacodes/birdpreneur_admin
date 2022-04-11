@@ -85,11 +85,11 @@ export default function Tables({
 
   return (
     <div>
-      <div className='row'>
-        <div className='col-sm-6'>
+      <div className='d-flex justify-content-between'>
+        <div>
           <Title title={title}></Title>
         </div>
-        <div className='col-sm-6 table-filters'>
+        <div className='table-filters'>
           {handleDateFilter && (
             <div className="table-date-filter">
               <span className="icon"></span>
