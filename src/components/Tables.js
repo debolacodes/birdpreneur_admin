@@ -8,6 +8,8 @@ import { testTableColumns, testTableDataSource } from "./enum";
 export default function Tables({
   title="My Stores",
   handleSearch,
+  handleDateFilter,
+  handleStatusFilter,
   columns=testTableColumns,
 	dataSource=testTableDataSource,
 	pageSize = 10,
@@ -89,6 +91,20 @@ export default function Tables({
           <Title title={title}></Title>
         </div>
         <div className='col-sm-6 table-filters'>
+          {handleDateFilter && (
+            <div className="table-date-filter">
+              <span className="icon"></span>
+              <span>Filter Date</span>
+            </div>
+          )}
+          {handleStatusFilter && (
+            <div className="table-status-filter">
+              <div className="button">
+                <div className="text">Status</div>
+                <div className="icon down"></div>
+              </div>
+            </div>
+          )}
           {handleSearch && (
             <div className='search_wrapper'>
               <div className='icon search'></div>

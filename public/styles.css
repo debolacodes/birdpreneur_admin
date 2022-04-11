@@ -501,6 +501,50 @@ a:link, a:visited, a:hover, a:active{
     justify-content: flex-end;
     /* background: #ccc; */
     padding:7px;
+    align-items: center;
+}
+.table-status-filter, .table-date-filter {
+    font-size: 14px;
+    margin-right: 13px;
+}
+.table-date-filter {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+}
+.table-date-filter .icon{
+    width:16px;
+    height: 16px;
+    background: url("./icons/calendar.svg");
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+    margin-right: 5px;
+}
+.table-status-filter .button{
+    width: 121px;
+    height: 40px;
+    background: #FCEAD8;
+    border: 1px solid #C76400;
+    box-sizing: border-box;
+    border-radius: 6px;
+    padding: 6px 16px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    cursor: pointer;
+}
+.table-status-filter .button .text{
+    font-size: 14px;
+}
+.table-status-filter .button .icon{
+    width:16px;
+    height: 7px;
+    background: url("./icons/down.svg");
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+    margin-left: 5px;
 }
 /* search box */
 .search_wrapper{

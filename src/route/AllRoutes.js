@@ -28,7 +28,6 @@ export default function AllRoutes() {
 		(state) => state.auth
 	);
 
-  console.log(role)
   return (
     <div className='body'>
         <Routes>

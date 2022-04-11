@@ -278,6 +278,12 @@ export default function Revenue() {
   const handleSearch = (query) => {
 		setSearchKey(query);
 	};
+  const handleStatusFilter = () => {
+
+  }
+  const handleDateFilter = () => {
+    
+  }
   let filteredTableData = tableData;
 	if (searchKey) {
 		filteredTableData = tableData?.filter((data) =>
@@ -360,6 +366,8 @@ export default function Revenue() {
             handleSearch={handleSearch}
             showPagination={true}
             showPageSize={true}
+            handleDateFilter={handleDateFilter}
+            handleStatusFilter={handleStatusFilter}
           />
         </div>
       </div>
