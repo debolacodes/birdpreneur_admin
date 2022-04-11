@@ -14,7 +14,6 @@ export default function Tables({
 	dataSource=testTableDataSource,
 	pageSize = 10,
 	showPagination = false,
-	showPageSize = false,
 	totalPages,
 	setCurrentPage,
 }) {
@@ -183,10 +182,8 @@ export default function Tables({
 			{showPagination && (
 				<Pagination
 					pages={pages}
-					pageSize={pageSize}
 					rowsLength={dataSource.length}
 					_setActiveIndex={(index) => setActiveIndex(index)}
-					showPageSize={showPageSize}
 					expand={canExpand}
 					handleExpand={(bool) => setCanExpand(bool)}
 				/>
