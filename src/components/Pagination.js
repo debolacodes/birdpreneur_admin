@@ -4,11 +4,9 @@ import { PaginationNavState, PaginationPageState } from "./enum";
 
 function Pagination ({
 	pages,
-	pageSize,
 	rowsLength,
 	_activeIndex = 1,
 	_setActiveIndex,
-	showPageSize,
 	expand,
 	handleExpand,
 })  {
