@@ -326,6 +326,40 @@ a:link, a:visited, a:hover, a:active{
     color: #000000;
     margin-top: 14px;
 }
+/*Details box */
+
+.details_box{
+    width: 223px;
+    height: 110px;
+    background: #F2F2F7;
+    border: 1px solid #E0E0E0;
+    box-sizing: border-box;
+    border-radius: 6px;
+    padding:22px 20px;
+    margin-right: 20px;
+    margin-top:20px;
+}
+
+.details_box .title{
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 24px;
+    /* identical to box height, or 171% */
+    font-family: 'Inter', sans-serif;
+    color: #8D8DA4;
+}
+
+.details_box .value{
+    font-family: 'Inter', sans-serif;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 24px;
+    /* identical to box height, or 92% */
+    color: #000000;
+    margin-top: 14px;
+}
 
 /* pie chart */
 .piechart_wrapper{
@@ -354,9 +388,6 @@ a:link, a:visited, a:hover, a:active{
     
 }
 
-.piechart_details_item{
-
-}
 .piechart_details_item{
     display: flex;
     justify-content: flex-start;
@@ -828,6 +859,9 @@ select:focus{
         width:calc(50% - 20px);
         /* margin-right: 0;   */
     }
+    .table-title{
+        display: none;
+    }
   }
 
   @media screen and (max-width: 650px) {
@@ -839,6 +873,9 @@ select:focus{
         display:none;
     }
     .topbar .right-box {
-    width: 250px
+        width: 250px
+    }
+    .mainbar-container{
+        margin: 0.813rem 2.063rem;
     }
   }
