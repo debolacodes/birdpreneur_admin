@@ -84,110 +84,112 @@ export default function Tables({
 	};
 
   return (
-    <div>
-      <div className='d-flex justify-content-between'>
-        <div>
-          <Title title={title}></Title>
-        </div>
-        <div className='table-filters'>
-          {handleDateFilter && (
-            <div className="table-date-filter">
-              <span className="icon"></span>
-              <span>Filter Date</span>
-            </div>
-          )}
-          {handleStatusFilter && (
-            <div className="table-status-filter">
-              <div className="button">
-                <div className="text">Status</div>
-                <div className="icon down"></div>
+    <>
+      <div style={{overflowX: "auto", marginTop: "1rem"}}>
+        <div className='d-flex justify-content-between'>
+          <div className="table-title">
+            <Title title={title}></Title>
+          </div>
+          <div className='table-filters'>
+            {handleDateFilter && (
+              <div className="table-date-filter">
+                <span className="icon"></span>
+                <span>Filter Date</span>
               </div>
-            </div>
-          )}
-          {handleSearch && (
-            <div className='search_wrapper'>
-              <div className='icon search'></div>
-              <input 
-                className='search_input' 
-                placeholder='Search...' 
-                type="text"
-                onChange={(e) =>
-                  handleSearch(e.currentTarget.value)
-                }
-              />
-            </div>
-          )}
+            )}
+            {handleStatusFilter && (
+              <div className="table-status-filter">
+                <div className="button">
+                  <div className="text">Status</div>
+                  <div className="icon down"></div>
+                </div>
+              </div>
+            )}
+            {handleSearch && (
+              <div className='search_wrapper'>
+                <div className='icon search'></div>
+                <input 
+                  className='search_input' 
+                  placeholder='Search...' 
+                  type="text"
+                  onChange={(e) =>
+                    handleSearch(e.currentTarget.value)
+                  }
+                />
+              </div>
+            )}
+          </div>
         </div>
-      </div>
-      <div className='table'>
-        <table>
-          <thead>
-            <tr>
-              {_columns && _columns.length > 0 ? (
-                _columns.map((column) => (
-                  <td
-                    key={column.dataIndex}
-                  >
-                    <div 
-                      onClick={() => column.sort && handleSort(column)}
-                      className={"d-flex align-items-center"}
+        <div className='table'>
+          <table>
+            <thead>
+              <tr>
+                {_columns && _columns.length > 0 ? (
+                  _columns.map((column) => (
+                    <td
+                      key={column.dataIndex}
                     >
-                      {column.title}  
-                      {column.title && column.sort && (
-                        <span className={"ml-2"}>
-                          <TableSort />
-                        </span>
-                      )}
-                    </div>
-                  </td>
+                      <div 
+                        onClick={() => column.sort && handleSort(column)}
+                        className={"d-flex align-items-center"}
+                      >
+                        {column.title}  
+                        {column.title && column.sort && (
+                          <span className={"ml-2"}>
+                            <TableSort />
+                          </span>
+                        )}
+                      </div>
+                    </td>
+                  ))
+                ) : (
+                  <></>
+                )}
+              </tr>
+            </thead>
+            <tbody>
+              {_dataSource && _dataSource.length > 0 ? (
+                _dataSource.map((data, key) => (
+                  <tr data-testid="rg-table-body-tr" key={key}>
+                    {_columns && _columns.length > 0 ? (
+                      _columns.map((column, index) => {
+                        return isElement(data[column.dataIndex]) ? (
+                          <td
+                            key={index}
+                          >
+                            {data[column.dataIndex]}
+                          </td>
+                        ) : (
+                          <td
+                            key={index}
+                          >
+                            <div>
+                              {data[column.dataIndex]}
+                            </div>
+                          </td>
+                        );
+                      })
+                    ) : (
+                      <></>
+                    )}
+                  </tr>
                 ))
               ) : (
                 <></>
               )}
-            </tr>
-          </thead>
-          <tbody>
-            {_dataSource && _dataSource.length > 0 ? (
-              _dataSource.map((data, key) => (
-                <tr data-testid="rg-table-body-tr" key={key}>
-                  {_columns && _columns.length > 0 ? (
-                    _columns.map((column, index) => {
-                      return isElement(data[column.dataIndex]) ? (
-                        <td
-                          key={index}
-                        >
-                          {data[column.dataIndex]}
-                        </td>
-                      ) : (
-                        <td
-                          key={index}
-                        >
-                          <div>
-                            {data[column.dataIndex]}
-                          </div>
-                        </td>
-                      );
-                    })
-                  ) : (
-                    <></>
-                  )}
-                </tr>
-              ))
-            ) : (
-              <></>
-            )}
-          </tbody>
-        </table>
-      </div>
-			{showPagination && (
-				<Pagination
-					pages={pages}
-					rowsLength={dataSource.length}
-					_setActiveIndex={(index) => setActiveIndex(index)}
-					expand={canExpand}
-					handleExpand={(bool) => setCanExpand(bool)}
-				/>
-			)}
-    </div>
+            </tbody>
+          </table>
+        </div>
+        </div>
+      {showPagination && (
+        <Pagination
+          pages={pages}
+          rowsLength={dataSource.length}
+          _setActiveIndex={(index) => setActiveIndex(index)}
+          expand={canExpand}
+          handleExpand={(bool) => setCanExpand(bool)}
+        />
+      )}
+    </>
   )
 }
