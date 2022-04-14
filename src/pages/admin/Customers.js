@@ -1,14 +1,15 @@
 import React, { useState } from 'react'
+import { useNavigate } from "react-router-dom"
 import Sidebar from '../../components/Sidebar';
 import TopBar from '../../components/TopBar';
 import SummaryBox from '../../components/SummaryBox';
-import Title from '../../components/Title';
 import Tables from '../../components/Tables';
 import { formatToCurrency, getDateTimeFormatUK } from "../../utils";
 
 export default function Customers() {
+  const navigate = useNavigate();
   const goToCustomerDetails = (id) =>{
-    console.log(id)
+    navigate(`/customers/${id}`)
   }
 
 	const [searchKey, setSearchKey] = useState("");
@@ -166,7 +167,10 @@ export default function Customers() {
             <TopBar title="Customers"/>
             <div className="mainbar-container">
               <div className="page-filter justify-content-end">
-                <div className="button"><div className="text">This Year</div><div className="icon down"></div></div>
+                <div className="button">
+                  <div className="text">This Year</div>
+                  <div className="icon down"></div>
+                </div>
               </div>
               <div className="wrapper pt-5">
                 <SummaryBox title="Total No of Customers" value="2,403"/>

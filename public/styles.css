@@ -329,15 +329,9 @@ a:link, a:visited, a:hover, a:active{
 /*Details box */
 
 .details_box{
-    width: 223px;
-    height: 110px;
-    background: #F2F2F7;
-    border: 1px solid #E0E0E0;
     box-sizing: border-box;
-    border-radius: 6px;
-    padding:22px 20px;
-    margin-right: 20px;
-    margin-top:20px;
+    padding:22px 0px;
+    overflow-x: auto;
 }
 
 .details_box .title{
