@@ -27,3 +27,11 @@ export const getDateTimeFormatUK = (value) => {
 	let a = date_ob.getHours().toString().length === 1 ? "AM" : "PM";
 	return `${date_ob.toLocaleString("en-UK")} ${a}`;
 };
+
+export const getDate = (value) => {
+	let date_ob = new Date(value);
+	let day = date_ob.getDate();
+	let month = date_ob.getMonth();
+	let year = date_ob.getFullYear();
+	return `${month}/${day}/${year}`;
+};

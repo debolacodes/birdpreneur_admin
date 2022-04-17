@@ -737,6 +737,7 @@ select:focus{
 }
 
 .auth_form .togglepassword{
+    cursor: pointer;
     font-style: normal;
     font-weight: 400;
     font-size: 14px;
@@ -782,17 +783,28 @@ select:focus{
     cursor:pointer;
 }
 
-.status.success {
+.status-success {
     color: #00CD74;
 }
-.status.pending {
+.status-pending {
     color: #FF9500;
 }
-.status.failed {
+.status-failed {
     color: #FF0000;
 }
 .pagination-active{
     color: #C76400 !important;
+}
+
+.dropdown-group:hover .dropdown-group-hover\:block {
+	display: block;
+}
+.dropdown-group-hover\:block {
+	margin-left: calc(-1.75rem * calc(1 - var(--tw-space-x-reverse)));
+	--tw-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1),
+		0 2px 4px -1px rgba(0, 0, 0, 0.06);
+	box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000),
+		var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
 }
 
 

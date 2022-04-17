@@ -185,7 +185,7 @@ export default function CustomerDetails() {
 							</div>
 						),
 						status: (
-							<div className={`status ${row.status === "Success"
+							<div className={`status-${row.status === "Success"
                 ? "success"
                 : row.status === "Pending"
                 ? "pending"
