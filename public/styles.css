@@ -220,6 +220,7 @@ a:link, a:visited, a:hover, a:active{
 }
 .btn_orange{
     background: #C76400;
+    border: none;
 }
 .btn_green{
     background: #029656;
@@ -329,15 +330,9 @@ a:link, a:visited, a:hover, a:active{
 /*Details box */
 
 .details_box{
-    width: 223px;
-    height: 110px;
-    background: #F2F2F7;
-    border: 1px solid #E0E0E0;
     box-sizing: border-box;
-    border-radius: 6px;
-    padding:22px 20px;
-    margin-right: 20px;
-    margin-top:20px;
+    padding:22px 0px;
+    overflow-x: auto;
 }
 
 .details_box .title{
@@ -671,17 +666,18 @@ select:focus{
     
 }
 .auth_form_container{
-    width: 406px;
+    max-width: 406px;
+    width: 100%;
     height: 100%;
     margin:auto;
     padding: 45px 0;
 }
 
-.auth_form .btn_{
+.auth_form_container .btn_{
     width:100%;
     margin-top: 40px !important;
 }
-.auth_form .logo{
+.auth_form_container .logo{
     background: url("./icons//izifin.svg");
     background-repeat: no-repeat;
     background-position: center;
@@ -690,7 +686,7 @@ select:focus{
     margin:0 auto 25px;
 
 }
-.auth_form .auth_title{
+.auth_form_container .auth_title{
     font-style: normal;
     font-weight: 500;
     font-size: 24px;
@@ -702,7 +698,7 @@ select:focus{
     width:100%;
     margin-bottom: 50px;
 }
-.auth_form .label{
+.auth_form_container .label{
     font-style: normal;
     font-weight: 400;
     font-size: 12px;
@@ -711,7 +707,7 @@ select:focus{
     font-family: 'Inter', sans-serif;
     color: #000000;
 }
-.auth_form .input_box{
+.auth_form_container .input_box{
     width: 100%;
     height: 54px;
     background: #FBFBFB;
@@ -722,7 +718,7 @@ select:focus{
     justify-content: space-between;
     padding: 5px;
 }
-.auth_form input{
+.auth_form_container input{
     line-height: 40px;
     width:calc(100% - 45px);
     padding: 0 20px;
@@ -732,7 +728,7 @@ select:focus{
     background: none;
     /* background: #ccc; */
 }
-.auth_form .more-info{
+.auth_form_container .more-info{
     font-style: normal;
     font-weight: 400;
     font-size: 12px;
@@ -742,7 +738,8 @@ select:focus{
     margin-top: 7px;
 }
 
-.auth_form .togglepassword{
+.auth_form_container .togglepassword{
+    cursor: pointer;
     font-style: normal;
     font-weight: 400;
     font-size: 14px;
@@ -752,7 +749,7 @@ select:focus{
     line-height: 40px;
     width:45px;
 }
-.auth_form .fieldset{
+.auth_form_container .fieldset{
     margin-bottom: 20px;
    
 }
@@ -765,11 +762,11 @@ select:focus{
     z-index: 1111111111111111111111111111111111111111111111111111111;
 }
 .modal_inner{
-    width: 584px;
-    height: 614px;
+    max-width: 584px;
+    /* height: 614px; */
     position: absolute;
-    left: calc(50% - 292px);
-    top:calc(50% - 307px);
+    /* left: calc(50% - 292px);
+    top:calc(50% - 307px); */
     background: #FFFFFF;
     box-shadow: 0px 3px 20px 5px rgba(69, 104, 209, 0.1);
     border-radius: 8px;
@@ -787,18 +784,37 @@ select:focus{
     background-position: center;
     cursor:pointer;
 }
+.add_staff_modal {
+    padding: 4rem;
+}
+.add_staff_modal .title {
+    font-weight: 700;
+    font-size: 24px;
+    line-height: 32px;
+}
 
-.status.success {
+.status-success {
     color: #00CD74;
 }
-.status.pending {
+.status-pending {
     color: #FF9500;
 }
-.status.failed {
+.status-failed {
     color: #FF0000;
 }
 .pagination-active{
     color: #C76400 !important;
+}
+
+.dropdown-group:hover .dropdown-group-hover\:block {
+	display: block;
+}
+.dropdown-group-hover\:block {
+	margin-left: calc(-1.75rem * calc(1 - var(--tw-space-x-reverse)));
+	--tw-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1),
+		0 2px 4px -1px rgba(0, 0, 0, 0.06);
+	box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000),
+		var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
 }
 
 

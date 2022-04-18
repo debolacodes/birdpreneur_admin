@@ -44,7 +44,7 @@ export default function Sidebar() {
             </Link>
 
             <Link to="/customers">
-            <div className={`side-nav-item ${location.pathname === "/customers" ? "active" : ""}`}>
+            <div className={`side-nav-item ${location.pathname.includes("/customers") ? "active" : ""}`}>
                 <div className='icon customers'></div>
                 <div className='text'>Customers</div>
             </div>
