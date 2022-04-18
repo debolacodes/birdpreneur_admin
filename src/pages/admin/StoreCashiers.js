@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, {useContext, useState, useEffect} from 'react'
 import Sidebar from '../../components/Sidebar';
 import TopBar from '../../components/TopBar';
 import SummaryBox from '../../components/SummaryBox';
@@ -7,9 +7,26 @@ import { getDate } from "../../utils";
 import {
   BsThreeDots,
 } from "react-icons/bs";
+import {mainFunctions} from "../../providers/MainProvider";
+import AddStaffModal from '../../modals/AddStaff';
 
 export default function Stores() {
+  const {
+    setShowModal,
+    setModalPage,
+    ADD_STAFF_MODAL,
+    setModalData
+  } = useContext(mainFunctions)
 	const [searchKey, setSearchKey] = useState("");
+	const [staffModal, setStaffModal] = useState("");
+  const [newStaff, setNewStaff] = useState({
+      fullName: "",
+      email: "",
+  });
+  const [editStaff, setEditStaff] = useState({
+      fullName: "",
+      email: "",
+  });
 
   const handleSearch = (query) => {
 		setSearchKey(query);
@@ -69,7 +86,6 @@ export default function Stores() {
   const [visibilities, setVisibilities] = React.useState(() =>
     filteredTableData.map((x) => false)
 	);
-  console.log(visibilities)
 
   const handleClick = (index) => {
 		const newVisibilities = [...visibilities];
@@ -112,7 +128,13 @@ export default function Stores() {
                   {visibilities[index] ? (
                     <div className="position-absolute border border-muted px-3 w-32 bg-white" style={{right: "0", top: "100%", zIndex: "2", width:  "150px"}}>
                       <div
-                        onClick={() => {}}
+                        onClick={() => {
+                          setEditStaff({
+                            fullName : row.cashierName,
+                            email: row.email,
+                          });
+                          setStaffModal(row);
+                        }}
                         style={{cursor: "pointer"}}
                         className="d-flex text-left py-3 border-bottom border-muted status-success hover:text-blue-dark text-small"
                       >
@@ -133,13 +155,38 @@ export default function Stores() {
 					};
 			  })
 			: [];
+
+
+  useEffect(() => {
+    setModalPage(ADD_STAFF_MODAL);
+    if(staffModal){
+      if(staffModal === "add"){
+        setModalData(
+          <AddStaffModal 
+            newStaff={newStaff}
+            setNewStaff={setNewStaff}
+          />
+        );
+      }else{
+        setModalData(
+          <AddStaffModal 
+            editStaff={editStaff}
+            setEditStaff={setEditStaff}
+          />
+        );
+      }
+      setShowModal(true);
+    }
+		//eslint-disable-next-line
+  }, [staffModal]);
+
   return (
     <div className='body'>
       <Sidebar />
       <div className="mainbar">
         <TopBar title="Store Cashier"/>
         <div className="mainbar-container">
-            <div className='btn_ btn_green mb-3'>ADD A CASHIER</div>
+            <div className='btn_ btn_green mb-3' onClick={() => setStaffModal("add")}>ADD A CASHIER</div>
           <div className="wrapper">
             <SummaryBox title="No of Staff" value="25"/>
           </div>

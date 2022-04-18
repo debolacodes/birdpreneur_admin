@@ -92,7 +92,7 @@ export default function Tables({
           </div>
           <div className='table-filters'>
             {handleDateFilter && (
-              <div className="table-date-filter">
+              <div className="table-date-filter" onClick={handleDateFilter}>
                 <span className="icon"></span>
                 <span>Filter Date</span>
               </div>

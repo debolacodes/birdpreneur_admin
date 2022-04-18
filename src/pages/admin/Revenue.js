@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useContext } from 'react'
 import SummaryBox from "../../components/SummaryBox";
 import Title from "../../components/Title";
 import TopBar from "../../components/TopBar";
@@ -6,10 +6,20 @@ import BarChartComponent from '../../components/BarchartComponent';
 import Sidebar from '../../components/Sidebar';
 import Tables from '../../components/Tables';
 import { formatToCurrency, getDateTimeFormatUK } from "../../utils";
+import {mainFunctions} from "../../providers/MainProvider";
+import SelectDateRangeModal from '../../modals/SelectDateRange';
 
 export default function Revenue() {
+  const {
+    setShowModal,
+    setModalPage,
+    DATERANGE_MODAL,
+    setModalData
+  } = useContext(mainFunctions)
 
 	const [searchKey, setSearchKey] = useState("");
+	const [dateFilterFrom, setDateFilterFrom] = useState();
+	const [dateFilterTo, setDateFilterTo] = useState();
 
   const SALES_DATA = [
     {
@@ -282,14 +292,26 @@ export default function Revenue() {
 
   }
   const handleDateFilter = () => {
-    
+    setModalPage(DATERANGE_MODAL);
+    setModalData(
+      <SelectDateRangeModal 
+        getDateFilterFrom={(value) => setDateFilterFrom(value)}
+        getDateFilterTo={(value) => setDateFilterTo(value)}
+      />
+    );
+    setShowModal(true);
   }
   let filteredTableData = tableData;
 	if (searchKey) {
-		filteredTableData = tableData?.filter((data) =>
+		filteredTableData = filteredTableData?.filter((data) =>
 			data.customerName.toLowerCase().includes(searchKey.toLocaleLowerCase())
 		);
 	}
+  if (dateFilterFrom && dateFilterTo){
+    filteredTableData = filteredTableData?.filter((data) =>
+      new Date(data.date).getTime() >= new Date(dateFilterFrom).getTime() && new Date(data.date).getTime() <= new Date(dateFilterTo).getTime()
+		);
+  }
   const dataSource =
     filteredTableData &&
       filteredTableData.length > 0
