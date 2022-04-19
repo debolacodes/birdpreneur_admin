@@ -577,6 +577,35 @@ export default function MainProvider(props) {
 
    ]
 
+   //Rewards
+   const productDeals = [
+    {
+     id:"3232",
+     name:"Pancake",
+     price:"345000",
+     type:"percentage",
+     value:10,
+     image:"icons/pancake.jpg"     
+    },
+    {
+      id:"9717",
+      name:"Biscuits",
+      price:"345100",
+      type:"percentage",
+      value:10,
+      image:"icons/biscuit.jpg"     
+     },
+     {
+      id:"3963",
+      name:"Burger",
+      price:"345000",
+      type:"unit",
+      value:1,
+      image:"icons/burger.jpg"
+     },
+
+  
+  ]
     return (
         <mainFunctions.Provider
         value={{
@@ -624,8 +653,10 @@ export default function MainProvider(props) {
             activeNoOfCustomers,
             activeCustomersToday,
             customersData,
-            // stores
-            storeList
+            // Stores
+            storeList,
+            // Rewards SuperAdmin
+            productDeals, 
         }}
         >
             {props.children}

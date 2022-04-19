@@ -14,6 +14,7 @@ import SuperAdminCustomers from "../pages/superAdmin/Customers"
 import SuperAdminProducts from "../pages/superAdmin/Products"
 import SuperAdminCustomerDetails from "../pages/superAdmin/CustomerDetails"
 import SuperAdminStores from "../pages/superAdmin/Stores"
+import SuperAdminRewards from "../pages/superAdmin/Rewards"
 
 // admin pages
 import AdminDashboard from "../pages/admin/Dashboard";
@@ -62,6 +63,11 @@ export default function AllRoutes() {
             ? <AdminCustomers /> 
             : "superadmin" 
             && <SuperAdminCustomers/> }
+          />
+          <Route exact path="/rewards" element={role === "admin" 
+            ? <AdminDashboard /> 
+            : "superadmin" 
+            && <SuperAdminRewards/> }
           />
           <Route exact path="/customers/:id" element={role === "admin" 
             ? <AdminCustomerDetails /> 

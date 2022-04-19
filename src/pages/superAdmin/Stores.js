@@ -10,7 +10,6 @@ import AllStoresTable from './tables/AllStoresTable';
 export default function Stores() {
   const {
     totalStoresOverview,
-    storeList
   } = useContext(mainFunctions)
   return (
     <div className='body'>
