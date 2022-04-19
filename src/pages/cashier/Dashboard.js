@@ -6,7 +6,14 @@ export default function Dashboard() {
     <div className='body'>
         {/* <Sidebar /> */}
         <div className="mainbar w-100">
-            <TopBar />
+            <TopBar 
+              title="All Products"
+              handleSearch={() =>{}}
+              button={{
+                title: "Use Customer Purchase Code",
+                action: () => {}
+              }}
+            />
             <div className="mainbar-container">
                 Stores
             </div>
