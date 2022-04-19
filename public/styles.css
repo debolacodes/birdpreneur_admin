@@ -178,10 +178,14 @@ a:active {
 
 .topbar {
     /* padding: 22px 20px 12px; */
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
     background: #fff;
     position: relative;
     min-height: 50px;
     border-bottom: 1px solid #0000001D;
+    padding: 1rem;
 }
 
 .topbar .page-anchor {
@@ -198,12 +202,11 @@ a:active {
 
 .topbar .right-box {
     /* width: 464px; */
-    /* width: 464px; */
     height: 50px;
     /* background: #353535; */
-    position: absolute;
+    /* position: absolute;
     right: 0;
-    /* top: 22px; */
+    top:22px; */
     display: flex;
 }
 
@@ -213,9 +216,9 @@ a:active {
     font-style: normal;
     font-weight: 700;
     font-size: 24px;
-    line-height: 84px;
+    /* line-height: 84px; */
     color: #000000;
-    margin-left: 22px;
+    /* margin-left: 22px; */
 }
 
 .right-box .download_btn {
@@ -223,7 +226,8 @@ a:active {
 }
 
 .btn_ {
-    width: 196px;
+    display: inline-block;
+    min-width: 196px;
     height: 50px;
     border-radius: 10px;
     font-style: normal;
@@ -232,6 +236,7 @@ a:active {
     line-height: 24px;
     /* identical to box height, or 171% */
     text-transform: uppercase;
+    padding: 0px 2rem;
     text-align: center;
     color: #FFFFFF;
     line-height: 50px;
@@ -930,6 +935,12 @@ select:focus {
     .topbar .page-anchor {
         display: block !important;
     }
+    .topbar .title {
+        display: none !important;
+    }
+    .download_button {
+        display: none;
+    }
     .show_sidebar {
         display: block;
     }
@@ -954,7 +965,7 @@ select:focus {
         display: none;
     }
     .topbar .right-box {
-        width: 250px
+        /* width: 250px */
     }
     .mainbar-container {
         margin: 0.813rem 2.063rem;

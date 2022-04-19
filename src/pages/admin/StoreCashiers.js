@@ -184,7 +184,7 @@ export default function Stores() {
     <div className='body'>
       <Sidebar />
       <div className="mainbar">
-        <TopBar title="Store Cashier"/>
+        <TopBar title="Store Cashier" />
         <div className="mainbar-container">
             <div className='btn_ btn_green mb-3' onClick={() => setStaffModal("add")}>ADD A CASHIER</div>
           <div className="wrapper">

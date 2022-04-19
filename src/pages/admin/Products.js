@@ -102,7 +102,13 @@ export default function Products() {
     <div className='body'>
         <Sidebar />
         <div className="mainbar">
-            <TopBar title="Products"/>
+            <TopBar 
+              title="Products" 
+              button={{
+                title: "DOWNLOAD REPORT",
+                action: () => {}
+              }}
+            />
             <div className="mainbar-container">
               <div className="page-filter justify-content-end">
                 <div className="button"><div className="text">This Year</div><div className="icon down"></div></div>

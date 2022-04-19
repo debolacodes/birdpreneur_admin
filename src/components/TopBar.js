@@ -12,9 +12,26 @@ export default function TopBar(props) {
           setShowSidebar(true)
         }}
         ></div>
-        <div className='title'>{props.title}</div>
+        <div className='d-flex gap-5 align-items-center'>
+          <div className='title'>{props.title}</div>
+          {props.handleSearch &&
+            <div className='search_wrapper'>
+              <div className='icon search'></div>
+              <input 
+                className='search_input' 
+                placeholder='Search...' 
+                type="text"
+                onChange={(e) =>{}
+                  // handleSearch(e.currentTarget.value)
+                }
+              />
+            </div>
+          }
+        </div>
         <div className='align-right right-box'>
-            <div className='btn_ btn_orange download_button'>DOWNLOAD REPORT</div>
+          {props.button &&
+            <div className='btn_ btn_orange download_button'>{props.button.title}</div>
+          }
             <div className='profile'>
                 <div className='avatar'></div>
                 <div className='profile-details'>

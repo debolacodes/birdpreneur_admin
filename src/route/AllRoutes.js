@@ -14,6 +14,7 @@ import SuperAdminCustomers from "../pages/superAdmin/Customers"
 import SuperAdminProducts from "../pages/superAdmin/Products"
 import SuperAdminCustomerDetails from "../pages/superAdmin/CustomerDetails"
 import SuperAdminStores from "../pages/superAdmin/Stores"
+import SuperAdminRewards from "../pages/superAdmin/Rewards"
 
 // admin pages
 import AdminDashboard from "../pages/admin/Dashboard";
@@ -22,6 +23,9 @@ import AdminStoreCashiers from "../pages/admin/StoreCashiers"
 import AdminCustomers from "../pages/admin/Customers"
 import AdminCustomerDetails from "../pages/admin/CustomerDetails"
 import AdminProducts from "../pages/admin/Products"
+
+// cashier pages
+import CashierDashboard from "../pages/cashier/Dashboard";
 
 export default function AllRoutes() {
 	const { role } = useSelector(
@@ -38,10 +42,10 @@ export default function AllRoutes() {
           <Route exact path="/account" element={<AccountSettings/>} />
           <Route exact path="/dashboard" element={role === "admin" 
             ? <AdminDashboard /> 
-            : "superadmin" 
+            : role === "superadmin" 
             ? <SuperAdminDashboard/> 
-            : "cashier"
-            && <SuperAdminDashboard/> } 
+            : role === "cashier"
+            && <CashierDashboard/> } 
           />
           <Route exact path="/revenue" element={role === "admin" 
             ? <AdminRevenue /> 
@@ -62,6 +66,11 @@ export default function AllRoutes() {
             ? <AdminCustomers /> 
             : "superadmin" 
             && <SuperAdminCustomers/> }
+          />
+          <Route exact path="/rewards" element={role === "admin" 
+            ? <AdminDashboard /> 
+            : "superadmin" 
+            && <SuperAdminRewards/> }
           />
           <Route exact path="/customers/:id" element={role === "admin" 
             ? <AdminCustomerDetails /> 

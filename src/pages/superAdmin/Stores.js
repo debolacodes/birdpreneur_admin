@@ -10,13 +10,18 @@ import AllStoresTable from './tables/AllStoresTable';
 export default function Stores() {
   const {
     totalStoresOverview,
-    storeList
   } = useContext(mainFunctions)
   return (
     <div className='body'>
         <Sidebar />
         <div className="mainbar">
-            <TopBar title="Stores"/>
+            <TopBar 
+              title="Stores"
+              button={{
+                title: "DOWNLOAD REPORT",
+                action: () => {}
+              }}
+            />
             <div className="mainbar-container">
             <div className="page-filter">
               <div className="button"><div className="text">All Stores</div><div className="icon down"></div></div>

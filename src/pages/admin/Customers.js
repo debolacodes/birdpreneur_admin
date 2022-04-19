@@ -164,7 +164,13 @@ export default function Customers() {
     <div className='body'>
         <Sidebar />
         <div className="mainbar">
-            <TopBar title="Customers"/>
+            <TopBar 
+              title="Customers"
+              button={{
+                title: "DOWNLOAD REPORT",
+                action: () => {}
+              }}
+            />
             <div className="mainbar-container">
               <div className="page-filter justify-content-end">
                 <div className="button">
