@@ -164,10 +164,14 @@ a:link, a:visited, a:hover, a:active{
 /* top bar */
 .topbar{
     /* padding: 22px 20px 12px; */
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
     background: #fff;
     position: relative;
     min-height: 50px;
     border-bottom: 1px solid #0000001D;
+    padding: 1rem;
 }
 .topbar .page-anchor{
     width:50px;
@@ -176,17 +180,17 @@ a:link, a:visited, a:hover, a:active{
     background-size:cover;
     background-repeat:no-repeat;
     float:left;
-    margin: 15px;
+    /* margin: 15px; */
     cursor:pointer;
     display:none;
 }
 .topbar .right-box{
-    width: 464px;
+    /* width: 464px; */
     height: 50px;
     /* background: #353535; */
-    position: absolute;
+    /* position: absolute;
     right: 0;
-    top:22px;
+    top:22px; */
     display: flex;
 }
 .topbar .title{
@@ -194,9 +198,9 @@ a:link, a:visited, a:hover, a:active{
     font-style: normal;
     font-weight: 700;
     font-size: 24px;
-    line-height: 84px;
+    /* line-height: 84px; */
     color: #000000;
-    margin-left: 22px;
+    /* margin-left: 22px; */
 }
 .right-box .download_btn{
     float: left;
@@ -863,6 +867,9 @@ select:focus{
     .topbar .page-anchor{
         display: block !important;
     }
+    .topbar .title{
+        display: none !important;
+    }
 
     .show_sidebar{
         display: block;
@@ -889,7 +896,7 @@ select:focus{
         display:none;
     }
     .topbar .right-box {
-        width: 250px
+        /* width: 250px */
     }
     .mainbar-container{
         margin: 0.813rem 2.063rem;

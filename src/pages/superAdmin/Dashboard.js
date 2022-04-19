@@ -29,7 +29,7 @@ export default function Dashboard() {
     <div className='body'>
         <Sidebar />
         <div className="mainbar">
-        <TopBar title="Dashboard" />
+        <TopBar title="Dashboard" downloadReport={true} />
         <div className="mainbar-container">
           <div className="page-filter">
             <div className="button"><div className="text">All Stores</div><div className="icon down"></div></div>

@@ -175,7 +175,7 @@ export default function Dashboard() {
     <div className='body'>
       <Sidebar />
       <div className="mainbar">
-        <TopBar title="Dashboard" />
+        <TopBar title="Dashboard" downloadReport={true} />
         <div className="mainbar-container">
           <div className="page-filter justify-content-end">
             <div className="button"><div className="text">This Year</div><div className="icon down"></div></div>
