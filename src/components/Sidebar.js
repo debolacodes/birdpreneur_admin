@@ -57,6 +57,15 @@ export default function Sidebar() {
                 </div>
             </Link>
 
+            {role === "superadmin" &&
+            <Link to="/rewards">
+                <div className={`side-nav-item ${location.pathname === "/rewards" ? "active" : ""}`}>
+                    <div className='icon rewards'></div>
+                    <div className='text'> Rewards </div>
+                </div>
+            </Link>
+            }
+
             <Link to="/account">
                 <div className={`side-nav-item ${location.pathname === "/account" ? "active" : ""}`}>
                     <div className='icon account'></div>

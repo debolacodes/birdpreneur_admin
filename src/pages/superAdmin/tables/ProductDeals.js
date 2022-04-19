@@ -1,11 +1,11 @@
 import React, {useState, useContext, useEffect} from 'react'
 import {mainFunctions} from "../../../providers/MainProvider";
 import Tables from '../../../components/Tables';
-import { formatToCurrency, getDateTimeFormatUK } from "../../../utils";
+import { formatToCurrency} from "../../../utils";
 
-export default function ProductTable() {
+export default function ProductDeals() {
     const {
-        productsData
+        productDeals
       } = useContext(mainFunctions)
 
   const [searchKey, setSearchKey] = useState("");
@@ -17,20 +17,18 @@ export default function ProductTable() {
     },
     {
       title: "Product Name",
-      dataIndex: "productName",
+      dataIndex: "name",
     },
     {
       title: "Unit Price",
       dataIndex: "price",
     },
     {
-      title: "No of Purchases",
-      dataIndex: "purchases",
-    },
-    {
-      title: "Date Uploaded",
-      dataIndex: "date",
-    },
+      title: "Discount",
+      dataIndex: "value",
+      sort:false,
+      search:false
+    }
   ];
  
   const handleSearch = (query) => {
@@ -43,15 +41,19 @@ export default function ProductTable() {
     
   }
   
-const [filteredTableData, setFilteredTableData] = useState(productsData);
+const [filteredTableData, setFilteredTableData] = useState(productDeals);
 
 const dataSource =
     filteredTableData &&
       filteredTableData.length > 0
         ? filteredTableData.map((row) => {
 					return {
-						id: row.id,
-						productName: (
+						id: (
+              <div>
+                ID: {row.id}
+              </div>
+            ),
+						name: (
 							<div>
                 <span style={{marginRight: "11px"}}>
                   <img src={row.image} style={{
@@ -60,7 +62,7 @@ const dataSource =
                     objectFit:"cover"
                     }} alt="img"/>
                 </span>
-								<span>{row.productName}</span>
+								<span>{row.name}</span>
 							</div>
 						),
 						price: (
@@ -68,25 +70,20 @@ const dataSource =
 								₦{formatToCurrency(row.price, 1)}
 							</div>
 						),
-						purchases: (
+						value: (
 							<div>
-                {row.purchases}
+                {row.type === "unit"
+                ? <div>Get {row.value} free</div>
+                : <div>{row.value}%</div>
+                }
 							</div>
-						),
-						date: (
-							<div>
-								{getDateTimeFormatUK(row.date)}
-							</div>
-						),
+						)
 					};
 			  })
 			: [];
 
 useEffect(() => {
-    console.log("adeb")
-    if(searchKey){
-        console.log("adeb")
-        var fd = productsData.filter((thisStore, index) => {
+        var fd = productDeals.filter((thisStore, index) => {
             var found = true;
             for(var i = 0; i < tableColumns.length; i++){
                 if(typeof tableColumns[i].search === "undefined" || tableColumns[i].search === true){
@@ -106,7 +103,7 @@ useEffect(() => {
             return found;
         })
         setFilteredTableData(fd)
-    }
+    
   },[searchKey])
 
 
@@ -115,6 +112,7 @@ useEffect(() => {
 return (
 <div>
     <Tables
+    title="Product Deals"
     dataSource={dataSource}
     columns={tableColumns}
     handleSearch={setSearchKey}
