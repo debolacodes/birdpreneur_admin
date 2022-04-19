@@ -7,7 +7,7 @@ import { testTableColumns, testTableDataSource } from "./enum";
 
 import TabTitle from "./TabTitle";
 export default function Tables({
-  title="My Stores",
+  title,
   handleSearch,
   handleDateFilter,
   handleStatusFilter,
@@ -98,7 +98,7 @@ export default function Tables({
         <div className='d-flex justify-content-between'>
           <div className="table-title">
             {tabs === null 
-            ? <Title title={title}></Title>
+            ? (title && <Title title={title}></Title>)
             : <TabTitle pages={tabs} 
             active={activeTab} 
             setActive={setActiveTab} />
