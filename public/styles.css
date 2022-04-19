@@ -101,6 +101,10 @@ a:active {
     background: url("./icons/revenue.svg");
 }
 
+.sidebar_ .side-nav-item .icon.rewards {
+    background: url("./icons/rewards.svg");
+}
+
 .sidebar_ .side-nav-item .icon.products {
     background: url("./icons/products.svg");
 }
@@ -120,6 +124,11 @@ a:active {
 .sidebar_ .side-nav-item:hover .icon.dashboard,
 .sidebar_ .side-nav-item.active .icon.dashboard {
     background: url("./icons/dashboard_hover.svg");
+}
+
+.sidebar_ .side-nav-item:hover .icon.rewards,
+.sidebar_ .side-nav-item.active .icon.rewards {
+    background: url("./icons/rewards_hover.svg");
 }
 
 .sidebar_ .side-nav-item:hover .icon.revenue,
@@ -661,6 +670,24 @@ input:focus,
 textarea:focus,
 select:focus {
     outline: none;
+}
+
+.select_ {
+    width: 178px;
+    height: 40px;
+    left: 365px;
+    top: 110px;
+    background: #F2F2F7;
+    border: 1px solid #E0E0E0;
+    box-sizing: border-box;
+    border-radius: 6px;
+    font-family: 'Inter', sans-serif;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 24px;
+    /* identical to box height, or 171% */
+    color: #51545C;
 }
 
 
