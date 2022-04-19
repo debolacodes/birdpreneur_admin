@@ -49,7 +49,7 @@ export default function MainProvider(props) {
     // Super Admin Dashboard
     const totalStoresOverview = {
         title:"Total Stores",
-        value:"2403"
+        value:"243"
     }
     const totalSalesOverview = {
         title:"Total Sales Made",
@@ -540,6 +540,43 @@ export default function MainProvider(props) {
         lastVisit: new Date(),
       }
     ]
+    //Stores SuperAdmin
+   const storeList = [
+     {
+       id: 3232,
+       store:"KYC Ogba",
+       location:"Ogba, Lagos",
+       manager:"Kunle Oshunkunle",
+       dateAdded: new Date(),
+       status:"activated" 
+     },
+     {
+      id: 3222,
+      store:"KYC Agbado",
+      location:"Agbado, Lagos",
+      manager:"Felix James",
+      dateAdded: new Date(),
+      status:"deactivated" 
+    },
+    {
+      id: 3222,
+      store:"KYC VI",
+      location:"VI, Lagos",
+      manager:"Emmanuel Adebiyi",
+      dateAdded: new Date(),
+      status:"activated" 
+    },
+    {
+      id: 3222,
+      store:"KYC VI 2",
+      location:"VI 2, Lagos",
+      manager:"Charles",
+      dateAdded: new Date(),
+      status:"deactivated"
+    },
+
+   ]
+
     return (
         <mainFunctions.Provider
         value={{
@@ -586,8 +623,9 @@ export default function MainProvider(props) {
             totalNoOfCustomers,
             activeNoOfCustomers,
             activeCustomersToday,
-            customersData
-
+            customersData,
+            // stores
+            storeList
         }}
         >
             {props.children}
