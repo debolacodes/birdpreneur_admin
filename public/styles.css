@@ -207,7 +207,8 @@ a:link, a:visited, a:hover, a:active{
 }
 
 .btn_{
-    width: 196px;
+    display: inline-block;
+    /* width: 196px; */
     height: 50px;
     border-radius: 10px;
     font-style: normal;
@@ -216,7 +217,8 @@ a:link, a:visited, a:hover, a:active{
     line-height: 24px;
     /* identical to box height, or 171% */
 
-    text-transform: uppercase;
+    /* text-transform: uppercase; */
+    padding: 0px 2rem;
     text-align: center;
     color: #FFFFFF;
     line-height: 50px;
@@ -867,9 +869,13 @@ select:focus{
     .topbar .page-anchor{
         display: block !important;
     }
-    .topbar .title{
+    .topbar .title, .topbar .search_wrapper{
         display: none !important;
     }
+    .download_button{
+        display:none;
+    }
+    
 
     .show_sidebar{
         display: block;
@@ -891,9 +897,6 @@ select:focus{
     .summary_box{
         width:100%;
         margin-right: 0;
-    }
-    .download_button{
-        display:none;
     }
     .topbar .right-box {
         /* width: 250px */

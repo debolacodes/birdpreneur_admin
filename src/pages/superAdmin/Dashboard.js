@@ -29,7 +29,13 @@ export default function Dashboard() {
     <div className='body'>
         <Sidebar />
         <div className="mainbar">
-        <TopBar title="Dashboard" downloadReport={true} />
+        <TopBar 
+          title="Dashboard"
+          button={{
+            title: "DOWNLOAD REPORT",
+            action: () => {}
+          }}
+        />
         <div className="mainbar-container">
           <div className="page-filter">
             <div className="button"><div className="text">All Stores</div><div className="icon down"></div></div>
