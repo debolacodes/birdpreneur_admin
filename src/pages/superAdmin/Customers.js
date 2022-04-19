@@ -1,11 +1,20 @@
-import React from 'react'
+import React, {useContext} from 'react'
+import {mainFunctions} from "../../providers/MainProvider";
+
 import Sidebar from '../../components/Sidebar';
 import TopBar from '../../components/TopBar';
 import SummaryBox from '../../components/SummaryBox';
 import Title from '../../components/Title';
-import Tables from '../../components/Tables';
+import AllCustomersTable from './tables/AllCustomersTable';
+
 
 export default function Customers() {
+  const {
+    totalNoOfCustomers,
+    activeNoOfCustomers,
+    activeCustomersToday,
+
+  } = useContext(mainFunctions)
   return (
     <div className='body'>
         <Sidebar />
@@ -18,12 +27,19 @@ export default function Customers() {
             </div>
               <Title title="Overview"/>
               <div className="wrapper">
-                <SummaryBox title="Total No of Customers" value="2,403"/>
-                <SummaryBox title="Active Customers/Day" value="2,400"/>
-                <SummaryBox title="Active Customers Today" value="2,403"/>
+                <SummaryBox 
+                title={totalNoOfCustomers.title} 
+                value={totalNoOfCustomers.value}/>
+                <SummaryBox 
+                title={activeNoOfCustomers.title} 
+                value={activeNoOfCustomers.value}/>
+                <SummaryBox 
+                title={activeCustomersToday.title} 
+                value={activeCustomersToday.value}
+                />
               </div>
 
-              <Tables />
+              <AllCustomersTable />
             </div>
         </div>
     </div>
