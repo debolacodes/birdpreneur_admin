@@ -548,7 +548,7 @@ export default function MainProvider(props) {
        location:"Ogba, Lagos",
        manager:"Kunle Oshunkunle",
        dateAdded: new Date(),
-       status:"activated" 
+       active:true 
      },
      {
       id: 3222,
@@ -556,7 +556,7 @@ export default function MainProvider(props) {
       location:"Agbado, Lagos",
       manager:"Felix James",
       dateAdded: new Date(),
-      status:"deactivated" 
+      active:false
     },
     {
       id: 3222,
@@ -564,7 +564,7 @@ export default function MainProvider(props) {
       location:"VI, Lagos",
       manager:"Emmanuel Adebiyi",
       dateAdded: new Date(),
-      status:"activated" 
+      active:true 
     },
     {
       id: 3222,
@@ -572,7 +572,7 @@ export default function MainProvider(props) {
       location:"VI 2, Lagos",
       manager:"Charles",
       dateAdded: new Date(),
-      status:"deactivated"
+      active:false
     },
 
    ]

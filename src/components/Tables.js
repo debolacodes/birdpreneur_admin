@@ -5,6 +5,7 @@ import { isElement } from "../utils";
 import Pagination from "./Pagination";
 import { testTableColumns, testTableDataSource } from "./enum";
 
+import TabTitle from "./TabTitle";
 export default function Tables({
   title="My Stores",
   handleSearch,
@@ -16,7 +17,15 @@ export default function Tables({
 	showPagination = false,
 	totalPages,
 	setCurrentPage,
+  tabs = null,
+  activeTab=null,
+  setActiveTab 
 }) {
+
+
+  
+
+
 	const [_columns, _setColumns] = useState([]);
 	const [_dataSource, _setDataSource] = useState([]);
 	const [pages, setPages] = useState(0);
@@ -88,7 +97,12 @@ export default function Tables({
       <div style={{overflowX: "auto", marginTop: "1rem"}}>
         <div className='d-flex justify-content-between'>
           <div className="table-title">
-            <Title title={title}></Title>
+            {tabs === null 
+            ? <Title title={title}></Title>
+            : <TabTitle pages={tabs} 
+            active={activeTab} 
+            setActive={setActiveTab} />
+            }
           </div>
           <div className='table-filters'>
             {handleDateFilter && (
