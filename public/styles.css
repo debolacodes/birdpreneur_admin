@@ -117,10 +117,6 @@ a:active {
     background: url("./icons/account.svg");
 }
 
-.sidebar_ .side-nav-item .icon.rewards {
-    background: url("./icons/rewards.svg");
-}
-
 .sidebar_ .side-nav-item:hover .icon.dashboard,
 .sidebar_ .side-nav-item.active .icon.dashboard {
     background: url("./icons/dashboard_hover.svg");
@@ -149,11 +145,6 @@ a:active {
 .sidebar_ .side-nav-item:hover .icon.account,
 .sidebar_ .side-nav-item.active .icon.account {
     background: url("./icons/account_hover.svg");
-}
-
-.sidebar_ .side-nav-item:hover .icon.rewards,
-.sidebar_ .side-nav-item.active .icon.rewards {
-    background: url("./icons/rewards_hover.svg");
 }
 
 .mainbar {
@@ -187,10 +178,14 @@ a:active {
 
 .topbar {
     /* padding: 22px 20px 12px; */
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
     background: #fff;
     position: relative;
     min-height: 50px;
     border-bottom: 1px solid #0000001D;
+    padding: 1rem;
 }
 
 .topbar .page-anchor {
@@ -200,18 +195,18 @@ a:active {
     background-size: cover;
     background-repeat: no-repeat;
     float: left;
-    margin: 15px;
+    /* margin: 15px; */
     cursor: pointer;
     display: none;
 }
 
 .topbar .right-box {
-    width: 464px;
+    /* width: 464px; */
     height: 50px;
     /* background: #353535; */
-    position: absolute;
+    /* position: absolute;
     right: 0;
-    top: 22px;
+    top:22px; */
     display: flex;
 }
 
@@ -221,9 +216,9 @@ a:active {
     font-style: normal;
     font-weight: 700;
     font-size: 24px;
-    line-height: 84px;
+    /* line-height: 84px; */
     color: #000000;
-    margin-left: 22px;
+    /* margin-left: 22px; */
 }
 
 .right-box .download_btn {
@@ -666,19 +661,6 @@ select:focus {
     outline: none;
 }
 
-select {
-    background: #F2F2F7;
-    border: 1px solid #E0E0E0;
-    box-sizing: border-box;
-    border-radius: 6px;
-    padding: 10px;
-    font-family: 'Inter', sans-serif;
-    font-style: normal;
-    font-weight: 400;
-    font-size: 14px;
-    line-height: 24px;
-}
-
 
 /* table */
 
@@ -951,6 +933,9 @@ select {
     .topbar .page-anchor {
         display: block !important;
     }
+    .topbar .title {
+        display: none !important;
+    }
     .show_sidebar {
         display: block;
     }
@@ -975,7 +960,7 @@ select {
         display: none;
     }
     .topbar .right-box {
-        width: 250px
+        /* width: 250px */
     }
     .mainbar-container {
         margin: 0.813rem 2.063rem;
