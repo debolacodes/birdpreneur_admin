@@ -15,7 +15,13 @@ export default function Stores() {
     <div className='body'>
         <Sidebar />
         <div className="mainbar">
-            <TopBar title="Stores" downloadReport={true}/>
+            <TopBar 
+              title="Stores"
+              button={{
+                title: "DOWNLOAD REPORT",
+                action: () => {}
+              }}
+            />
             <div className="mainbar-container">
             <div className="page-filter">
               <div className="button"><div className="text">All Stores</div><div className="icon down"></div></div>

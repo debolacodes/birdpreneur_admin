@@ -5,7 +5,6 @@ import {mainFunctions} from "../providers/MainProvider";
 export default function Modal() {
     const {
         setShowModal,
-        modalPage,
         modalData,
     } = useContext(mainFunctions)
   return (

@@ -226,7 +226,8 @@ a:active {
 }
 
 .btn_ {
-    width: 196px;
+    display: inline-block;
+    min-width: 196px;
     height: 50px;
     border-radius: 10px;
     font-style: normal;
@@ -235,6 +236,7 @@ a:active {
     line-height: 24px;
     /* identical to box height, or 171% */
     text-transform: uppercase;
+    padding: 0px 2rem;
     text-align: center;
     color: #FFFFFF;
     line-height: 50px;
@@ -936,7 +938,12 @@ select:focus {
     .topbar .title {
         display: none !important;
     }
+    .download_button{
+        display:none;
+    }
+    
     .show_sidebar {
+
         display: block;
     }
     .mainbar {
