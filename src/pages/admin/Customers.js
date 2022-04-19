@@ -164,7 +164,7 @@ export default function Customers() {
     <div className='body'>
         <Sidebar />
         <div className="mainbar">
-            <TopBar title="Customers"/>
+            <TopBar title="Customers" downloadReport={true}/>
             <div className="mainbar-container">
               <div className="page-filter justify-content-end">
                 <div className="button">

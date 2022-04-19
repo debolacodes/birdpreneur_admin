@@ -19,7 +19,7 @@ export default function Customers() {
     <div className='body'>
         <Sidebar />
         <div className="mainbar">
-            <TopBar title="Customers"/>
+            <TopBar title="Customers" downloadReport={true}/>
             <div className="mainbar-container">
             <div className="page-filter">
               <div className="button"><div className="text">All Stores</div><div className="icon down"></div></div>

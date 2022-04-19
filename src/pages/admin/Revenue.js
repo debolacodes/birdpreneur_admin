@@ -367,7 +367,7 @@ export default function Revenue() {
     <div className='body'>
       <Sidebar />
       <div className="mainbar">
-        <TopBar title="Revenue" />
+        <TopBar title="Revenue" downloadReport={true} />
         <div className="mainbar-container">
           <div className="page-filter justify-content-end">
             <div className="button"><div className="text">This Year</div><div className="icon down"></div></div>
