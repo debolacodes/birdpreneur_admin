@@ -254,7 +254,7 @@ export default function MainProvider(props) {
           name: 'Dec',
           Revenue: 3490,
         },
-      ];
+    ];
 
     //  Product SuperAdmin
     const totalProductsOverview = {
@@ -479,6 +479,67 @@ export default function MainProvider(props) {
         image: "icons/avatar3.png",
       },
     ];
+
+    //Customers SuperAdmin
+    const totalNoOfCustomers = {
+      title:"Total No of Customers",
+      value:"4000"
+    }
+    const activeNoOfCustomers = {
+      title:"Active No of Customers",
+      value:"3100"
+    }
+    const activeCustomersToday = {
+      title:"Active Customers Today",
+      value:"415"
+    }
+    const customersData = [
+      {
+        id:"43178",
+        name:"Joke Ojo",
+        email:"renny@yahoo.com",
+        totalPurchase:250,
+        purchaseValue:250000,
+        rewardsValue:30000,
+        lastVisit: new Date(),
+      },
+      {
+        id:"43178",
+        name:"Seyi Ojo",
+        email:"setyi@yahoo.com",
+        totalPurchase:250,
+        purchaseValue:250000,
+        rewardsValue:30000,
+        lastVisit: new Date(),
+      },
+      {
+        id:"43178",
+        name:"Fela Bisi",
+        email:"renny@yahoo.com",
+        totalPurchase:250,
+        purchaseValue:250000,
+        rewardsValue:30000,
+        lastVisit: new Date(),
+      },
+      {
+        id:"43178",
+        name:"Ireti Kunle",
+        email:"renny@yahoo.com",
+        totalPurchase:250,
+        purchaseValue:250000,
+        rewardsValue:30000,
+        lastVisit: new Date(),
+      },
+      {
+        id:"43178",
+        name:"Lolade Fajobi",
+        email:"renny@yahoo.com",
+        totalPurchase:250,
+        purchaseValue:250000,
+        rewardsValue:30000,
+        lastVisit: new Date(),
+      }
+    ]
     return (
         <mainFunctions.Provider
         value={{
@@ -520,7 +581,12 @@ export default function MainProvider(props) {
             transactionData,
             //Product SuperAdmin
             totalProductsOverview,
-            productsData
+            productsData,
+            //Customer SuperAdmin
+            totalNoOfCustomers,
+            activeNoOfCustomers,
+            activeCustomersToday,
+            customersData
 
         }}
         >

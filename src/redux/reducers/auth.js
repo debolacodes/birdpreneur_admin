@@ -1,7 +1,7 @@
 import * as types from "../types";
 
 const initialState = {
-  role: "admin",
+  role: "superadmin",
   currentUser: {
   },
   loading: false,
