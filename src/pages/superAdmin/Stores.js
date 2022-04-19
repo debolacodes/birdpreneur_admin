@@ -16,7 +16,7 @@ export default function Stores() {
     <div className='body'>
         <Sidebar />
         <div className="mainbar">
-            <TopBar title="Stores"/>
+            <TopBar title="Stores" downloadReport={true}/>
             <div className="mainbar-container">
             <div className="page-filter">
               <div className="button"><div className="text">All Stores</div><div className="icon down"></div></div>

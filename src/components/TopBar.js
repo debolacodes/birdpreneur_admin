@@ -14,7 +14,9 @@ export default function TopBar(props) {
         ></div>
         <div className='title'>{props.title}</div>
         <div className='align-right right-box'>
+          {props.downloadReport &&
             <div className='btn_ btn_orange download_button'>DOWNLOAD REPORT</div>
+          }
             <div className='profile'>
                 <div className='avatar'></div>
                 <div className='profile-details'>
