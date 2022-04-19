@@ -54,7 +54,11 @@ const dataSource =
 						productName: (
 							<div>
                 <span style={{marginRight: "11px"}}>
-                  <img src={row.image} style={{width: "32px", height: "32px"}} alt="img"/>
+                  <img src={row.image} style={{
+                    width: "32px", 
+                    height: "32px",
+                    objectFit:"cover"
+                    }} alt="img"/>
                 </span>
 								<span>{row.productName}</span>
 							</div>
