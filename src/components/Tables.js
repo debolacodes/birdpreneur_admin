@@ -98,7 +98,7 @@ export default function Tables({
         <div className='d-flex justify-content-between'>
           <div className="table-title">
             {tabs === null 
-            ? title && <Title title={title}></Title>
+            ? (title && <Title title={title}></Title>)
             : <TabTitle pages={tabs} 
             active={activeTab} 
             setActive={setActiveTab} />
