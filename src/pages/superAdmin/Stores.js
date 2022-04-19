@@ -5,7 +5,7 @@ import Sidebar from '../../components/Sidebar';
 import TopBar from '../../components/TopBar';
 import SummaryBox from '../../components/SummaryBox';
 import Title from '../../components/Title';
-import Tables from '../../components/Tables';
+import AllStoresTable from './tables/AllStoresTable';
 
 export default function Stores() {
   const {
@@ -16,7 +16,7 @@ export default function Stores() {
     <div className='body'>
         <Sidebar />
         <div className="mainbar">
-            <TopBar title="Customers"/>
+            <TopBar title="Stores"/>
             <div className="mainbar-container">
             <div className="page-filter">
               <div className="button"><div className="text">All Stores</div><div className="icon down"></div></div>
@@ -30,7 +30,7 @@ export default function Stores() {
               value={totalStoresOverview.value}/>
             </div>
 
-            <Tables />
+            <AllStoresTable />
             </div>
         </div>
     </div>

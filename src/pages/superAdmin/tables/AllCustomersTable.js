@@ -106,9 +106,7 @@ const dataSource =
 			: [];
 
 useEffect(() => {
-    console.log("adeb")
     if(searchKey){
-        console.log("adeb")
         var fd = customersData.filter((thisStore, index) => {
             var found = true;
             for(var i = 0; i < tableColumns.length; i++){
