@@ -1,4 +1,6 @@
-import React, {useState} from 'react'
+import React, {useState, useContext} from 'react'
+import {mainFunctions} from "../../providers/MainProvider";
+
 import PieChart from "../../components/PieChartComponent";
 import SummaryBox from "../../components/SummaryBox";
 import TabTitle from '../../components/TabTitle';
@@ -6,130 +8,23 @@ import Title from "../../components/Title";
 import TopBar from "../../components/TopBar";
 import BarChartComponent from '../../components/BarchartComponent';
 import Sidebar from '../../components/Sidebar';
-import Tables from '../../components/Tables';
-
+import StoresTable from './tables/StoresTable';
 export default function Dashboard() {
 
-  const TOP_5_SALES =  [
-    { name: 'KFC Wuse', value: 780 },
-    { name: 'KFC Egbeda', value: 740 },
-    { name: 'KFC VI 2', value: 700 },
-    { name: 'KFC VI', value: 600 },
-    { name: 'KFC Banana Island', value: 523 },
-  ];
-  const TOP_5_SALES_PERIOD =  [
-    { name: 'January', value: 1080 },
-    { name: 'November', value: 910 },
-    { name: 'March', value: 880 },
-    { name: 'June', value: 810 },
-    { name: 'August', value: 723 },
-  ];
-  const SALES_DATA = [
-    {
-      name: 'Jan',
-      sales: 4000,
-    },
-    {
-      name: 'Feb',
-      sales: 3000,
-    },
-    {
-      name: 'Mar',
-      sales: 2000,
-    },
-    {
-      name: 'Apr',
-      sales: 2780,
-    },
-    {
-      name: 'May',
-      sales: 1890,
-    },
-    {
-      name: 'June',
-      sales: 2390,
-    },
-    {
-      name: 'July',
-      sales: 3490,
-    },
-    {
-      name: 'Aug',
-      sales: 3000,
-    },
-    {
-      name: 'Sept',
-      sales: 2000,
-    },
-    {
-      name: 'Oct',
-      sales: 2780,
-    },
-    {
-      name: 'Nov',
-      sales: 2390,
-    },
-    {
-      name: 'Dec',
-      sales: 3490,
-    },
-  ];
+  const {
+    totalSalesOverview,
+    totalStoresOverview,
+    activeCustomersOverview,
+    top5SalesPeriod,
+    top5Sales,
+    salesData,
+    visitsData,
+  } = useContext(mainFunctions)
 
-  const VISITS_DATA = [
-    {
-      name: 'Jan',
-      visits: 600,
-    },
-    {
-      name: 'Feb',
-      visits: 400,
-    },
-    {
-      name: 'Mar',
-      visits: 8000,
-    },
-    {
-      name: 'Apr',
-      visits: 200,
-    },
-    {
-      name: 'May',
-      visits: 1890,
-      
-    },
-    {
-      name: 'June',
-      visits: 2390,
-    },
-    {
-      name: 'July',
-      visits: 3490,
-    },
-    {
-      name: 'Aug',
-      visits: 3000,
-    },
-    {
-      name: 'Sept',
-      visits: 2000,
-    },
-    {
-      name: 'Oct',
-      visits: 2780,
-    },
-    {
-      name: 'Nov',
-      visits: 290,
-    },
-    {
-      name: 'Dec',
-      visits: 490,
-    },
-  ];
-
-  const SALES_CHART_TAB = {id:"sales", title:"Quantity of Sales", data:SALES_DATA};
-  const VISITS_CHART_TAB = {id:"visits", title:"Number of Visits", data:VISITS_DATA};
+  const SALES_CHART_TAB = {id:"sales", title:"Quantity of Sales", data:salesData};
+  const VISITS_CHART_TAB = {id:"visits", title:"Number of Visits", data:visitsData};
   const [activeChartTab, setActiveChartTab ] = useState(SALES_CHART_TAB);
+  
   return (
     <div className='body'>
         <Sidebar />
@@ -142,18 +37,28 @@ export default function Dashboard() {
           </div>
           <Title title="Overview" marginBottom="0"/>
           <div className="wrapper">
-            <SummaryBox title="Total Stores" value="2,403"/>
-            <SummaryBox title="Total Sales Made" value="500,000"/>
-            <SummaryBox title="Overall Active Customers" value="2,403"/>
+            <SummaryBox 
+            title={totalStoresOverview.title} 
+            value={totalStoresOverview.value} 
+            comma={true}/>
+            <SummaryBox 
+            title={totalSalesOverview.title} 
+            value={totalSalesOverview.value} 
+            currency={"₦"} 
+            comma={true}/>
+            <SummaryBox 
+            title={activeCustomersOverview.title} 
+            value={activeCustomersOverview.value} 
+            comma={true} />
           </div>
           <div className="row">
             <div className="col-xs-12 col-md-6 col-sm-12">
               <Title title="Top 5 Stores"/>
-              <PieChart data={TOP_5_SALES}/>
+              <PieChart data={top5Sales}/>
             </div>
             <div className="col-xs-12 col-md-6 col-sm-12">
               <Title title="Top Sales Period"/>
-              <PieChart data={TOP_5_SALES_PERIOD}/>
+              <PieChart data={top5SalesPeriod}/>
             </div>
           </div>
           <TabTitle pages={[SALES_CHART_TAB, VISITS_CHART_TAB]} 
@@ -163,7 +68,7 @@ export default function Dashboard() {
             <BarChartComponent data={activeChartTab.data} dataKey={activeChartTab.id}/>
           </div>
           
-          <Tables />
+          <StoresTable />
 
         
         

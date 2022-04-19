@@ -1,11 +1,16 @@
-import React from 'react'
+import React, {useContext} from 'react'
+import {mainFunctions} from "../../providers/MainProvider";
+
 import Sidebar from '../../components/Sidebar';
 import TopBar from '../../components/TopBar';
 import Title from '../../components/Title';
-import Tables from '../../components/Tables';
 import SummaryBox from '../../components/SummaryBox';
-
+import ProductTable from './tables/ProductTable';
 export default function Products() {
+  const {
+    totalProductsOverview
+  } = useContext(mainFunctions)
+
   return (
     <div className='body'>
         <Sidebar />
@@ -18,12 +23,15 @@ export default function Products() {
               </div>
               <div className='btn_ btn_green mb-3'>ADD PRODUCT</div>
               <div className="wrapper">
-                <SummaryBox title="Total Products" value="2,405" />
+                <SummaryBox 
+                title={totalProductsOverview.title} 
+                value={totalProductsOverview.value} 
+                comma={true}
+                />
               </div>
-              <Title title="Overall Overview (Naira)"/>
-              
+              <Title title="All Products"/>
               <div className='col-sm-12'>
-                <Tables/>
+                <ProductTable />
               </div>
             </div>
         </div>

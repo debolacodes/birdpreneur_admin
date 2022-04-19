@@ -1,62 +1,22 @@
-import React from 'react'
+import React, {useContext} from 'react'
+import {mainFunctions} from "../../providers/MainProvider";
+
 import Sidebar from '../../components/Sidebar';
 import SummaryBox from '../../components/SummaryBox';
 import TopBar from '../../components/TopBar';
 import Title from '../../components/Title';
 import BarChartComponent from '../../components/BarchartComponent';
-import Tables from '../../components/Tables';
+import RevenueTable from './tables/RevenueTable'
 
 export default function Revenue() {
-  const Revenue_DATA = [
-    {
-      name: 'Jan',
-      Revenue: 4000,
-    },
-    {
-      name: 'Feb',
-      Revenue: 3000,
-    },
-    {
-      name: 'Mar',
-      Revenue: 2000,
-    },
-    {
-      name: 'Apr',
-      Revenue: 2780,
-    },
-    {
-      name: 'May',
-      Revenue: 1890,
-    },
-    {
-      name: 'June',
-      Revenue: 2390,
-    },
-    {
-      name: 'July',
-      Revenue: 3490,
-    },
-    {
-      name: 'Aug',
-      Revenue: 3000,
-    },
-    {
-      name: 'Sept',
-      Revenue: 2000,
-    },
-    {
-      name: 'Oct',
-      Revenue: 2780,
-    },
-    {
-      name: 'Nov',
-      Revenue: 2390,
-    },
-    {
-      name: 'Dec',
-      Revenue: 3490,
-    },
-  ];
+  
+  const {
+    revenueData,
+    totalPurchasesOverview,
+    totalRevenueMadeOverview
+  } = useContext(mainFunctions)
+
+
   return (
     <div className='body'>
         <Sidebar />
@@ -69,15 +29,25 @@ export default function Revenue() {
               </div>
               <Title title="Overview"/>
               <div className="wrapper">
-                <SummaryBox title="Total Purchases" value="2,405" />
-                <SummaryBox title="Total Revenue Made" value="N345,000" />
+                <SummaryBox 
+                title={totalPurchasesOverview.title} 
+                value={totalPurchasesOverview.value} 
+                comma={true} 
+                />
+                <SummaryBox 
+                title={totalRevenueMadeOverview.title} 
+                value={totalRevenueMadeOverview.value} 
+                comma={true} 
+                />
               </div>
               <Title title="Overall Overview (Naira)"/>
               <div className='wrapper'>
-                <BarChartComponent data={Revenue_DATA} dataKey={"Revenue"}/>
+                <BarChartComponent 
+                data={revenueData} 
+                dataKey={"Revenue"}/>
               </div>
               <div className='col-sm-12'>
-                <Tables/>
+                <RevenueTable/>
               </div>
             </div>
         </div>
