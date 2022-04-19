@@ -23,6 +23,9 @@ import AdminCustomers from "../pages/admin/Customers"
 import AdminCustomerDetails from "../pages/admin/CustomerDetails"
 import AdminProducts from "../pages/admin/Products"
 
+// cashier pages
+import CashierDashboard from "../pages/cashier/Dashboard";
+
 export default function AllRoutes() {
 	const { role } = useSelector(
 		(state) => state.auth
@@ -38,10 +41,10 @@ export default function AllRoutes() {
           <Route exact path="/account" element={<AccountSettings/>} />
           <Route exact path="/dashboard" element={role === "admin" 
             ? <AdminDashboard /> 
-            : "superadmin" 
+            : role === "superadmin" 
             ? <SuperAdminDashboard/> 
-            : "cashier"
-            && <SuperAdminDashboard/> } 
+            : role === "cashier"
+            && <CashierDashboard/> } 
           />
           <Route exact path="/revenue" element={role === "admin" 
             ? <AdminRevenue /> 
