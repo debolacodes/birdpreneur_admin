@@ -722,6 +722,47 @@ export default function MainProvider(props) {
       continue;
     }
   }
+
+  //User Roles
+
+  const userRoles = [
+    {
+      id: 43178,
+      name: "Basirat Salihu",
+      email:"rennyoni@yahoo.com",
+      role:"Super Admin",
+      store:"KFC VI"
+    },
+    {
+      id: 43178,
+      name: "Basirat Salihu",
+      email:"rennyoni@yahoo.com",
+      role:"Super Admin",
+      store:"KFC VI"
+    },
+    {
+      id: 43178,
+      name: "Basirat Salihu",
+      email:"rennyoni@yahoo.com",
+      role:"Super Admin",
+      store:"KFC VI"
+    },
+    {
+      id: 43178,
+      name: "Basirat Salihu",
+      email:"rennyoni@yahoo.com",
+      role:"Super Admin",
+      store:"KFC VI"
+    },
+    {
+      id: 43178,
+      name: "Basirat Salihu",
+      email:"rennyoni@yahoo.com",
+      role:"Super Admin",
+      store:"KFC VI"
+    },
+
+]
     return (
         <mainFunctions.Provider
         value={{
@@ -775,7 +816,8 @@ export default function MainProvider(props) {
             productDeals, 
             // challenges
             challenges,
-            toggleChallenge
+            toggleChallenge,
+            userRoles
         }}
         >
             {props.children}

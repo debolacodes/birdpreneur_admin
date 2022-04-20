@@ -165,7 +165,7 @@ a:active {
 }
 
 .mainbar-container {
-    /* width:80%; */
+    width: 80%;
     margin: 0.813rem 5.063rem;
     position: relative;
     /* padding-top: 13px; */
