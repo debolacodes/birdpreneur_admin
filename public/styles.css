@@ -1008,9 +1008,9 @@ select:focus {
 }
 
 .challenge_box_td {
-    min-width: 150px;
+    min-width: 180px;
     display: flex;
-    justify-content: space-around;
+    justify-content: start;
     flex-direction: row;
     padding-top: 9px;
 }
@@ -1021,6 +1021,9 @@ select:focus {
     font-weight: 700;
     font-size: 18px;
     line-height: 22px;
+    padding-right: 10px;
+    text-align: left;
+    /* background: #ccc; */
 }
 
 .challenge_box_td .item_action {

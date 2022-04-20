@@ -43,7 +43,7 @@ export default function Challenges() {
                         <div className='sub_title'>{thisChallenge.subtitle}</div>
                     </div>
                     <div className='challenge_box_td'>
-                            <div className="item_text">₦{formatToCurrency(thisChallenge.reward, 1)}</div>
+                            <div className="item_text">₦{formatToCurrency(thisChallenge.reward, 2)}</div>
                             <div className="item_action">Edit</div>
                     </div>
                     <div className='challenge_box_td'>

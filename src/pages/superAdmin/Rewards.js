@@ -25,7 +25,10 @@ export default function Rewards() {
             <div className="mainbar-container">
             <div style={{minHeight:"80px"}}>
               <div className="page-filter">
-                <div className='btn_ btn_green mb-3'>NEW DEAL</div>
+                {rewardPage === DEALS_PAGE
+                  ? <div className='btn_ btn_green mb-3'>NEW DEAL</div>
+                  : <div className='btn_ btn_green mb-3'>ADD CHALLENGE</div>
+                }
               </div>
               <div>
                 <select className='select_' style={{marginTop:"13px"}}
