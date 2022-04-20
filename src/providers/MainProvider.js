@@ -606,6 +606,122 @@ export default function MainProvider(props) {
 
   
   ]
+
+  //Challenges
+  const [challenges, setChallenges] = useState([
+    {
+      id:1,
+      title:"Make a purchase",
+      subtitle: "Make an online purchase from us",
+      reward: 343222,
+      active:false,
+      removed: false,
+      type:"daily"
+    },
+    {
+      id:2,
+      title:"Review a purchase",
+      subtitle: "Review a purchase",
+      reward: 222,
+      active:true,
+      removed: false,
+      type:"daily"
+    },
+    {
+      id:3,
+      title:"1 Deposit of N500",
+      subtitle: "Make a deposit of N500 or more",
+      reward: 402,
+      active:false,
+      removed: false,
+      type:"daily"
+    },
+    {
+      id:4,
+      title:"1 non-store purchase",
+      subtitle: "Make a purchase from us",
+      reward: 5000,
+      active:true,
+      removed: false,
+      type:"daily"
+    },
+    {
+      id:5,
+      title:"Complete all daily purchases",
+      subtitle: "Make an online purchase from us",
+      reward: 345000,
+      active:true,
+      removed: false,
+      type:"daily"
+    },
+    {
+      id:6,
+      title:"1 Deposit of N2000 this week",
+      subtitle: "Make a deposit of N2000 or more",
+      reward: 402,
+      active:false,
+      removed: false,
+      type:"week"
+    },
+    {
+      id:7,
+      title:"5 non-store purchase this week",
+      subtitle: "Make a purchase from us",
+      reward: 7000,
+      active:true,
+      removed: false,
+      type:"week"
+    },
+    {
+      id:8,
+      title:"Complete all weekly purchases",
+      subtitle: "Make an online purchase from us",
+      reward: 3450,
+      active:true,
+      removed: false,
+      type:"week"
+    },
+    {
+      id:9,
+      title:"1 Deposit of N50000 this month",
+      subtitle: "Make a deposit of N500 or more",
+      reward: 402,
+      active:true,
+      removed: false,
+      type:"month"
+    },
+    {
+      id:10,
+      title:"5 non-store purchase this month",
+      subtitle: "Make a purchase from us",
+      reward: 5000,
+      active:true,
+      removed: false,
+      type:"month"
+    },
+    {
+      id:11,
+      title:"Complete all Monthly purchases this month",
+      subtitle: "Make an online purchase from us",
+      reward: 345000,
+      active:true,
+      removed: false,
+      type:"month"
+    },
+  ])
+
+  const toggleChallenge = (id) =>{
+    // console.log(id)
+    var challenge_temp = [...challenges]
+    for(var i = 0; i < challenge_temp.length; i++){
+      if(id.toString() === challenge_temp[i].id.toString()){
+        challenge_temp[i].active = !challenge_temp[i].active
+        setChallenges(challenge_temp)
+        break;
+      }
+      continue;
+    }
+  }
     return (
         <mainFunctions.Provider
         value={{
@@ -657,6 +773,9 @@ export default function MainProvider(props) {
             storeList,
             // Rewards SuperAdmin
             productDeals, 
+            // challenges
+            challenges,
+            toggleChallenge
         }}
         >
             {props.children}

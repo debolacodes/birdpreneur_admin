@@ -2,7 +2,7 @@ import React from 'react'
 
 export default function TabTitle(props) {
   return (
-    <div className='tab-title-wrapper'>
+      <div className={`tab-title-wrapper ${props.underline ? "underline" : ""}`}>
         {props.pages.map((thispage, index)=>{
             return(
                 <div key={index} className={`page-title ${props.active.id === thispage.id ? "active":""}`}
@@ -11,6 +11,6 @@ export default function TabTitle(props) {
             )
         })
         }
-    </div>
+        </div>
   )
 }
