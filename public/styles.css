@@ -491,11 +491,54 @@ a:active {
 .page-filter .button .icon {
     width: 16px;
     height: 7px;
+    /* background: url("./icons/down.svg"); */
+    margin-left: 5px;
     background: url("./icons/down.svg");
     background-size: contain;
     background-position: center;
     background-repeat: no-repeat;
-    margin-left: 5px;
+    transition-duration: 1s;
+}
+
+.page-filter .button .icon.up {
+    transform: rotate(180deg);
+    transition-duration: 1s;
+}
+
+.page-filter-options {
+    width: 121px;
+    height: auto;
+    background: #FFFFFF;
+    border: 1px solid #E0E0E0;
+    box-sizing: border-box;
+    border-radius: 6px;
+    margin-top: 5px;
+    padding: 0 8px;
+    max-height: 180px;
+    overflow-y: auto;
+    transition-duration: 0.5s;
+}
+
+.page-filter-option {
+    font-family: 'Inter', sans-serif;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 24px;
+    /* identical to box height, or 171% */
+    color: #8D8DA4;
+    padding: 2px 0;
+    cursor: pointer;
+    padding: 0 2px;
+}
+
+.page-filter-option:hover,
+.page-filter-option.active {
+    background: #FCEAD8;
+}
+
+.page-filter-options .page-filter-option:not(:last-child) {
+    border-bottom: #00000020 solid 1px;
 }
 
 .sidetab-title-wrapper {
@@ -632,11 +675,11 @@ a:active {
 .table-status-filter .button .icon {
     width: 16px;
     height: 7px;
-    background: url("./icons/down.svg");
-    background-size: contain;
+    background-size: contain !Important;
     background-position: center;
-    background-repeat: no-repeat;
+    background-repeat: no-repeat !Important;
     margin-left: 5px;
+    background: url("./icons/down.svg");
 }
 
 
@@ -1008,7 +1051,7 @@ select:focus {
 }
 
 .challenge_box_td {
-    min-width: 180px;
+    min-width: 100px;
     display: flex;
     justify-content: start;
     flex-direction: row;
@@ -1019,10 +1062,12 @@ select:focus {
     font-family: 'Inter', sans-serif;
     font-style: normal;
     font-weight: 700;
-    font-size: 18px;
+    font-size: 16px;
     line-height: 22px;
     padding-right: 10px;
-    text-align: left;
+    text-align: right;
+    width: 150px;
+    /*     background:#ccc; */
     /* background: #ccc; */
 }
 
