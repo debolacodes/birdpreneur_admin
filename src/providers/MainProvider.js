@@ -203,7 +203,7 @@ export default function MainProvider(props) {
         total_customers:6
       },
       {
-        id: "43179",
+        id: "4311979",
         name: "KFC V1 2",
         location: "50 Adeola Odeku Rd, VI, Lagos",
         manager: "Ifeoma Oluoma",
@@ -236,14 +236,14 @@ export default function MainProvider(props) {
       },
       {
         id: "43183",
-        name: "KFC Ibadan",
+        name: "KFC Ibadan 2",
         location: "50 Challenge Rd, Ibadan",
         manager: "Stella Damasus",
         revenue: "895000",
         total_customers:325
       },
       {
-        id: "43184",
+        id: "4311184",
         name: "KFC Abuja",
         location: "50 Challenge Rd, Ibadan",
         manager: "Reece James",
@@ -251,16 +251,14 @@ export default function MainProvider(props) {
         total_customers:1125
       },
       {
-        id: "43184",
-        name: "KFC Abuja",
+        id: "4311185",
+        name: "KFC Abuja 2",
         location: "50 Rd, Ota",
         manager: "Reece James",
         revenue: "95000",
         total_customers:1125
       }
     ]
-      
-
     //   Revenue SuperAdmin
     const totalPurchasesOverview = {
         title:"Total Purchases",
