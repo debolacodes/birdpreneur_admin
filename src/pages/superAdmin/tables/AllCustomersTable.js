@@ -106,11 +106,12 @@ const dataSource =
 			: [];
 
 useEffect(() => {
-    if(searchKey){
         var fd = customersData.filter((thisStore, index) => {
             var found = true;
             for(var i = 0; i < tableColumns.length; i++){
-                if(typeof tableColumns[i].search === "undefined" || tableColumns[i].search === true){
+                if((typeof tableColumns[i].search === "undefined" || tableColumns[i].search === true)
+                && typeof thisStore[tableColumns[i].dataIndex] !== "undefined"
+                ){
                   console.log(thisStore[tableColumns[i].dataIndex])
                     if(thisStore[tableColumns[i].dataIndex].toString().toLowerCase().includes(searchKey)){
                         found = true
@@ -127,7 +128,6 @@ useEffect(() => {
             return found;
         })
         setFilteredTableData(fd)
-    }
   },[searchKey])
 
 

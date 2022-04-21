@@ -108,8 +108,9 @@ export default function AllStoresTable() {
                   found = false
                   break;
               }
-              if(typeof tableColumns[i].search === "undefined" || tableColumns[i].search === true){
-                console.log(thisStore[tableColumns[i].dataIndex])
+              if((typeof tableColumns[i].search === "undefined" || tableColumns[i].search === true)
+              && typeof thisStore[tableColumns[i].dataIndex] !== "undefined"
+              ){
                   if(thisStore[tableColumns[i].dataIndex].toString().toLowerCase().includes(searchKey)){
                       found = true
                       break

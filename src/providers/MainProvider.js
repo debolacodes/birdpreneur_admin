@@ -329,7 +329,7 @@ export default function MainProvider(props) {
     const transactionData = [
       {
         id: 43178,
-        store: "KFC Wuse",
+        store: "KFC Egbeda",
         username: "Coach Tabby",
         purchase: "DJI Mavic Pro 2",
         customerName: "Adunoluwa Adeyemi",
@@ -339,9 +339,9 @@ export default function MainProvider(props) {
         status: "Success",
       },
       {
-        id: 43178,
+        id: 43179,
         username: "John Doe",
-        store: "KFC Egbeda",
+        store: "KFC Wuse",
         purchase: "DJI Mavic Pro 2",
         customerName: "John Doe",
         purchaseValue: 345000,
@@ -350,7 +350,7 @@ export default function MainProvider(props) {
         status: "Pending",
       },
       {
-        id: 43178,
+        id: 43190,
         username: "Jane Doe",
         store: "KFC VI",
         purchase: "DJI Mavic Pro 2",
@@ -361,7 +361,7 @@ export default function MainProvider(props) {
         status: "Failed",
       },
       {
-        id: 43178,
+        id: 43191,
         username: "Jane Doe",
         store: "KFC VI 2",
         purchase: "DJI Mavic Pro 2",
@@ -372,7 +372,7 @@ export default function MainProvider(props) {
         status: "Failed",
       },
       {
-        id: 43178,
+        id: 43192,
         username: "Jane Doe",
         store: "KFC Banana Island",
         purchase: "DJI Mavic Pro 2",
@@ -383,7 +383,7 @@ export default function MainProvider(props) {
         status: "Failed",
       },
       {
-        id: 43178,
+        id: 43193,
         username: "Jane Doe",
         store: "KFC Banana Island",
         purchase: "DJI Mavic Pro 2",
@@ -394,7 +394,7 @@ export default function MainProvider(props) {
         status: "Failed",
       },
       {
-        id: 43178,
+        id: 43194,
         username: "Jane Doe",
         store: "KFC Wuse",
         purchase: "DJI Mavic Pro 2",
@@ -405,7 +405,7 @@ export default function MainProvider(props) {
         status: "Failed",
       },
       {
-        id: 43178,
+        id: 43195,
         username: "Jane Doe",
         store: "KFC Egbeda",
         purchase: "DJI Mavic Pro 2",
@@ -416,7 +416,7 @@ export default function MainProvider(props) {
         status: "Failed",
       },
       {
-        id: 43178,
+        id: 43196,
         username: "Jane Doe",
         store: "KFC Banana Island",
         purchase: "DJI Mavic Pro 2",
@@ -427,7 +427,7 @@ export default function MainProvider(props) {
         status: "Failed",
       },
       {
-        id: 43178,
+        id: 43197,
         username: "Jane Doe",
         store: "KFC Egbeda",
         purchase: "DJI Mavic Pro 2",
@@ -438,7 +438,7 @@ export default function MainProvider(props) {
         status: "Failed",
       },
       {
-        id: 43178,
+        id: 43198,
         username: "Jane Doe",
         purchase: "DJI Mavic Pro 2",
         customerName: "Jane Doe",
@@ -448,18 +448,7 @@ export default function MainProvider(props) {
         status: "Failed",
       },
       {
-        id: 43178,
-        username: "Jane Doe",
-        store: "KFC Wuse",
-        purchase: "DJI Mavic Pro 2",
-        customerName: "Jane Doe",
-        purchaseValue: 345000,
-        rewardsValue: 345000,
-        date: new Date(),
-        status: "Failed",
-      },
-      {
-        id: 43178,
+        id: 43199,
         username: "Jane Doe",
         store: "KFC Wuse",
         purchase: "DJI Mavic Pro 2",
@@ -470,7 +459,18 @@ export default function MainProvider(props) {
         status: "Failed",
       },
       {
-        id: 43178,
+        id: 43200,
+        username: "Jane Doe",
+        store: "KFC Wuse",
+        purchase: "DJI Mavic Pro 2",
+        customerName: "Jane Doe",
+        purchaseValue: 345000,
+        rewardsValue: 345000,
+        date: new Date(),
+        status: "Failed",
+      },
+      {
+        id: 43210,
         username: "Jane Doe",
         store: "KFC Banana Island",
         purchase: "DJI Mavic Pro 2",
@@ -481,7 +481,7 @@ export default function MainProvider(props) {
         status: "Failed",
       },
       {
-        id: 43178,
+        id: 43211,
         username: "Jane Doe",
         store: "KFC Wuse",
         purchase: "DJI Mavic Pro 2",
@@ -492,7 +492,7 @@ export default function MainProvider(props) {
         status: "Failed",
       },
       {
-        id: 43178,
+        id: 43212,
         username: "Jane Doe",
         store: "KFC VI",
         purchase: "DJI Mavic Pro 2",
@@ -503,7 +503,7 @@ export default function MainProvider(props) {
         status: "Failed",
       },
       {
-        id: 43178,
+        id: 43213,
         username: "Jane Doe",
         store: "KFC VI 2",
         purchase: "DJI Mavic Pro 2",
