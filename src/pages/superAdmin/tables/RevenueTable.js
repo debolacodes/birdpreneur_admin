@@ -151,6 +151,7 @@ useEffect(() => {
 return (
 <div>
     <Tables
+    title="All Transactions"
     dataSource={dataSource}
     columns={tableColumns}
     handleSearch={setSearchKey}

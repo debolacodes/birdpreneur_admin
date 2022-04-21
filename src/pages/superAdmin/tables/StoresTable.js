@@ -133,6 +133,7 @@ useEffect(() => {
 return (
 <div>
     <Tables
+    title="My Stores"
     dataSource={dataSource}
     columns={tableColumns}
     handleSearch={setSearchKey}

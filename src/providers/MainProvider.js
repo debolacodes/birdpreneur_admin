@@ -190,8 +190,71 @@ export default function MainProvider(props) {
         manager: "Basirat Salihu",
         revenue: "345000",
         total_customers:10
+      },
+      {
+        id: "43121",
+        name: "KFC V1",
+        location: "4 Adeola Odeku Rd, VI, Lagos",
+        manager: "Patience Eze",
+        revenue: "25000",
+        total_customers:6
+      },
+      {
+        id: "43179",
+        name: "KFC V1 2",
+        location: "50 Adeola Odeku Rd, VI, Lagos",
+        manager: "Ifeoma Oluoma",
+        revenue: "9025000",
+        total_customers:211
+      },
+      {
+        id: "43180",
+        name: "KFC Lekki",
+        location: "50 Freedom Way, Lekki, Lagos",
+        manager: "Elohor Thomas",
+        revenue: "6225000",
+        total_customers:2111
+      },
+      {
+        id: "43181",
+        name: "KFC Oshodi",
+        location: "50 Freedom Way, Lekki, Lagos",
+        manager: "Dare Odunmade",
+        revenue: "225000",
+        total_customers:361
+      },
+      {
+        id: "43182",
+        name: "KFC Ibadan",
+        location: "50 Challenge Rd, Ibadan",
+        manager: "Emmanuel Adebiyi",
+        revenue: "675000",
+        total_customers:975
+      },
+      {
+        id: "43183",
+        name: "KFC Ibadan",
+        location: "50 Challenge Rd, Ibadan",
+        manager: "Stella Damasus",
+        revenue: "895000",
+        total_customers:325
+      },
+      {
+        id: "43184",
+        name: "KFC Abuja",
+        location: "50 Challenge Rd, Ibadan",
+        manager: "Reece James",
+        revenue: "95000",
+        total_customers:1125
+      },
+      {
+        id: "43184",
+        name: "KFC Abuja",
+        location: "50 Rd, Ota",
+        manager: "Reece James",
+        revenue: "95000",
+        total_customers:1125
       }
-
     ]
       
 
@@ -763,6 +826,32 @@ export default function MainProvider(props) {
     },
 
 ]
+//Filters
+const [dateFilter, setDateFilter] = useState("")
+const [storeFilter, setStoreFilter] = useState("")
+const filterDates = [
+  {
+    id:"alltime",
+    title:"All Time"
+  },
+  {
+    id:"yesterday",
+    title:"Yesterday"
+  },
+  {
+    id:"lastweek",
+    title:"Last Week"
+  },
+  {
+    id:"lastmonth",
+    title:"Last Month"
+  },
+  {
+    id:"thisyear",
+    title:"This Year"
+  },
+
+]
     return (
         <mainFunctions.Provider
         value={{
@@ -817,7 +906,13 @@ export default function MainProvider(props) {
             // challenges
             challenges,
             toggleChallenge,
-            userRoles
+            userRoles,
+            // filters
+            dateFilter, 
+            setDateFilter,
+            storeFilter, 
+            setStoreFilter,
+            filterDates
         }}
         >
             {props.children}

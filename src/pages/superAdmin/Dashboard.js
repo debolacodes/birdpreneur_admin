@@ -9,6 +9,7 @@ import TopBar from "../../components/TopBar";
 import BarChartComponent from '../../components/BarchartComponent';
 import Sidebar from '../../components/Sidebar';
 import StoresTable from './tables/StoresTable';
+import PageFilters from '../../components/PageFilters';
 export default function Dashboard() {
 
   const {
@@ -37,10 +38,7 @@ export default function Dashboard() {
           }}
         />
         <div className="mainbar-container">
-          <div className="page-filter">
-            <div className="button"><div className="text">All Stores</div><div className="icon down"></div></div>
-            <div className="button"><div className="text">This Year</div><div className="icon down"></div></div>
-          </div>
+          <PageFilters />
           <Title title="Overview" marginBottom="0"/>
           <div className="wrapper">
             <SummaryBox 
@@ -57,6 +55,14 @@ export default function Dashboard() {
             value={activeCustomersOverview.value} 
             comma={true} />
           </div>
+          
+          <TabTitle pages={[SALES_CHART_TAB, VISITS_CHART_TAB]} 
+            active={activeChartTab} 
+            setActive={setActiveChartTab} />
+          <div className='col-12'>
+            <BarChartComponent data={activeChartTab.data} dataKey={activeChartTab.id}/>
+          </div>
+
           <div className="row">
             <div className="col-xs-12 col-md-6 col-sm-12">
               <Title title="Top 5 Stores"/>
@@ -66,12 +72,6 @@ export default function Dashboard() {
               <Title title="Top Sales Period"/>
               <PieChart data={top5SalesPeriod}/>
             </div>
-          </div>
-          <TabTitle pages={[SALES_CHART_TAB, VISITS_CHART_TAB]} 
-            active={activeChartTab} 
-            setActive={setActiveChartTab} />
-          <div className='col-12'>
-            <BarChartComponent data={activeChartTab.data} dataKey={activeChartTab.id}/>
           </div>
           
           <StoresTable />

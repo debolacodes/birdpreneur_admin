@@ -44,7 +44,9 @@ export default function Challenges() {
                     </div>
                     <div className='challenge_box_td'>
                             <div className="item_text">₦{formatToCurrency(thisChallenge.reward, 2)}</div>
-                            <div className="item_action">Edit</div>
+                    </div>
+                    <div className='challenge_box_td'>
+                        <div className="item_action">Edit</div>
                     </div>
                     <div className='challenge_box_td'>
                         <div className={`toggle_container ${thisChallenge.active ? "active":""}`}

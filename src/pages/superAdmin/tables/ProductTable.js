@@ -115,6 +115,7 @@ useEffect(() => {
 return (
 <div>
     <Tables
+    title="All Products"
     dataSource={dataSource}
     columns={tableColumns}
     handleSearch={setSearchKey}
