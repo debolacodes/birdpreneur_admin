@@ -965,6 +965,9 @@ select:focus {
     .topbar .title {
         display: none !important;
     }
+    .topbar .search_wrapper {
+        display: none !important;
+    }
     .download_button {
         display: none;
     }

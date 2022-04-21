@@ -21,8 +21,8 @@ export default function TopBar(props) {
                 className='search_input' 
                 placeholder='Search...' 
                 type="text"
-                onChange={(e) =>{}
-                  // handleSearch(e.currentTarget.value)
+                onChange={(e) =>
+                  props.handleSearch(e.currentTarget.value)
                 }
               />
             </div>
