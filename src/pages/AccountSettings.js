@@ -43,9 +43,9 @@ export default function AccountSettings() {
                       display:"flex", 
                       flexDirection:"row-reverse"
                     }}>
-                    <div className='btn_ btn_orange mb-3' style={{position:"unset"}}>ADD USER</div>
-              </div>
-                  <UserRoles />
+                      <div className='btn_ btn_orange mb-3' style={{position:"unset"}}>ADD USER</div>
+                    </div>
+                    <UserRoles />
                   </div>
                 )}
                 {activeChartTab.id === "support" && (

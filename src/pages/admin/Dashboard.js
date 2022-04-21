@@ -6,6 +6,7 @@ import BarChartComponent from '../../components/BarchartComponent';
 import Sidebar from '../../components/Sidebar';
 import Tables from '../../components/Tables';
 import { formatToCurrency, getDateTimeFormatUK } from "../../utils";
+import PageFilters from '../../components/PageFilters';
 
 export default function Dashboard() {
 
@@ -182,10 +183,8 @@ export default function Dashboard() {
             action: () => {}
           }}
         />
-        <div className="mainbar-container">
-          <div className="page-filter justify-content-end">
-            <div className="button"><div className="text">This Year</div><div className="icon down"></div></div>
-          </div>
+        <div className="full-mainbar-container">
+          <PageFilters showStoreFilter={false} />
           <Title title="Overview"/>
           <div className="wrapper">
             <SummaryBox title="Total Stores" value="2,403"/>
