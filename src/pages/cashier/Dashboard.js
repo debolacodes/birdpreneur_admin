@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import EmptyPurchases from '../../components/EmptyPurchases';
 import Tables from '../../components/Tables';
 import TopBar from '../../components/TopBar';
 import { formatToCurrency, getDateTimeFormatUK } from "../../utils";
@@ -129,11 +130,10 @@ export default function Dashboard() {
 						),
             action: (
               <div 
-                className='bg-success d-inline p-2 border rounded-circle' 
-                style={{cursor: "pointer"}}
+                className='bg-success d-inline p-2 border rounded-circle cursor-pointer' 
                 onClick={() =>{}}
               >
-                <img src={"icons/shopping-bag.svg"} alt="img"/>
+                <img src={"icons/shopping_bag.svg"} alt="img"/>
               </div>
             ),
 					};
@@ -151,7 +151,7 @@ export default function Dashboard() {
                 action: () => {}
               }}
             />
-            <div className="row h-100 w-100">
+            <div className="d-flex flex-wrap h-100 w-100">
               <div className='col px-5'>
                 <Tables 
                   columns={tableColumns}
@@ -159,7 +159,19 @@ export default function Dashboard() {
                   showPagination={true}
                 />
               </div>
-              <div className='col bg-light'><p>help</p></div>
+              <div className='col bg-light'>
+                <EmptyPurchases />
+                {/* <div className='purchases_wrapper p-5'>
+                  <div className='d-flex justify-content-between'>
+                    <div className='title'>Active Purchases</div>
+                    <div 
+                      className='text-success cursor-pointer sub_title'
+                      onClick={() => {}}
+                    >+ Add A Purchase</div>
+                  </div>
+
+                </div> */}
+              </div>
             </div>
         </div>
     </div>
