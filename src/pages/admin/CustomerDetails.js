@@ -202,7 +202,7 @@ export default function CustomerDetails() {
         <Sidebar />
         <div className="mainbar">
             <TopBar title="Customer Details"/>
-            <div className="mainbar-container">
+            <div className="full-mainbar-container">
               <div className='row pt-5 border-bottom'>
                 <DetailsBox title="Customer ID:" value="8845"/>
                 <DetailsBox title="Customer Name:" value="Precious Ogar"/>

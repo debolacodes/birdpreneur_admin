@@ -4,6 +4,7 @@ import TopBar from '../../components/TopBar';
 import Tables from '../../components/Tables';
 import SummaryBox from '../../components/SummaryBox';
 import { formatToCurrency, getDateTimeFormatUK } from "../../utils";
+import PageFilters from '../../components/PageFilters';
 
 export default function Products() {
 	const [searchKey, setSearchKey] = useState("");
@@ -109,10 +110,8 @@ export default function Products() {
                 action: () => {}
               }}
             />
-            <div className="mainbar-container">
-              <div className="page-filter justify-content-end">
-                <div className="button"><div className="text">This Year</div><div className="icon down"></div></div>
-              </div>
+            <div className="full-mainbar-container">
+              <PageFilters showStoreFilter={false} />
               <div className="wrapper pt-5">
                 <SummaryBox title="Total Products" value="2,405" />
               </div>

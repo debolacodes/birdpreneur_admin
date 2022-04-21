@@ -170,6 +170,11 @@ a:active {
     position: relative;
     /* padding-top: 13px; */
 }
+.full-mainbar-container {
+    margin: 0.813rem 5.063rem;
+    position: relative;
+    /* padding-top: 13px; */
+}
 
 .half-container {
     height: 100%;
@@ -978,6 +983,44 @@ select:focus {
     box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
 }
 
+/* cashier portal */
+.cursor-pointer {
+    cursor: pointer;
+}
+.purchases_wrapper .title {
+    font-family: 'Inter', sans-serif;
+    font-style: normal;
+    font-weight: 700;
+    font-size: 24px;
+    color: #000000;
+}
+.purchases_wrapper .sub_title {
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 24px;
+    letter-spacing: 0px;
+}
+.purchases_wrapper .proceed_btn {
+    display: inline-block;
+    min-width: 320px;
+    height: 50px;
+    border-radius: 10px;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 24px;
+    /* identical to box height, or 171% */
+    text-transform: uppercase;
+    padding: 0px 2rem;
+    text-align: center;
+    color: #FFFFFF;
+    line-height: 50px;
+    cursor: pointer;
+    background: #029656;
+}
+.purchases_wrapper .proceed_btn.inactive {
+    background: #C4C4C4;
+}
 
 /* Challenge Page */
 
@@ -1149,6 +1192,9 @@ select:focus {
     .topbar .title {
         display: none !important;
     }
+    .topbar .search_wrapper {
+        display: none !important;
+    }
     .download_button {
         display: none;
     }
@@ -1179,6 +1225,9 @@ select:focus {
         /* width: 250px */
     }
     .mainbar-container {
+        margin: 0.813rem 2.063rem;
+    }
+    .full-mainbar-container {
         margin: 0.813rem 2.063rem;
     }
 }
