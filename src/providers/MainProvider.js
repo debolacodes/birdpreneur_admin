@@ -884,35 +884,35 @@ export default function MainProvider(props) {
       name: "Basirat Salihu",
       email:"rennyoni@yahoo.com",
       role:"Super Admin",
-      store:"KFC VI"
+      store:"KFC Egbeda"
+    },
+    {
+      id: 4378,
+      name: "Basirat Salihu",
+      email:"rennyoni@yahoo.com",
+      role:"Super Admin",
+      store:"KFC Lekki"
+    },
+    {
+      id: 4318,
+      name: "Basirat Salihu",
+      email:"rennyoni@yahoo.com",
+      role:"Super Admin",
+      store:"KFC VI 1"
+    },
+    {
+      id: 43199,
+      name: "Basirat Salihu",
+      email:"rennyoni@yahoo.com",
+      role:"Super Admin",
+      store:"KFC VI 2"
     },
     {
       id: 43178,
       name: "Basirat Salihu",
       email:"rennyoni@yahoo.com",
       role:"Super Admin",
-      store:"KFC VI"
-    },
-    {
-      id: 43178,
-      name: "Basirat Salihu",
-      email:"rennyoni@yahoo.com",
-      role:"Super Admin",
-      store:"KFC VI"
-    },
-    {
-      id: 43178,
-      name: "Basirat Salihu",
-      email:"rennyoni@yahoo.com",
-      role:"Super Admin",
-      store:"KFC VI"
-    },
-    {
-      id: 43178,
-      name: "Basirat Salihu",
-      email:"rennyoni@yahoo.com",
-      role:"Super Admin",
-      store:"KFC VI"
+      store:"Egbeda"
     },
 
 ]

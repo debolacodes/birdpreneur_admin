@@ -35,7 +35,7 @@ export default function UserRoles() {
     },
     {
       title: "Store Allocated",
-      dataIndex: "revenue",
+      dataIndex: "store",
       sort: false,
     },
   ];

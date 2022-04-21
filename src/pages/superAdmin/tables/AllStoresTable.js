@@ -5,6 +5,9 @@ import Tables from '../../../components/Tables';
 import TabTitle from '../../../components/TabTitle';
 
 import { formatToCurrency, getDateTimeFormatUK } from "../../../utils";
+import {
+  BsThreeDots,
+} from "react-icons/bs";
 
 
 export default function AllStoresTable() {
@@ -46,6 +49,9 @@ export default function AllStoresTable() {
       title: "Date Added",
       dataIndex: "dateAdded",
       sort: true,
+    },{
+      title:"",
+      dataIndex:"option"
     }
   ];
  
@@ -61,10 +67,21 @@ export default function AllStoresTable() {
   
   const [filteredTableData, setFilteredTableData] = useState(storeList);
   
+  const [visibilities, setVisibilities] = React.useState(() =>
+    filteredTableData.map((x) => false)
+  );
+
+  const handleClick = (index) => {
+    const newVisibilities = [...visibilities];
+    newVisibilities[index] = !newVisibilities[index];
+    setVisibilities(newVisibilities);
+  };
+
+
   const dataSource =
       filteredTableData &&
         filteredTableData.length > 0
-          ? filteredTableData.map((row) => {
+          ? filteredTableData.map((row, index) => {
             return {
               id: (
                   <div>
@@ -91,6 +108,37 @@ export default function AllStoresTable() {
                   {getDateTimeFormatUK(row.dateAdded)}
                 </div>
               ),
+              option: (
+                <div className="">
+                  <div className="position-relative">
+                    <div className="d-flex items-center" style={{cursor: "pointer"}}>
+                      <BsThreeDots
+                        onClick={() => handleClick(index)}
+                        size={24}
+                      />
+                    </div>
+                    {visibilities[index] ? (
+                      <div className="position-absolute border border-muted px-3 w-32 bg-white" style={{right: "0", top: "100%", zIndex: "2", width:  "150px"}}>
+                        <div
+                          onClick={() => {
+                          }}
+                          style={{cursor: "pointer"}}
+                          className="d-flex text-left py-3 border-bottom border-muted status-success hover:text-blue-dark text-small"
+                        >
+                          Edit Store
+                        </div>
+                        <div
+                          onClick={() => {}}
+                          style={{cursor: "pointer"}}
+                          className="d-flex text-left py-3 status-failed hover:text-blue-dark text-small"
+                        >
+                          Deactivate Store
+                        </div>
+                      </div>
+                    ) : ""}
+                  </div>
+                </div>
+              )
               
             };
           })
