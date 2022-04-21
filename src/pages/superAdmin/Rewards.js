@@ -21,7 +21,12 @@ export default function Rewards() {
     <div className='body'>
         <Sidebar />
         <div className="mainbar">
-            <TopBar title="Rewards"/>
+            <TopBar title="Rewards"
+            button={{
+              title: "DOWNLOAD REPORT",
+              action: () => {}
+            }}
+            />
             <div className="mainbar-container">
             <div style={{minHeight:"80px"}}>
               <div className="page-filter">
