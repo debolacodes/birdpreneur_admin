@@ -1,10 +1,12 @@
-import React, {useContext} from 'react'
+import React, {useContext, useState} from 'react'
 import {mainFunctions} from "../providers/MainProvider";
 
 export default function TopBar(props) {
   const {
-    setShowSidebar
+    setShowSidebar,
+    logout
   } = useContext(mainFunctions)
+  const [showSetting, setShowSettings] = useState(false)
   return (
     <div className='topbar'>
         <div className="page-anchor"
@@ -38,7 +40,16 @@ export default function TopBar(props) {
                     <div className='username'>Mike James</div>
                     <div className='email'>mjames@email.com</div>
                 </div>
-                <div className='icon more'></div>
+                <div className='icon more'
+                onClick={()=>setShowSettings(!showSetting)}
+                ></div>
+                {showSetting &&
+                <div className='settings_dropdown'>
+                  <div className='settings_dropdown_list'
+                  onClick={()=>logout()}
+                  >Logout</div>
+                </div>
+                }
             </div>
         </div>
     </div>

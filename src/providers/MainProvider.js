@@ -37,6 +37,9 @@ export default function MainProvider(props) {
         }
         navigate("/dashboard")
     }
+    const logout = () =>{
+      navigate("/")
+    }
     
     const resetpassword = () =>{
         navigate("/dashboard")
@@ -967,6 +970,7 @@ const filterDates = [
             changepassword,
             showSidebar, 
             setShowSidebar,
+            logout,
             // Dashboard SuperAdmin
             totalSalesOverview,
             totalStoresOverview,

@@ -170,6 +170,7 @@ a:active {
     position: relative;
     /* padding-top: 13px; */
 }
+
 .full-mainbar-container {
     margin: 0.813rem 5.063rem;
     position: relative;
@@ -271,6 +272,35 @@ a:active {
     display: flex;
     margin-left: 22px;
     align-items: center
+}
+
+.settings_dropdown {
+    position: absolute;
+    width: 121px;
+    height: 35px;
+    top: 56px;
+    right: 61px;
+    background: #FFFFFF;
+    border: 1px solid #E0E0E0;
+    box-sizing: border-box;
+    border-radius: 6px;
+}
+
+.settings_dropdown_list {
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 35px;
+    /* identical to box height, or 171% */
+    color: #E11010;
+    text-align: center;
+    width: 100%;
+    cursor: pointer;
+    border-radius: 6px;
+}
+
+.settings_dropdown_list:hover {
+    background: #FCEAD8;
 }
 
 .profile .avatar {
@@ -983,10 +1013,13 @@ select:focus {
     box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
 }
 
+
 /* cashier portal */
+
 .cursor-pointer {
     cursor: pointer;
 }
+
 .purchases_wrapper .title {
     font-family: 'Inter', sans-serif;
     font-style: normal;
@@ -994,12 +1027,14 @@ select:focus {
     font-size: 24px;
     color: #000000;
 }
+
 .purchases_wrapper .sub_title {
     font-size: 14px;
     font-weight: 500;
     line-height: 24px;
     letter-spacing: 0px;
 }
+
 .purchases_wrapper .proceed_btn {
     display: inline-block;
     min-width: 320px;
@@ -1018,9 +1053,11 @@ select:focus {
     cursor: pointer;
     background: #029656;
 }
+
 .purchases_wrapper .proceed_btn.inactive {
     background: #C4C4C4;
 }
+
 
 /* Challenge Page */
 
