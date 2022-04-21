@@ -10,12 +10,19 @@ export default function PieChartComponent(props) {
     const RADIAN = Math.PI / 180;
     const { cx, cy, midAngle, innerRadius, outerRadius, startAngle, endAngle, fill, payload, percent, value } = props;
     const sin = Math.sin(-RADIAN * midAngle);
-    // const cos = Math.cos(-RADIAN * midAngle);
-    const jx = startAngle > 180 || startAngle === 0 ? cx  : cx - 70
-    const jy = (cy + (outerRadius) * sin) - 25;
+    const cos = Math.cos(-RADIAN * midAngle);
+    const sx = (cx + (outerRadius) * cos);
+    const sy = (cy + (outerRadius) * sin);
+    const jx = endAngle > 180 ? cx : cx - 90
+    const jy = cy - 9
+    const textAnchor = cos >= 0 ? 'start' : 'end';
     return (
+      <div>
       <g>
-      <g id='active-sector'>
+          
+          {/* <path fill="#353535" d="M54.852,28l8.211,9.677c0,0,0.125,0.151,0.253,0S71.527,28,71.527,28H54.852z"/> */}
+          {/* <text transform="matrix(1 0 0 1 7.9434 17.5522)" fill="#FFFFFF" font-size="10">
+            {payload.name} <br/> {`(${(percent * 100).toFixed(2)}%)`}</text> */}
         <Sector
           cx={cx}
           cy={cy}
@@ -24,32 +31,26 @@ export default function PieChartComponent(props) {
           startAngle={startAngle}
           endAngle={endAngle}
           fill={fill}
-        
         />
         <Sector
         cx={cx}
         cy={cy}
         startAngle={startAngle}
         endAngle={endAngle}
-        innerRadius={outerRadius + 2}
-        outerRadius={outerRadius + 3}
+        innerRadius={outerRadius + 6}
+        outerRadius={outerRadius + 10}
         fill={fill}
       />
-        
-        
-      </g>
-      <g id='tooltip'>
-        {/* <rect fill="#353535" width="100" height="18"></rect> */}
-        <svg x={jx} y={jy}>
-        <path fill="#353535" d="M2.16,9C0.972,9,0,9.972,0,11.16v14.68C0,27.028,0.972,28,2.16,28h93.68c1.188,0,2.16-0.972,2.16-2.16V11.16
-	C98,9.972,97.028,9,95.84,9H2.16z"/>
-        </svg>
-        <text x={jx} y={jy+4}  transform="matrix(1 0 0 1 7.9434 17.5522)" fill="#FFFFFF" font-size="9">
-          {payload.name.slice(0,9)} - {`(${(percent * 100).toFixed(1)}%)`}
+        <rect x={jx} y={jy} fill="#353535" width="100" height="18">
+        </rect>
+        <text x={jx} y={jy - 6}  transform="matrix(1 0 0 1 7.9434 17.5522)" fill="#FFFFFF" font-size="10">
+        {/* {payload.name.slice(0, 9)}  */}
+        {Math.ceil(startAngle)} {Math.ceil(endAngle)}
+        {`(${(percent * 100).toFixed(2)}%)`}
         </text>
+        
       </g>
-      </g>
-      
+      </div>
     );
   }
 
@@ -57,10 +58,6 @@ export default function PieChartComponent(props) {
   const onPieEnter = (_, index) => {
     setActiveIndex(index)
   };
-
-  const removeOver = (_, index) => {
-    setActiveIndex(-1)
-  }
 
   return (
     <div className='piechart_wrapper'>
@@ -70,8 +67,7 @@ export default function PieChartComponent(props) {
           <Pie
             activeIndex={activeIndex}
             activeShape={renderActiveShape}
-            onMouseOver={onPieEnter}
-            onMouseLeave={removeOver}
+            onMouseEnter={onPieEnter}
             data={props.data}
             cx={80}
             cy={80}
@@ -95,8 +91,8 @@ export default function PieChartComponent(props) {
         return(
         <div className='piechart_details_item' key={`pieehart-details-${index}`}>
           <div className='piechart_color_icon' style={{backgroundColor:COLORS[index % COLORS.length]}}></div>
-          <span className='name'>{thisData.name} -&nbsp; </span>
-          <span className='value'> {` ${thisData.value}`} Sales</span>
+          <span className='name'>{thisData.name} - </span>
+          <span className='value'>{thisData.value} Sales</span>
         </div>
         )})}
       </div>
