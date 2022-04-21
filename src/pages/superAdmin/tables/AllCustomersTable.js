@@ -140,6 +140,8 @@ return (
     dataSource={dataSource}
     columns={tableColumns}
     handleSearch={setSearchKey}
+    showPagination={true}
+    showPageSize={true}
     ></Tables>
 </div>
 )
