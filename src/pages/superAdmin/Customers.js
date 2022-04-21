@@ -6,7 +6,7 @@ import TopBar from '../../components/TopBar';
 import SummaryBox from '../../components/SummaryBox';
 import Title from '../../components/Title';
 import AllCustomersTable from './tables/AllCustomersTable';
-
+import PageFilters from '../../components/PageFilters';
 
 export default function Customers() {
   const {
@@ -27,10 +27,7 @@ export default function Customers() {
               }}
             />
             <div className="mainbar-container">
-            <div className="page-filter">
-              <div className="button"><div className="text">All Stores</div><div className="icon down"></div></div>
-              <div className="button"><div className="text">This Year</div><div className="icon down"></div></div>
-            </div>
+              <PageFilters />
               <Title title="Overview"/>
               <div className="wrapper">
                 <SummaryBox 

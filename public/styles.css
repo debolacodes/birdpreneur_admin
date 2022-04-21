@@ -165,7 +165,7 @@ a:active {
 }
 
 .mainbar-container {
-    /* width:80%; */
+    width: 80%;
     margin: 0.813rem 5.063rem;
     position: relative;
     /* padding-top: 13px; */
@@ -491,11 +491,54 @@ a:active {
 .page-filter .button .icon {
     width: 16px;
     height: 7px;
+    /* background: url("./icons/down.svg"); */
+    margin-left: 5px;
     background: url("./icons/down.svg");
     background-size: contain;
     background-position: center;
     background-repeat: no-repeat;
-    margin-left: 5px;
+    transition-duration: 1s;
+}
+
+.page-filter .button .icon.up {
+    transform: rotate(180deg);
+    transition-duration: 1s;
+}
+
+.page-filter-options {
+    width: 121px;
+    height: auto;
+    background: #FFFFFF;
+    border: 1px solid #E0E0E0;
+    box-sizing: border-box;
+    border-radius: 6px;
+    margin-top: 5px;
+    padding: 0 8px;
+    max-height: 180px;
+    overflow-y: auto;
+    transition-duration: 0.5s;
+}
+
+.page-filter-option {
+    font-family: 'Inter', sans-serif;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 24px;
+    /* identical to box height, or 171% */
+    color: #8D8DA4;
+    padding: 2px 0;
+    cursor: pointer;
+    padding: 0 2px;
+}
+
+.page-filter-option:hover,
+.page-filter-option.active {
+    background: #FCEAD8;
+}
+
+.page-filter-options .page-filter-option:not(:last-child) {
+    border-bottom: #00000020 solid 1px;
 }
 
 .sidetab-title-wrapper {
@@ -508,7 +551,12 @@ a:active {
     display: flex;
     flex-wrap: wrap;
     justify-content: flex-start;
-    padding: 20px 0;
+    /*     padding: 20px 0; */
+    margin: 20px 0;
+}
+
+.tab-title-wrapper.underline {
+    border-bottom: 1px solid #00000088;
 }
 
 .tab-title-wrapper .page-title {
@@ -520,7 +568,7 @@ a:active {
     font-family: 'Inter', sans-serif;
     margin-right: 23px;
     cursor: pointer;
-    height: 26px;
+    height: 33px;
 }
 
 .tab-title-wrapper .page-title.active {
@@ -627,11 +675,11 @@ a:active {
 .table-status-filter .button .icon {
     width: 16px;
     height: 7px;
-    background: url("./icons/down.svg");
-    background-size: contain;
+    background-size: contain !Important;
     background-position: center;
-    background-repeat: no-repeat;
+    background-repeat: no-repeat !Important;
     margin-left: 5px;
+    background: url("./icons/down.svg");
 }
 
 
@@ -960,6 +1008,131 @@ select:focus {
 .purchases_wrapper .proceed_btn.inactive {
     background: #C4C4C4;
 }
+
+/* Challenge Page */
+
+.toggle_container {
+    width: 30px;
+    height: 17px;
+    background: #B7B9CC;
+    border-radius: 100px;
+    padding: 1px;
+    position: relative;
+    cursor: pointer;
+}
+
+.toggle_knob {
+    width: 15px;
+    height: 15px;
+    border-radius: 50%;
+    background: #FFFFFF;
+    position: absolute;
+    right: unset;
+    left: 1px;
+    transition-duration: 1s;
+}
+
+.toggle_container.active {
+    background: #C76400;
+}
+
+.toggle_container.active .toggle_knob {
+    right: 1px;
+    left: unset;
+    transition-duration: 1s;
+    position: absolute;
+}
+
+
+/* Challenges  */
+
+.challenge_box {
+    max-width: 780px;
+    width: 100%;
+    height: auto;
+    padding: 0 32px;
+    border: 1px solid #E0E0E0;
+    box-sizing: border-box;
+    border-radius: 6px;
+    justify-content: space-between;
+}
+
+.challenge_box_tr {
+    min-height: 100px;
+    display: flex;
+    padding: 27px 0;
+}
+
+.challenge_box_tr:not(:last-child) {
+    border-bottom: 1px solid #00000020;
+}
+
+.challenge_box_tr .title_box {
+    width: calc(100% - 300px);
+}
+
+.challenge_box_tr .title_box .title {
+    font-family: 'Inter', sans-serif;
+    font-style: normal;
+    font-weight: 700;
+    font-size: 18px;
+    line-height: 22px;
+    /* identical to box height */
+    color: #353535;
+}
+
+.challenge_box_tr .title_box .subtitle {
+    font-family: 'Inter', sans-serif;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 17px;
+    /* identical to box height */
+    color: #353535;
+}
+
+.challenge_box_td {
+    min-width: 100px;
+    display: flex;
+    justify-content: start;
+    flex-direction: row;
+    padding-top: 9px;
+}
+
+.challenge_box_td .item_text {
+    font-family: 'Inter', sans-serif;
+    font-style: normal;
+    font-weight: 700;
+    font-size: 16px;
+    line-height: 22px;
+    padding-right: 10px;
+    text-align: right;
+    width: 150px;
+    /*     background:#ccc; */
+    /* background: #ccc; */
+}
+
+.challenge_box_td .item_action {
+    font-family: 'Inter', sans-serif;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 24px;
+    /* identical to box height, or 200% */
+    color: #029656;
+    cursor: pointer;
+}
+
+.challenges_title {
+    font-family: 'Inter', sans-serif;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 24px;
+    /* identical to box height, or 200% */
+    color: #000000;
+}
+
 
 /* On screens that are 600px or less, set the background color to olive */
 

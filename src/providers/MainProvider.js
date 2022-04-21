@@ -190,8 +190,71 @@ export default function MainProvider(props) {
         manager: "Basirat Salihu",
         revenue: "345000",
         total_customers:10
+      },
+      {
+        id: "43121",
+        name: "KFC V1",
+        location: "4 Adeola Odeku Rd, VI, Lagos",
+        manager: "Patience Eze",
+        revenue: "25000",
+        total_customers:6
+      },
+      {
+        id: "43179",
+        name: "KFC V1 2",
+        location: "50 Adeola Odeku Rd, VI, Lagos",
+        manager: "Ifeoma Oluoma",
+        revenue: "9025000",
+        total_customers:211
+      },
+      {
+        id: "43180",
+        name: "KFC Lekki",
+        location: "50 Freedom Way, Lekki, Lagos",
+        manager: "Elohor Thomas",
+        revenue: "6225000",
+        total_customers:2111
+      },
+      {
+        id: "43181",
+        name: "KFC Oshodi",
+        location: "50 Freedom Way, Lekki, Lagos",
+        manager: "Dare Odunmade",
+        revenue: "225000",
+        total_customers:361
+      },
+      {
+        id: "43182",
+        name: "KFC Ibadan",
+        location: "50 Challenge Rd, Ibadan",
+        manager: "Emmanuel Adebiyi",
+        revenue: "675000",
+        total_customers:975
+      },
+      {
+        id: "43183",
+        name: "KFC Ibadan",
+        location: "50 Challenge Rd, Ibadan",
+        manager: "Stella Damasus",
+        revenue: "895000",
+        total_customers:325
+      },
+      {
+        id: "43184",
+        name: "KFC Abuja",
+        location: "50 Challenge Rd, Ibadan",
+        manager: "Reece James",
+        revenue: "95000",
+        total_customers:1125
+      },
+      {
+        id: "43184",
+        name: "KFC Abuja",
+        location: "50 Rd, Ota",
+        manager: "Reece James",
+        revenue: "95000",
+        total_customers:1125
       }
-
     ]
       
 
@@ -266,7 +329,7 @@ export default function MainProvider(props) {
     const transactionData = [
       {
         id: 43178,
-        store: "KFC Wuse",
+        store: "KFC Egbeda",
         username: "Coach Tabby",
         purchase: "DJI Mavic Pro 2",
         customerName: "Adunoluwa Adeyemi",
@@ -276,9 +339,9 @@ export default function MainProvider(props) {
         status: "Success",
       },
       {
-        id: 43178,
+        id: 43179,
         username: "John Doe",
-        store: "KFC Egbeda",
+        store: "KFC Wuse",
         purchase: "DJI Mavic Pro 2",
         customerName: "John Doe",
         purchaseValue: 345000,
@@ -287,7 +350,7 @@ export default function MainProvider(props) {
         status: "Pending",
       },
       {
-        id: 43178,
+        id: 43190,
         username: "Jane Doe",
         store: "KFC VI",
         purchase: "DJI Mavic Pro 2",
@@ -298,7 +361,7 @@ export default function MainProvider(props) {
         status: "Failed",
       },
       {
-        id: 43178,
+        id: 43191,
         username: "Jane Doe",
         store: "KFC VI 2",
         purchase: "DJI Mavic Pro 2",
@@ -309,7 +372,7 @@ export default function MainProvider(props) {
         status: "Failed",
       },
       {
-        id: 43178,
+        id: 43192,
         username: "Jane Doe",
         store: "KFC Banana Island",
         purchase: "DJI Mavic Pro 2",
@@ -320,7 +383,7 @@ export default function MainProvider(props) {
         status: "Failed",
       },
       {
-        id: 43178,
+        id: 43193,
         username: "Jane Doe",
         store: "KFC Banana Island",
         purchase: "DJI Mavic Pro 2",
@@ -331,7 +394,7 @@ export default function MainProvider(props) {
         status: "Failed",
       },
       {
-        id: 43178,
+        id: 43194,
         username: "Jane Doe",
         store: "KFC Wuse",
         purchase: "DJI Mavic Pro 2",
@@ -342,7 +405,7 @@ export default function MainProvider(props) {
         status: "Failed",
       },
       {
-        id: 43178,
+        id: 43195,
         username: "Jane Doe",
         store: "KFC Egbeda",
         purchase: "DJI Mavic Pro 2",
@@ -353,7 +416,7 @@ export default function MainProvider(props) {
         status: "Failed",
       },
       {
-        id: 43178,
+        id: 43196,
         username: "Jane Doe",
         store: "KFC Banana Island",
         purchase: "DJI Mavic Pro 2",
@@ -364,7 +427,7 @@ export default function MainProvider(props) {
         status: "Failed",
       },
       {
-        id: 43178,
+        id: 43197,
         username: "Jane Doe",
         store: "KFC Egbeda",
         purchase: "DJI Mavic Pro 2",
@@ -375,7 +438,7 @@ export default function MainProvider(props) {
         status: "Failed",
       },
       {
-        id: 43178,
+        id: 43198,
         username: "Jane Doe",
         purchase: "DJI Mavic Pro 2",
         customerName: "Jane Doe",
@@ -385,18 +448,7 @@ export default function MainProvider(props) {
         status: "Failed",
       },
       {
-        id: 43178,
-        username: "Jane Doe",
-        store: "KFC Wuse",
-        purchase: "DJI Mavic Pro 2",
-        customerName: "Jane Doe",
-        purchaseValue: 345000,
-        rewardsValue: 345000,
-        date: new Date(),
-        status: "Failed",
-      },
-      {
-        id: 43178,
+        id: 43199,
         username: "Jane Doe",
         store: "KFC Wuse",
         purchase: "DJI Mavic Pro 2",
@@ -407,7 +459,18 @@ export default function MainProvider(props) {
         status: "Failed",
       },
       {
-        id: 43178,
+        id: 43200,
+        username: "Jane Doe",
+        store: "KFC Wuse",
+        purchase: "DJI Mavic Pro 2",
+        customerName: "Jane Doe",
+        purchaseValue: 345000,
+        rewardsValue: 345000,
+        date: new Date(),
+        status: "Failed",
+      },
+      {
+        id: 43210,
         username: "Jane Doe",
         store: "KFC Banana Island",
         purchase: "DJI Mavic Pro 2",
@@ -418,7 +481,7 @@ export default function MainProvider(props) {
         status: "Failed",
       },
       {
-        id: 43178,
+        id: 43211,
         username: "Jane Doe",
         store: "KFC Wuse",
         purchase: "DJI Mavic Pro 2",
@@ -429,7 +492,7 @@ export default function MainProvider(props) {
         status: "Failed",
       },
       {
-        id: 43178,
+        id: 43212,
         username: "Jane Doe",
         store: "KFC VI",
         purchase: "DJI Mavic Pro 2",
@@ -440,7 +503,7 @@ export default function MainProvider(props) {
         status: "Failed",
       },
       {
-        id: 43178,
+        id: 43213,
         username: "Jane Doe",
         store: "KFC VI 2",
         purchase: "DJI Mavic Pro 2",
@@ -606,6 +669,189 @@ export default function MainProvider(props) {
 
   
   ]
+
+  //Challenges
+  const [challenges, setChallenges] = useState([
+    {
+      id:1,
+      title:"Make a purchase",
+      subtitle: "Make an online purchase from us",
+      reward: 343222,
+      active:false,
+      removed: false,
+      type:"daily"
+    },
+    {
+      id:2,
+      title:"Review a purchase",
+      subtitle: "Review a purchase",
+      reward: 222,
+      active:true,
+      removed: false,
+      type:"daily"
+    },
+    {
+      id:3,
+      title:"1 Deposit of N500",
+      subtitle: "Make a deposit of N500 or more",
+      reward: 402,
+      active:false,
+      removed: false,
+      type:"daily"
+    },
+    {
+      id:4,
+      title:"1 non-store purchase",
+      subtitle: "Make a purchase from us",
+      reward: 5000,
+      active:true,
+      removed: false,
+      type:"daily"
+    },
+    {
+      id:5,
+      title:"Complete all daily purchases",
+      subtitle: "Make an online purchase from us",
+      reward: 345000,
+      active:true,
+      removed: false,
+      type:"daily"
+    },
+    {
+      id:6,
+      title:"1 Deposit of N2000 this week",
+      subtitle: "Make a deposit of N2000 or more",
+      reward: 402,
+      active:false,
+      removed: false,
+      type:"week"
+    },
+    {
+      id:7,
+      title:"5 non-store purchase this week",
+      subtitle: "Make a purchase from us",
+      reward: 7000,
+      active:true,
+      removed: false,
+      type:"week"
+    },
+    {
+      id:8,
+      title:"Complete all weekly purchases",
+      subtitle: "Make an online purchase from us",
+      reward: 3450,
+      active:true,
+      removed: false,
+      type:"week"
+    },
+    {
+      id:9,
+      title:"1 Deposit of N50000 this month",
+      subtitle: "Make a deposit of N500 or more",
+      reward: 402,
+      active:true,
+      removed: false,
+      type:"month"
+    },
+    {
+      id:10,
+      title:"5 non-store purchase this month",
+      subtitle: "Make a purchase from us",
+      reward: 5000,
+      active:true,
+      removed: false,
+      type:"month"
+    },
+    {
+      id:11,
+      title:"Complete all Monthly purchases this month",
+      subtitle: "Make an online purchase from us",
+      reward: 345000,
+      active:true,
+      removed: false,
+      type:"month"
+    },
+  ])
+
+  const toggleChallenge = (id) =>{
+    // console.log(id)
+    var challenge_temp = [...challenges]
+    for(var i = 0; i < challenge_temp.length; i++){
+      if(id.toString() === challenge_temp[i].id.toString()){
+        challenge_temp[i].active = !challenge_temp[i].active
+        setChallenges(challenge_temp)
+        break;
+      }
+      continue;
+    }
+  }
+
+  //User Roles
+
+  const userRoles = [
+    {
+      id: 43178,
+      name: "Basirat Salihu",
+      email:"rennyoni@yahoo.com",
+      role:"Super Admin",
+      store:"KFC VI"
+    },
+    {
+      id: 43178,
+      name: "Basirat Salihu",
+      email:"rennyoni@yahoo.com",
+      role:"Super Admin",
+      store:"KFC VI"
+    },
+    {
+      id: 43178,
+      name: "Basirat Salihu",
+      email:"rennyoni@yahoo.com",
+      role:"Super Admin",
+      store:"KFC VI"
+    },
+    {
+      id: 43178,
+      name: "Basirat Salihu",
+      email:"rennyoni@yahoo.com",
+      role:"Super Admin",
+      store:"KFC VI"
+    },
+    {
+      id: 43178,
+      name: "Basirat Salihu",
+      email:"rennyoni@yahoo.com",
+      role:"Super Admin",
+      store:"KFC VI"
+    },
+
+]
+//Filters
+const [dateFilter, setDateFilter] = useState("")
+const [storeFilter, setStoreFilter] = useState("")
+const filterDates = [
+  {
+    id:"alltime",
+    title:"All Time"
+  },
+  {
+    id:"yesterday",
+    title:"Yesterday"
+  },
+  {
+    id:"lastweek",
+    title:"Last Week"
+  },
+  {
+    id:"lastmonth",
+    title:"Last Month"
+  },
+  {
+    id:"thisyear",
+    title:"This Year"
+  },
+
+]
     return (
         <mainFunctions.Provider
         value={{
@@ -657,6 +903,16 @@ export default function MainProvider(props) {
             storeList,
             // Rewards SuperAdmin
             productDeals, 
+            // challenges
+            challenges,
+            toggleChallenge,
+            userRoles,
+            // filters
+            dateFilter, 
+            setDateFilter,
+            storeFilter, 
+            setStoreFilter,
+            filterDates
         }}
         >
             {props.children}

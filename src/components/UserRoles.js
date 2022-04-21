@@ -1,11 +1,13 @@
 import React, {useState, useContext, useEffect} from 'react'
-import {mainFunctions} from "../../../providers/MainProvider";
-import Tables from '../../../components/Tables';
-import { formatToCurrency, getDateTimeFormatUK } from "../../../utils";
+import {mainFunctions} from "../providers/MainProvider";
+import Tables from './Tables';
 
-export default function StoresTable() {
+
+import { formatToCurrency, getDateTimeFormatUK } from "../utils";
+
+export default function UserRoles() {
     const {
-        stores
+        userRoles
       } = useContext(mainFunctions)
 
   const [searchKey, setSearchKey] = useState("");
@@ -17,30 +19,25 @@ export default function StoresTable() {
       sort: false, 
     },
     {
-      title: "Store Name",
+      title: "User Name",
       dataIndex: "name",
       sort: false, 
     },
     {
-      title: "Location",
-      dataIndex: "location",
+      title: "Email Address",
+      dataIndex: "email",
       sort: true, 
     },
     {
-      title: "Store Manager",
-      dataIndex: "manager",
+      title: "Role",
+      dataIndex: "role",
       sort: false,
     },
     {
-      title: "Revenue Made",
+      title: "Store Allocated",
       dataIndex: "revenue",
       sort: false,
     },
-    {
-      title: "Total Customers",
-      dataIndex: "total_customers",
-      sort: false,
-    }
   ];
  
   const handleSearch = (query) => {
@@ -53,14 +50,8 @@ export default function StoresTable() {
     
   }
   
-  const [filteredTableData, setFilteredTableData] = useState(stores);
+  const [filteredTableData, setFilteredTableData] = useState(userRoles);
 
-// if (searchKey) {
-//     filteredTableData = tableData?.filter((data) =>
-//         data.customerName.toLowerCase().includes(searchKey.toLocaleLowerCase())
-//     );
-// }
-  
 const dataSource =
     filteredTableData &&
       filteredTableData.length > 0
@@ -76,9 +67,9 @@ const dataSource =
 								{row.name}
 							</div>
 						),
-						location: (
+						email: (
 							<div>
-								{row.location}
+								{row.email}
 							</div>
 						),
 						manager: (
@@ -86,14 +77,14 @@ const dataSource =
 								{row.manager}
 							</div>
 						),
-						revenue: (
+						role: (
 							<div>
-								₦{formatToCurrency(row.revenue, 1)}
+								{row.role}
 							</div>
 						),
-						total_customers: (
+						store: (
 							<div>
-								{row.total_customers}
+								{row.store}
 							</div>
 						)
 					};
@@ -101,8 +92,10 @@ const dataSource =
 			: [];
 
 useEffect(() => {
+    console.log("adeb")
     if(searchKey){
-        var fd = stores.filter((thisStore, index) => {
+        console.log("adeb")
+        var fd = userRoles.filter((thisStore, index) => {
             var found = true;
             for(var i = 0; i < tableColumns.length; i++){
                 if(typeof tableColumns[i].search === "undefined" || tableColumns[i].search === true){
@@ -131,7 +124,7 @@ useEffect(() => {
 return (
 <div>
     <Tables
-    title="My Stores"
+    title="User and Roles"
     dataSource={dataSource}
     columns={tableColumns}
     handleSearch={setSearchKey}

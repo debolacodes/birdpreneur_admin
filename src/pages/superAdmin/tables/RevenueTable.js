@@ -5,7 +5,8 @@ import { formatToCurrency, getDateTimeFormatUK } from "../../../utils";
 
 export default function RevenueTable() {
     const {
-        transactionData
+        transactionData,
+
       } = useContext(mainFunctions)
 
   const [searchKey, setSearchKey] = useState("");
@@ -15,47 +16,54 @@ export default function RevenueTable() {
       title: "Store ID",
       dataIndex: "id",
       sort: false, 
+      search: true
     },
     {
       title: "Store Name",
-      dataIndex: "name",
+      dataIndex: "store",
       sort: false, 
+      search:true
     },
     {
       title: "Purchase",
       dataIndex: "purchase",
-      sort: false, 
+      sort: false,
+      search:true,
+      
     },
     {
       title: "Customer Name",
       dataIndex: "customerName",
       sort: false,
+      search:true
     },
     {
       title: "Purchase Value",
       dataIndex: "purchaseTotal",
       sort: true,
+      search:true
     },
     {
       title: "Rewards Value",
       dataIndex: "rewardsValue",
       sort: false,
+      search:true
     },
     {
         title: "Date",
         dataIndex: "date",
         sort: false,
+        search:false
     },
     {
         title: "Status",
         dataIndex: "status",
         sort: false,
+        search:false
     },
   ];
  
-  const handleSearch = (query) => {
-		setSearchKey(query);
-	};
+
   const handleStatusFilter = () => {
 
   }
@@ -74,7 +82,7 @@ const dataSource =
                                 ID: {row.id}
                             </div>
                             ),
-                        name: (
+            store: (
 							<div>
 								{row.store}
 							</div>
@@ -91,7 +99,7 @@ const dataSource =
 						),
 						purchaseTotal: (
 							<div>
-								-₦{formatToCurrency(row.purchaseValue, 1)}
+								₦{formatToCurrency(row.purchaseValue, 1)}
 							</div>
 						),
 						rewardsValue: (
@@ -119,14 +127,14 @@ const dataSource =
 			: [];
 
 useEffect(() => {
-    console.log("adeb")
-    if(searchKey){
-        console.log("adeb")
         var fd = transactionData.filter((thisStore, index) => {
             var found = true;
             for(var i = 0; i < tableColumns.length; i++){
-                if(typeof tableColumns[i].search === "undefined" || tableColumns[i].search === true){
-                  console.log(thisStore[tableColumns[i].dataIndex])
+
+                if((typeof tableColumns[i].search === "undefined" || tableColumns[i].search === true)
+                && typeof thisStore[tableColumns[i].dataIndex] !== "undefined" && searchKey !== ""
+                ){
+                  
                     if(thisStore[tableColumns[i].dataIndex].toString().toLowerCase().includes(searchKey)){
                         found = true
                         break
@@ -142,7 +150,6 @@ useEffect(() => {
             return found;
         })
         setFilteredTableData(fd)
-    }
   },[searchKey])
 
 
@@ -151,6 +158,7 @@ useEffect(() => {
 return (
 <div>
     <Tables
+    title="All Transactions"
     dataSource={dataSource}
     columns={tableColumns}
     handleSearch={setSearchKey}
