@@ -170,6 +170,11 @@ a:active {
     position: relative;
     /* padding-top: 13px; */
 }
+.full-mainbar-container {
+    margin: 0.813rem 5.063rem;
+    position: relative;
+    /* padding-top: 13px; */
+}
 
 .half-container {
     height: 100%;
@@ -1209,6 +1214,9 @@ select:focus {
         /* width: 250px */
     }
     .mainbar-container {
+        margin: 0.813rem 2.063rem;
+    }
+    .full-mainbar-container {
         margin: 0.813rem 2.063rem;
     }
 }

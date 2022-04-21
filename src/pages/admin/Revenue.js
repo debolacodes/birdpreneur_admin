@@ -8,6 +8,7 @@ import Tables from '../../components/Tables';
 import { formatToCurrency, getDateTimeFormatUK } from "../../utils";
 import {mainFunctions} from "../../providers/MainProvider";
 import SelectDateRangeModal from '../../modals/SelectDateRange';
+import PageFilters from '../../components/PageFilters';
 
 export default function Revenue() {
   const {
@@ -374,10 +375,8 @@ export default function Revenue() {
             action: () => {}
           }}
         />
-        <div className="mainbar-container">
-          <div className="page-filter justify-content-end">
-            <div className="button"><div className="text">This Year</div><div className="icon down"></div></div>
-          </div>
+        <div className="full-mainbar-container">
+          <PageFilters showStoreFilter={false} />
           <div className="wrapper pt-5">
             <SummaryBox title="Total Purchases" value="2,403"/>
             <SummaryBox title="Total Revenue Made" value="₦500,000"/>
