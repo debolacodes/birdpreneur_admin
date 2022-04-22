@@ -146,7 +146,6 @@ useEffect(() => {
                 }
             
             }
-            console.log(found)
             return found;
         })
         setFilteredTableData(fd)

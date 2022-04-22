@@ -5,10 +5,17 @@ import { formatToCurrency} from "../../../utils";
 import {
   BsThreeDots,
 } from "react-icons/bs";
+import EditDeal from "../../../modals/EditDeal"
+import RemoveDeal from "../../../modals/RemoveDeal"
 
 export default function ProductDeals() {
     const {
-        productDeals
+        productDeals,
+        setModalPage,
+        setModalData,
+        setShowModal,
+        EDIT_DEALS_MODAL,
+        REMOVE_DEALS_MODAL
       } = useContext(mainFunctions)
 
   const [searchKey, setSearchKey] = useState("");
@@ -107,12 +114,12 @@ const dataSource =
                   {visibilities[index] ? (
                     <div className="position-absolute border border-muted px-3 w-32 bg-white" style={{right: "0", top: "100%", zIndex: "2", width:  "150px"}}>
                       <div
-                        onClick={() => {
-                          // setEditStaff({
-                          //   fullName : row.cashierName,
-                          //   email: row.email,
-                          // });
-                          // setStaffModal(row);
+                        onClick={async () => {
+                          await setModalPage(EDIT_DEALS_MODAL);
+                          await setModalData(
+                            <EditDeal deal={row}/>
+                          );
+                          setShowModal(true)
                         }}
                         style={{cursor: "pointer"}}
                         className="d-flex text-left py-3 border-bottom border-muted status-success hover:text-blue-dark text-small"
@@ -120,7 +127,13 @@ const dataSource =
                         Edit Deal
                       </div>
                       <div
-                        onClick={() => {}}
+                        onClick={async () => {
+                          await setModalPage(REMOVE_DEALS_MODAL);
+                          await setModalData(
+                            <RemoveDeal deal={row}/>
+                          );
+                          setShowModal(true)
+                        }}
                         style={{cursor: "pointer"}}
                         className="d-flex text-left py-3 status-failed hover:text-blue-dark text-small"
                       >
@@ -153,7 +166,6 @@ useEffect(() => {
                 }
             
             }
-            console.log(found)
             return found;
         })
         setFilteredTableData(fd)

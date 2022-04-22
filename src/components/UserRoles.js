@@ -4,11 +4,21 @@ import Tables from './Tables';
 import { formatToCurrency, getDateTimeFormatUK } from "../utils";
 import AddUser from '../modals/AddUser';
 import EditUser from '../modals/EditUser';
+import DeactivateUser from '../modals/DeactivateUser';
+
 import {
   BsThreeDots,
 } from "react-icons/bs";
 
-export default function UserRoles({setUserModal, setCurrentUser}) {
+
+export default function UserRoles(
+  {
+  setModalPage,
+  setModalData,
+  setShowModal,
+  EDIT_USER_MODAL,
+  DEACTIVATE_USER_MODAL,
+}) {
     const {
         userRoles,
       } = useContext(mainFunctions)
@@ -109,9 +119,10 @@ const dataSource =
                     {visibilities[index] ? (
                       <div className="position-absolute border border-muted px-3 w-32 bg-white" style={{right: "0", top: "100%", zIndex: "2", width:  "150px"}}>
                         <div
-                          onClick={() => {
-                            setUserModal("edit")
-                            setCurrentUser(row)
+                          onClick={async () => {
+                             await setModalPage(EDIT_USER_MODAL)
+                             await setModalData(<EditUser user={row} />);
+                             setShowModal(true)
                           }}
                           style={{cursor: "pointer"}}
                           className="d-flex text-left py-3 border-bottom border-muted status-success hover:text-blue-dark text-small"
@@ -119,9 +130,10 @@ const dataSource =
                           Edit User
                         </div>
                         <div
-                          onClick={() => {
-                            setUserModal("deactivate")
-                            setCurrentUser(row)
+                          onClick={async () => {
+                            await setModalPage(DEACTIVATE_USER_MODAL)
+                            await setModalData(<DeactivateUser user={row} />);
+                            setShowModal(true)
                           }}
                           style={{cursor: "pointer"}}
                           className="d-flex text-left py-3 status-failed hover:text-blue-dark text-small"
@@ -148,7 +160,6 @@ useEffect(() => {
             var found = true;
             for(var i = 0; i < tableColumns.length; i++){
                 if(typeof tableColumns[i].search === "undefined" || tableColumns[i].search === true){
-                  console.log(thisStore[tableColumns[i].dataIndex])
                     if(thisStore[tableColumns[i].dataIndex].toString().toLowerCase().includes(searchKey)){
                         found = true
                         break
@@ -160,7 +171,6 @@ useEffect(() => {
                 }
             
             }
-            console.log(found)
             return found;
         })
         setFilteredTableData(fd)

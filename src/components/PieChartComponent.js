@@ -44,7 +44,7 @@ export default function PieChartComponent(props) {
         <path fill="#353535" d="M2.16,9C0.972,9,0,9.972,0,11.16v14.68C0,27.028,0.972,28,2.16,28h93.68c1.188,0,2.16-0.972,2.16-2.16V11.16
 	C98,9.972,97.028,9,95.84,9H2.16z"/>
         </svg>
-        <text x={jx} y={jy+4}  transform="matrix(1 0 0 1 7.9434 17.5522)" fill="#FFFFFF" font-size="9">
+        <text x={jx} y={jy+4}  transform="matrix(1 0 0 1 7.9434 17.5522)" fill="#FFFFFF" fontSize="9">
           {payload.name.slice(0,9)} - {`(${(percent * 100).toFixed(1)}%)`}
         </text>
       </g>

@@ -21,20 +21,11 @@ export default function Rewards() {
 
   const CHALLENGE_PAGE = "challenges";
   const DEALS_PAGE = "deals";
-  const [rewardPage, setRewardPage] = useState(CHALLENGE_PAGE)
+  const [rewardPage, setRewardPage] = useState(DEALS_PAGE)
 
-  useEffect(() => {
-    setModalPage(ADD_DEAL_MODAL);
-    if(dealModal){
-      if(dealModal === "add"){
-        setModalData(
-          <AddDeal />
-        );
-      }
-      setShowModal(true);
-    }
-		//eslint-disable-next-line
-  }, [dealModal]);
+
+      
+    
   return (
     <div className='body'>
         <Sidebar />
@@ -50,7 +41,11 @@ export default function Rewards() {
               <div className="page-filter">
                 {rewardPage === DEALS_PAGE
                   ? <div className='btn_ btn_green mb-3' 
-                    onClick={()=>setDealModal("add")}
+                    onClick={async ()=>{
+                      await setModalPage(ADD_DEAL_MODAL);
+                      await setModalData(<AddDeal />);
+                      setShowModal(true);
+                    }}
                     >NEW DEAL</div>
                   : <div className='btn_ btn_green mb-3'>ADD CHALLENGE</div>
                 }

@@ -10,8 +10,6 @@ import RemoveProduct from '../../../modals/RemoveProduct';
 
 export default function ProductTable() {
 
-const [productModal, setProductModal] = useState("")
-
 const {
   productsData,
   setModalPage,
@@ -123,12 +121,12 @@ const dataSource =
                   {visibilities[index] ? (
                     <div className="position-absolute border border-muted px-3 w-32 bg-white" style={{right: "0", top: "100%", zIndex: "2", width:  "150px"}}>
                       <div
-                        onClick={() => {
-                          // setEditStaff({
-                          //   fullName : row.cashierName,
-                          //   email: row.email,
-                          // });
-                          // setStaffModal(row);
+                        onClick={async () => {
+                          setModalPage(EDIT_PRODUCT_MODAL);
+                          setModalData(
+                            <EditProduct product={row}/>
+                          );
+                          setShowModal(true)
                         }}
                         style={{cursor: "pointer"}}
                         className="d-flex text-left py-3 border-bottom border-muted status-success hover:text-blue-dark text-small"
@@ -136,7 +134,14 @@ const dataSource =
                         Edit Product
                       </div>
                       <div
-                        onClick={() => {}}
+                        onClick={() => {
+                          setModalPage(REMOVE_PRODUCT_MODAL);
+                          
+                          setModalData(
+                            <RemoveProduct product={row}/>
+                          );
+                          setShowModal(true)
+                        }}
                         style={{cursor: "pointer"}}
                         className="d-flex text-left py-3 status-failed hover:text-blue-dark text-small"
                       >
@@ -151,14 +156,13 @@ const dataSource =
 			  })
 			: [];
 
-useEffect(() => {
+      useEffect(() => {
         var fd = productsData.filter((thisStore, index) => {
             var found = true;
             for(var i = 0; i < tableColumns.length; i++){
                 if((typeof tableColumns[i].search === "undefined" || tableColumns[i].search === true)
                 && typeof thisStore[tableColumns[i].dataIndex] !== "undefined"
                 ){
-                  console.log(thisStore[tableColumns[i].dataIndex])
                     if(thisStore[tableColumns[i].dataIndex].toString().toLowerCase().includes(searchKey)){
                         found = true
                         break
@@ -170,30 +174,10 @@ useEffect(() => {
                 }
             
             }
-            console.log(found)
             return found;
         })
         setFilteredTableData(fd)
-  },[searchKey])
-
-  useEffect(() => {
-    setModalPage(EDIT_PRODUCT_MODAL);
-    if(productModal && JSON.stringify(currentRow) !== "{}"){
-      if(productModal === "edit"){
-        setModalData(
-          <EditProduct product={currentRow}/>
-        );
-      }else if(productModal === "edit"){
-        setModalData(
-        <RemoveProduct product={currentRow}/>
-        );
-      setShowModal(true);
-      }
-    }
-		//eslint-disable-next-line
-  }, [productModal]);
-
-
+      },[searchKey])
 return (
 <div>
     <Tables

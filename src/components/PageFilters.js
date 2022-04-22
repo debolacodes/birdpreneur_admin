@@ -28,7 +28,6 @@ export default function PageFilters({
             <div  className={`page-filter-option ${storeFilter.id === 0 ? "active": ""}`}
             onClick = {()=>{
               setStoreFilter({id:0, store: "All Stores"})
-              console.log(storeFilter)
             }}
             >All Locations</div>
 

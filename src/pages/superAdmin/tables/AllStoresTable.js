@@ -183,7 +183,6 @@ export default function AllStoresTable() {
                   }
               }
           }
-          console.log(found)
           return found;
       })
       setFilteredTableData(fd)

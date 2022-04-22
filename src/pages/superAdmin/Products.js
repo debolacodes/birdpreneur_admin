@@ -20,19 +20,7 @@ export default function Products() {
 
   const [productModal, setProductModal] = useState("")
 
-  useEffect(() => {
-    setModalPage(ADD_PRODUCT_MODAL);
-    if(productModal){
-      if(productModal === "add"){
-        setModalData(
-          <AddProduct />
-        );
-      }
-      setShowModal(true);
-    }
-		//eslint-disable-next-line
-  }, [productModal]);
-
+ 
 
   return (
     <div className='body'>
@@ -48,7 +36,13 @@ export default function Products() {
             <div className="mainbar-container">
               <PageFilters />
               <div className='btn_ btn_green mb-3'
-              onClick={()=>setProductModal("add")}
+              onClick={async ()=>{
+                await setModalPage(ADD_PRODUCT_MODAL);
+                await setModalData(
+                  <AddProduct />
+                )
+                await setShowModal(true);
+              }}
               >ADD PRODUCT</div>
               <div className="wrapper">
                 <SummaryBox 

@@ -158,7 +158,6 @@ useEffect(() => {
                 if((typeof tableColumns[i].search === "undefined" || tableColumns[i].search === true)
                 && typeof thisStore[tableColumns[i].dataIndex] !== "undefined"
                 ){
-                  console.log(thisStore[tableColumns[i].dataIndex])
                     if(thisStore[tableColumns[i].dataIndex].toString().toLowerCase().includes(searchKey)){
                         found = true
                         break
@@ -170,7 +169,6 @@ useEffect(() => {
                 }
             
             }
-            console.log(found)
             return found;
         })
         setFilteredTableData(fd)

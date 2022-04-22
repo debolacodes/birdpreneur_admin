@@ -20,16 +20,22 @@ export default function MainProvider(props) {
     const DATERANGE_MODAL = "daterange"
     const EDIT_USER_MODAL = "edituser"
     const EDIT_PRODUCT_MODAL = "editproduct"
+    const EDIT_DEALS_MODAL = "editdeals"
     const EDIT_STORE_SUPER_MODAL = "addstore";
     const EDIT_CUSTOMER_MODAL = "editcustomer"
     const PRODUCT_DEAL_MODAL = "productdeal"
     const PURCHASE_DETAILS_MODAL = "purchasedetails"
     const REMOVE_PRODUCT_MODAL = "removeproduct"
+    const REMOVE_DEALS_MODAL = "removedeals"
     const USE_PURCHASECODE_MODAL = "usepurchasecode"
     
 
     const [showSidebar, setShowSidebar] = useState(false)
-
+    const allUserRoles = [
+      {id:1, name: "Super Admin"},
+      {id:2, name: "Admin"},
+      {id:3, name: "User"},
+    ] 
     const [showModal, setShowModal] = useState(false);
     const [modalPage, setModalPage] = useState("");
     const [modalData, setModalData] = useState({});
@@ -872,7 +878,6 @@ export default function MainProvider(props) {
   ])
 
   const toggleChallenge = (id) =>{
-    // console.log(id)
     var challenge_temp = [...challenges]
     for(var i = 0; i < challenge_temp.length; i++){
       if(id.toString() === challenge_temp[i].id.toString()){
@@ -964,12 +969,15 @@ const filterDates = [
             ADD_DEAL_MODAL,
             DEACTIVATE_USER_MODAL,
             EDIT_CUSTOMER_MODAL,
+            EDIT_DEALS_MODAL,
             PRODUCT_DEAL_MODAL,
             DATERANGE_MODAL,
             USE_PURCHASECODE_MODAL,
             PURCHASE_DETAILS_MODAL,
             EDIT_PRODUCT_MODAL,
             REMOVE_PRODUCT_MODAL,
+            REMOVE_DEALS_MODAL,
+            allUserRoles,
             showModal, 
             setShowModal,
             modalPage, 

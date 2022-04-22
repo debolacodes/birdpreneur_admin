@@ -82,12 +82,21 @@ export default function AccountSettings() {
                       flexDirection:"row-reverse"
                     }}>
                       <div className='btn_ btn_orange mb-3' style={{position:"unset"}}
-                      onClick={()=>setUserModal("add")}
+                      onClick={async ()=>{
+                        await setModalPage(ADD_USER_MODAL)
+                        await setModalData(<AddUser />);
+                        setShowModal(true)
+                      }}
                       >ADD USER</div>
                     </div>
                     <UserRoles 
                     setUserModal={setUserModal}
                     setCurrentUser={setCurrentUser}
+                    setModalPage={setModalPage}
+                    setModalData={setModalData}
+                    setShowModal={setShowModal}
+                    EDIT_USER_MODAL={EDIT_USER_MODAL}
+                    DEACTIVATE_USER_MODAL={DEACTIVATE_USER_MODAL}
                     />
                   </div>
                 )}

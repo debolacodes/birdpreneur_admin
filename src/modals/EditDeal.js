@@ -1,47 +1,41 @@
 import React, {useContext} from 'react'
 import {mainFunctions} from "../providers/MainProvider";
-
-const AddUser = ({product}) => {
+import { formatToCurrency} from "../utils";
+const EditDeal = () => {
     const {
     setShowModal,
-    allUserRoles
+    productsData,
+    productDeals
     } = useContext(mainFunctions)
   return (
     <div className='w-100 h-100 d-flex flex-column align-items-center justify-content-center add_staff_modal'>
       <div className='title'>
-          Add New User
+          Edit deal
       </div>
       <p className='subtitle text-center'>
         This is place holder text. The basic dialog for modals should contain only valuable and relevant information. 
       </p>
         <div className='auth_form_container'>
+          
           <div className='fieldset'>
-            <label className='label'>User Name</label>
-            <div className='input_box'>
-              <input 
-                type="text" 
-                onChange={()=>{}}
-              />
-            </div>
-          </div>
-          <div className='fieldset'>
-            <label className='label'>Email</label>
-            <div className='input_box'>
-              <input 
-                type="email" 
-                value=""
-                onChange={(e) => {}}
-              />
-            </div>
-          </div>
-          <div className='fieldset'>
-            <label className='label'>User Role</label>
+            <label className='label'>Product</label>
             <div className='input_box'>
               <select>
-                  {allUserRoles.map((row, index)=>{
+                {productsData.map((row, index)=>{
                 return(
                   <option value={row.id} key={index}>
-                    {row.name}
+                    {row.productName}
+                  </option>
+                )})}
+              </select>
+            </div>
+            <label className='label'>Deal Type</label>
+            <div className='input_box'>
+              <select>
+                {productDeals.map((row, index)=>{
+                return(
+                  <option value={row.id} key={index}>
+                    {row.name}( ₦{formatToCurrency(row.price, 1)})
                   </option>
                 )})}
               </select>
@@ -50,10 +44,10 @@ const AddUser = ({product}) => {
 
           <div className='btn_ btn_orange'  onClick={()=> {
             setShowModal(false)
-          }}>Add USER</div>
+          }}>Edit Deal</div>
         </div> 
     </div>
   )
 }
 
-export default AddUser
+export default EditDeal

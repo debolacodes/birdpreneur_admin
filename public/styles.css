@@ -891,6 +891,7 @@ select:focus {
     /* identical to box height, or 200% */
     font-family: 'Inter', sans-serif;
     color: #000000;
+    margin-top: 10px;
 }
 
 .auth_form_container .input_box {
@@ -908,12 +909,30 @@ select:focus {
 .auth_form_container input {
     line-height: 40px;
     width: calc(100% - 45px);
-    padding: 0 20px;
+    padding: 0 20px 0 0;
     text-decoration: none;
     border: none;
     margin: 6px;
     background: none;
+    font-family: 'Inter', sans-serif;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 12px;
     /* background: #ccc; */
+}
+
+.auth_form_container select {
+    line-height: 40px;
+    width: 100%;
+    padding: 0 20px 0 0;
+    text-decoration: none;
+    border: none;
+    margin: 6px;
+    background: none;
+    font-family: 'Inter', sans-serif;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 12px;
 }
 
 .auth_form_container .more-info {
@@ -985,6 +1004,7 @@ select:focus {
     font-weight: 700;
     font-size: 24px;
     line-height: 32px;
+    margin-bottom: 10px;
 }
 
 .status-success {
