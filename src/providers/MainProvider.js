@@ -17,6 +17,7 @@ export default function MainProvider(props) {
     const ADD_STORE_MODAL = "addstore"
     const ADD_DEAL_MODAL = "adddeal"
     const DEACTIVATE_USER_MODAL = "deactivateuser"
+    const DEACTIVATE_STORE_MODAL = "deactiveatestore"
     const DATERANGE_MODAL = "daterange"
     const EDIT_USER_MODAL = "edituser"
     const EDIT_PRODUCT_MODAL = "editproduct"
@@ -968,6 +969,7 @@ const filterDates = [
             ADD_STORE_MODAL,
             ADD_DEAL_MODAL,
             DEACTIVATE_USER_MODAL,
+            DEACTIVATE_STORE_MODAL,
             EDIT_CUSTOMER_MODAL,
             EDIT_DEALS_MODAL,
             PRODUCT_DEAL_MODAL,

@@ -20,6 +20,7 @@ export default function AllStoresTable() {
   setModalData,
   setShowModal,
   EDIT_STORE_SUPER_MODAL,
+  DEACTIVATE_STORE_MODAL,
   } = useContext(mainFunctions)
 
   const [storeModal, setStoreModal] = useState("")
@@ -129,9 +130,10 @@ export default function AllStoresTable() {
                     {visibilities[index] ? (
                       <div className="position-absolute border border-muted px-3 w-32 bg-white" style={{right: "0", top: "100%", zIndex: "2", width:  "150px"}}>
                         <div
-                          onClick={() => {
-                            setStoreModal("edit")
-                            setCurrentStore(row)
+                          onClick={async () => {
+                            setModalPage(EDIT_STORE_SUPER_MODAL);
+                            setModalData(<EditStore store={row}/>);
+                            setShowModal(true);
                           }}
                           style={{cursor: "pointer"}}
                           className="d-flex text-left py-3 border-bottom border-muted status-success hover:text-blue-dark text-small"
@@ -140,8 +142,9 @@ export default function AllStoresTable() {
                         </div>
                         <div
                           onClick={() => {
-                            setStoreModal("deactivate")
-                            setCurrentStore(row)
+                            setModalPage(EDIT_STORE_SUPER_MODAL);
+                            setModalData(<DeactivateStore store={row}/>);
+                            setShowModal(true);
                           }}
                           style={{cursor: "pointer"}}
                           className="d-flex text-left py-3 status-failed hover:text-blue-dark text-small"
@@ -189,19 +192,6 @@ export default function AllStoresTable() {
     },[searchKey, activeChartTab])
 
   useEffect(() => {
-    if(storeModal && currentStore !== null){
-    setModalPage(EDIT_STORE_SUPER_MODAL);
-    if(storeModal ){
-      if(storeModal === "edit"){
-        setModalData(<EditStore store={currentStore}/>);
-      }else if(storeModal === "deactivate"){
-        setModalData(<DeactivateStore store={currentStore}/>);
-      }
-      setShowModal(true);
-    }
-  }
-  //eslint-disable-next-line
-  }, [storeModal]);useEffect(() => {
     if(storeModal && currentStore !== null){
     setModalPage(EDIT_STORE_SUPER_MODAL);
     if(storeModal ){
