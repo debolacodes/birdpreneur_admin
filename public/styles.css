@@ -477,6 +477,11 @@ a:active {
     margin-top: 5px;
 }
 
+.piechart_details_item.active {
+    border: 1px solid #E0E0E0;
+    background: #FCEAD8;
+}
+
 .piechart_details_item .piechart_color_icon {
     width: 12px;
     height: 12px;

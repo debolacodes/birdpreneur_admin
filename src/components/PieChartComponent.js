@@ -1,14 +1,18 @@
-import React, {useState} from 'react'
+import { act } from '@testing-library/react';
+import React, {useEffect, useState} from 'react'
 
 import { PieChart, Pie, Cell, ResponsiveContainer, Tooltip, Sector } from 'recharts';
 import { chartColors as COLORS} from './colors';
 
-export default function PieChartComponent(props) {
+export default function PieChartComponent({data, setActive}) {
   
-  const [activeIndex, setActiveIndex] = useState(0)
+  const [activeIndex, setActiveIndex] = useState(-1)
+
   const renderActiveShape = (props) => {
+    
     const RADIAN = Math.PI / 180;
     const { cx, cy, midAngle, innerRadius, outerRadius, startAngle, endAngle, fill, payload, percent, value } = props;
+    
     const sin = Math.sin(-RADIAN * midAngle);
     // const cos = Math.cos(-RADIAN * midAngle);
     const jx = startAngle > 180 || startAngle === 0 ? cx  : cx - 70
@@ -62,6 +66,12 @@ export default function PieChartComponent(props) {
     setActiveIndex(-1)
   }
 
+  useEffect(()=>{
+    if(setActive){
+      setActive(activeIndex)
+    }
+  },[activeIndex])
+
   return (
     <div className='piechart_wrapper'>
       <div className='piechart'>
@@ -70,9 +80,9 @@ export default function PieChartComponent(props) {
           <Pie
             activeIndex={activeIndex}
             activeShape={renderActiveShape}
-            onMouseOver={onPieEnter}
+            onMouseMove={onPieEnter}
             onMouseLeave={removeOver}
-            data={props.data}
+            data={data}
             cx={80}
             cy={80}
             innerRadius={60}
@@ -82,7 +92,7 @@ export default function PieChartComponent(props) {
             dataKey="value"
             
           >
-            {props.data.map((entry, index) => (
+            {data.map((entry, index) => (
               <Cell key={`cell-${index}`} fill={COLORS[index % COLORS.length]} />
             ))}
           </Pie>
@@ -91,9 +101,9 @@ export default function PieChartComponent(props) {
         </ResponsiveContainer>
       </div>
       <div className='piechart_details'>
-      {props.data.map((thisData, index)=>{
+      {data.map((thisData, index)=>{
         return(
-        <div className='piechart_details_item' key={`pieehart-details-${index}`}>
+        <div className={`piechart_details_item ${activeIndex === index ? "active" : ""}`} key={`pieehart-details-${index}`}>
           <div className='piechart_color_icon' style={{backgroundColor:COLORS[index % COLORS.length]}}></div>
           <span className='name'>{thisData.name} -&nbsp; </span>
           <span className='value'> {` ${thisData.value}`} Sales</span>

@@ -66,7 +66,7 @@ export default function MainProvider(props) {
     // Super Admin Dashboard
     const totalStoresOverview = {
         title:"Total Stores",
-        value:"243"
+        value:"23"
     }
     const totalSalesOverview = {
         title:"Total Sales Made",
@@ -81,7 +81,7 @@ export default function MainProvider(props) {
         { name: 'KFC Egbeda', value: 740 },
         { name: 'KFC VI 2', value: 700 },
         { name: 'KFC VI', value: 600 },
-        { name: 'KFC Banana Island', value: 523 },
+        { name: 'KFC Banana Island', value: 20 },
     ];
     const top5SalesPeriod =  [
       { name: 'January', value: 1080 },
