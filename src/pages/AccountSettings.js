@@ -1,4 +1,5 @@
-import React,{useState} from 'react'
+import React,{useState, useContext, useEffect} from 'react'
+import {mainFunctions} from "../providers/MainProvider";
 import Sidebar from '../components/Sidebar'
 import SideTabTitle from '../components/SideTabTitle'
 import TopBar from '../components/TopBar'
@@ -9,8 +10,45 @@ import { useSelector } from "react-redux";
 import Input from '../components/Input'
 import Security from '../components/Security'
 import UserRoles from '../components/UserRoles'
+import AddUser from '../modals/AddUser';
+import EditUser from '../modals/EditUser';
+import DeactivateUser from '../modals/DeactivateUser';
 
 export default function AccountSettings() {
+
+  const {
+    userRoles,
+    setModalPage,
+    setModalData,
+    setShowModal,
+    EDIT_USER_MODAL,
+    ADD_USER_MODAL,
+    DEACTIVATE_USER_MODAL
+  } = useContext(mainFunctions)
+
+  const [userModal, setUserModal] = useState("")
+  const [currentUser, setCurrentUser] = useState(null)
+
+  useEffect(() => {
+    if(userModal ){
+      if(userModal === "add"){
+        setModalPage(ADD_USER_MODAL)
+        setModalData(<AddUser />);
+      }else if(userModal === "edit" && currentUser !== null){
+        setModalPage(EDIT_USER_MODAL)
+        setModalData(<EditUser user={currentUser}/>);
+      }
+      else if(userModal === "deactivate" && currentUser !== null){
+        setModalPage(DEACTIVATE_USER_MODAL)
+        setModalData(<DeactivateUser user={currentUser}/>);
+      }
+      setShowModal(true);
+    }
+    //eslint-disable-next-line
+  }, [userModal]);
+
+
+
 	const { role } = useSelector(
 		(state) => state.auth
 	);
@@ -43,9 +81,14 @@ export default function AccountSettings() {
                       display:"flex", 
                       flexDirection:"row-reverse"
                     }}>
-                      <div className='btn_ btn_orange mb-3' style={{position:"unset"}}>ADD USER</div>
+                      <div className='btn_ btn_orange mb-3' style={{position:"unset"}}
+                      onClick={()=>setUserModal("add")}
+                      >ADD USER</div>
                     </div>
-                    <UserRoles />
+                    <UserRoles 
+                    setUserModal={setUserModal}
+                    setCurrentUser={setCurrentUser}
+                    />
                   </div>
                 )}
                 {activeChartTab.id === "support" && (

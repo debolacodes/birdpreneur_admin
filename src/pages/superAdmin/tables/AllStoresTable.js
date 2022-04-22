@@ -1,8 +1,11 @@
 import React, {useState, useContext, useEffect} from 'react'
 import {mainFunctions} from "../../../providers/MainProvider";
 
+import EditStore from "../../../modals/EditStore"
+import DeactivateStore from '../../../modals/DeactivateStore';
 import Tables from '../../../components/Tables';
 import TabTitle from '../../../components/TabTitle';
+
 
 import { formatToCurrency, getDateTimeFormatUK } from "../../../utils";
 import {
@@ -12,9 +15,15 @@ import {
 
 export default function AllStoresTable() {
   const {
-    storeList
+    storeList,
+  setModalPage,
+  setModalData,
+  setShowModal,
+  EDIT_STORE_SUPER_MODAL,
   } = useContext(mainFunctions)
 
+  const [storeModal, setStoreModal] = useState("")
+  const [currentStore, setCurrentStore] = useState(null)
 
   const ACTIVE_STORES_TAB = {id:"active", title:"Active Stores", data:storeList};
   const DEACTIVATED_STORES_TAB = {id:"deactivated", title:"Deactivated Stores", data:storeList};
@@ -67,7 +76,7 @@ export default function AllStoresTable() {
   
   const [filteredTableData, setFilteredTableData] = useState(storeList);
   
-  const [visibilities, setVisibilities] = React.useState(() =>
+  const [visibilities, setVisibilities] = useState(() =>
     filteredTableData.map((x) => false)
   );
 
@@ -121,6 +130,8 @@ export default function AllStoresTable() {
                       <div className="position-absolute border border-muted px-3 w-32 bg-white" style={{right: "0", top: "100%", zIndex: "2", width:  "150px"}}>
                         <div
                           onClick={() => {
+                            setStoreModal("edit")
+                            setCurrentStore(row)
                           }}
                           style={{cursor: "pointer"}}
                           className="d-flex text-left py-3 border-bottom border-muted status-success hover:text-blue-dark text-small"
@@ -128,7 +139,10 @@ export default function AllStoresTable() {
                           Edit Store
                         </div>
                         <div
-                          onClick={() => {}}
+                          onClick={() => {
+                            setStoreModal("deactivate")
+                            setCurrentStore(row)
+                          }}
                           style={{cursor: "pointer"}}
                           className="d-flex text-left py-3 status-failed hover:text-blue-dark text-small"
                         >
@@ -175,8 +189,33 @@ export default function AllStoresTable() {
       setFilteredTableData(fd)
     },[searchKey, activeChartTab])
 
-
-
+  useEffect(() => {
+    if(storeModal && currentStore !== null){
+    setModalPage(EDIT_STORE_SUPER_MODAL);
+    if(storeModal ){
+      if(storeModal === "edit"){
+        setModalData(<EditStore store={currentStore}/>);
+      }else if(storeModal === "deactivate"){
+        setModalData(<DeactivateStore store={currentStore}/>);
+      }
+      setShowModal(true);
+    }
+  }
+  //eslint-disable-next-line
+  }, [storeModal]);useEffect(() => {
+    if(storeModal && currentStore !== null){
+    setModalPage(EDIT_STORE_SUPER_MODAL);
+    if(storeModal ){
+      if(storeModal === "edit"){
+        setModalData(<EditStore store={currentStore}/>);
+      }else if(storeModal === "deactivate"){
+        setModalData(<DeactivateStore store={currentStore}/>);
+      }
+      setShowModal(true);
+    }
+  }
+  //eslint-disable-next-line
+  }, [storeModal]);
 
 return (
 <div>

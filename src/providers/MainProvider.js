@@ -11,15 +11,22 @@ export default function MainProvider(props) {
     // modal pages
     const ADD_STORE_SUPER_MODAL = "addstore";
     const ADD_STORE_ADMIN_MODAL = "addstore_admin"
-    const ADD_NEW_USER_MODAL = "addnewuser"
+    const ADD_USER_MODAL = "addnewuser"
     const ADD_PRODUCT_MODAL = "addproduct"
     const ADD_STAFF_MODAL = "addstaff"
     const ADD_STORE_MODAL = "addstore"
+    const ADD_DEAL_MODAL = "adddeal"
+    const DEACTIVATE_USER_MODAL = "deactivateuser"
+    const DATERANGE_MODAL = "daterange"
+    const EDIT_USER_MODAL = "edituser"
+    const EDIT_PRODUCT_MODAL = "editproduct"
+    const EDIT_STORE_SUPER_MODAL = "addstore";
     const EDIT_CUSTOMER_MODAL = "editcustomer"
     const PRODUCT_DEAL_MODAL = "productdeal"
-    const DATERANGE_MODAL = "daterange"
-    const USE_PURCHASECODE_MODAL = "usepurchasecode"
     const PURCHASE_DETAILS_MODAL = "purchasedetails"
+    const REMOVE_PRODUCT_MODAL = "removeproduct"
+    const USE_PURCHASECODE_MODAL = "usepurchasecode"
+    
 
     const [showSidebar, setShowSidebar] = useState(false)
 
@@ -947,16 +954,22 @@ const filterDates = [
         <mainFunctions.Provider
         value={{
             ADD_STORE_SUPER_MODAL,
+            EDIT_STORE_SUPER_MODAL,
+            EDIT_USER_MODAL,
             ADD_STORE_ADMIN_MODAL,
-            ADD_NEW_USER_MODAL,
+            ADD_USER_MODAL,
             ADD_PRODUCT_MODAL,
             ADD_STAFF_MODAL,
             ADD_STORE_MODAL,
+            ADD_DEAL_MODAL,
+            DEACTIVATE_USER_MODAL,
             EDIT_CUSTOMER_MODAL,
             PRODUCT_DEAL_MODAL,
             DATERANGE_MODAL,
             USE_PURCHASECODE_MODAL,
             PURCHASE_DETAILS_MODAL,
+            EDIT_PRODUCT_MODAL,
+            REMOVE_PRODUCT_MODAL,
             showModal, 
             setShowModal,
             modalPage, 
@@ -1004,7 +1017,8 @@ const filterDates = [
             setDateFilter,
             storeFilter, 
             setStoreFilter,
-            filterDates
+            filterDates,
+            
         }}
         >
             {props.children}

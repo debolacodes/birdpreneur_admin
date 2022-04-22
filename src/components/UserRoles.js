@@ -1,14 +1,18 @@
 import React, {useState, useContext, useEffect} from 'react'
 import {mainFunctions} from "../providers/MainProvider";
 import Tables from './Tables';
-
-
 import { formatToCurrency, getDateTimeFormatUK } from "../utils";
+import AddUser from '../modals/AddUser';
+import EditUser from '../modals/EditUser';
+import {
+  BsThreeDots,
+} from "react-icons/bs";
 
-export default function UserRoles() {
+export default function UserRoles({setUserModal, setCurrentUser}) {
     const {
-        userRoles
+        userRoles,
       } = useContext(mainFunctions)
+  
 
   const [searchKey, setSearchKey] = useState("");
 
@@ -38,6 +42,10 @@ export default function UserRoles() {
       dataIndex: "store",
       sort: false,
     },
+    {
+      title:"",
+      dataIndex:"option"
+    }
   ];
  
   const handleSearch = (query) => {
@@ -51,11 +59,13 @@ export default function UserRoles() {
   }
   
   const [filteredTableData, setFilteredTableData] = useState(userRoles);
-
+  const [visibilities, setVisibilities] = React.useState(() =>
+    filteredTableData.map((x) => false)
+  );
 const dataSource =
     filteredTableData &&
       filteredTableData.length > 0
-        ? filteredTableData.map((row) => {
+        ? filteredTableData.map((row, index) => {
 					return {
 						id: (
                             <div>
@@ -86,15 +96,54 @@ const dataSource =
 							<div>
 								{row.store}
 							</div>
-						)
+						),
+            option:(
+              <div className="">
+                  <div className="position-relative">
+                    <div className="d-flex items-center" style={{cursor: "pointer"}}>
+                      <BsThreeDots
+                        onClick={() => handleClick(index)}
+                        size={24}
+                      />
+                    </div>
+                    {visibilities[index] ? (
+                      <div className="position-absolute border border-muted px-3 w-32 bg-white" style={{right: "0", top: "100%", zIndex: "2", width:  "150px"}}>
+                        <div
+                          onClick={() => {
+                            setUserModal("edit")
+                            setCurrentUser(row)
+                          }}
+                          style={{cursor: "pointer"}}
+                          className="d-flex text-left py-3 border-bottom border-muted status-success hover:text-blue-dark text-small"
+                        >
+                          Edit User
+                        </div>
+                        <div
+                          onClick={() => {
+                            setUserModal("deactivate")
+                            setCurrentUser(row)
+                          }}
+                          style={{cursor: "pointer"}}
+                          className="d-flex text-left py-3 status-failed hover:text-blue-dark text-small"
+                        >
+                          Deactivate User
+                        </div>
+                      </div>
+                    ) : ""}
+                  </div>
+                </div>
+            )
 					};
 			  })
 			: [];
-
+  
+const handleClick = (index) => {
+  const newVisibilities = [...visibilities];
+  newVisibilities[index] = !newVisibilities[index];
+  setVisibilities(newVisibilities);
+};
 useEffect(() => {
-    console.log("adeb")
     if(searchKey){
-        console.log("adeb")
         var fd = userRoles.filter((thisStore, index) => {
             var found = true;
             for(var i = 0; i < tableColumns.length; i++){

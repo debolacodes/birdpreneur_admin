@@ -5,51 +5,66 @@ import { formatToCurrency, getDateTimeFormatUK } from "../../../utils";
 import {
   BsThreeDots,
 } from "react-icons/bs";
+import EditProduct from '../../../modals/EditProduct';
+import RemoveProduct from '../../../modals/RemoveProduct';
+
 export default function ProductTable() {
-    const {
-        productsData
-      } = useContext(mainFunctions)
 
-  const [searchKey, setSearchKey] = useState("");
+const [productModal, setProductModal] = useState("")
 
-  const tableColumns = [
-    {
-      title: "Product ID",
-      dataIndex: "id",
-    },
-    {
-      title: "Product Name",
-      dataIndex: "productName",
-    },
-    {
-      title: "Unit Price",
-      dataIndex: "price",
-    },
-    {
-      title: "No of Purchases",
-      dataIndex: "purchases",
-    },
-    {
-      title: "Date Uploaded",
-      dataIndex: "date",
-    },
-    {
-      title: "",
-      dataIndex: "option",
-    },
-  ];
- 
-  const handleSearch = (query) => {
-		setSearchKey(query);
-	};
-  const handleStatusFilter = () => {
-
-  }
-  const handleDateFilter = () => {
-    
-  }
+const {
+  productsData,
+  setModalPage,
+  setModalData,
+  setShowModal,
+  EDIT_PRODUCT_MODAL,
+  REMOVE_PRODUCT_MODAL,
   
   
+} = useContext(mainFunctions)
+
+const [searchKey, setSearchKey] = useState("");
+
+const [currentRow, setCurrentRow] = useState({});
+
+const tableColumns = [
+  {
+    title: "Product ID",
+    dataIndex: "id",
+  },
+  {
+    title: "Product Name",
+    dataIndex: "productName",
+  },
+  {
+    title: "Unit Price",
+    dataIndex: "price",
+  },
+  {
+    title: "No of Purchases",
+    dataIndex: "purchases",
+  },
+  {
+    title: "Date Uploaded",
+    dataIndex: "date",
+  },
+  {
+    title: "",
+    dataIndex: "option",
+  },
+];
+
+const handleSearch = (query) => {
+  setSearchKey(query);
+};
+
+const handleStatusFilter = () => {
+
+}
+const handleDateFilter = () => {
+  
+}
+   
 const [filteredTableData, setFilteredTableData] = useState(productsData);
 
 const [visibilities, setVisibilities] = React.useState(() =>
@@ -136,7 +151,6 @@ const dataSource =
 			  })
 			: [];
 
-
 useEffect(() => {
         var fd = productsData.filter((thisStore, index) => {
             var found = true;
@@ -162,7 +176,22 @@ useEffect(() => {
         setFilteredTableData(fd)
   },[searchKey])
 
-
+  useEffect(() => {
+    setModalPage(EDIT_PRODUCT_MODAL);
+    if(productModal && JSON.stringify(currentRow) !== "{}"){
+      if(productModal === "edit"){
+        setModalData(
+          <EditProduct product={currentRow}/>
+        );
+      }else if(productModal === "edit"){
+        setModalData(
+        <RemoveProduct product={currentRow}/>
+        );
+      setShowModal(true);
+      }
+    }
+		//eslint-disable-next-line
+  }, [productModal]);
 
 
 return (

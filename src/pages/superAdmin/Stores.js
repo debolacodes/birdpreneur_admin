@@ -1,4 +1,4 @@
-import React, {useContext} from 'react'
+import React, {useContext, useEffect, useState} from 'react'
 import {mainFunctions} from "../../providers/MainProvider";
 
 import Sidebar from '../../components/Sidebar';
@@ -11,6 +11,8 @@ export default function Stores() {
   const {
     totalStoresOverview,
   } = useContext(mainFunctions)
+
+  
   return (
     <div className='body'>
         <Sidebar />

@@ -1,12 +1,16 @@
 import React, {useState, useContext, useEffect} from 'react'
 import {mainFunctions} from "../../../providers/MainProvider";
 import Tables from '../../../components/Tables';
+
 import { formatToCurrency, getDateTimeFormatUK } from "../../../utils";
 
 export default function StoresTable() {
-    const {
-        stores
-      } = useContext(mainFunctions)
+
+const {
+  stores
+} = useContext(mainFunctions)
+
+
 
   const [searchKey, setSearchKey] = useState("");
 
