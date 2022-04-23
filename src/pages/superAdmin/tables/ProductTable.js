@@ -85,7 +85,7 @@ const dataSource =
 						productName: (
 							<div>
                 <span style={{marginRight: "11px"}}>
-                  <img src={row.image} style={{
+                  <img src={require("../../../"+row.image)} style={{
                     width: "32px", 
                     height: "32px",
                     objectFit:"cover"
@@ -163,7 +163,7 @@ const dataSource =
                 if((typeof tableColumns[i].search === "undefined" || tableColumns[i].search === true)
                 && typeof thisStore[tableColumns[i].dataIndex] !== "undefined"
                 ){
-                    if(thisStore[tableColumns[i].dataIndex].toString().toLowerCase().includes(searchKey)){
+                    if(thisStore[tableColumns[i].dataIndex].toString().toLowerCase().includes(searchKey.toLocaleLowerCase())){
                         found = true
                         break
                     }else{

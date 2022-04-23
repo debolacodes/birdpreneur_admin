@@ -42,7 +42,7 @@ export default function Products() {
       price: 345000,
       purchases: 700,
       date: new Date(),
-      image: "icons/kfc.svg",
+      image: "assets/icons/kfc.svg",
     },
     {
       id: 43178,
@@ -50,7 +50,7 @@ export default function Products() {
       price: 345000,
       purchases: 700,
       date: new Date(),
-      image: "icons/kfc.svg",
+      image: "assets/icons/kfc.svg",
     },
     {
       id: 43178,
@@ -58,7 +58,7 @@ export default function Products() {
       price: 345000,
       purchases: 700,
       date: new Date(),
-      image: "icons/kfc.svg",
+      image: "assets/icons/kfc.svg",
     },
   ];
   let filteredTableData = tableData;
@@ -76,7 +76,7 @@ export default function Products() {
 						productName: (
 							<div>
                 <span style={{marginRight: "11px"}}>
-                  <img src={row.image} style={{width: "32px", height: "32px"}} alt="img"/>
+                  <img src={require("../../"+row.image)} style={{width: "32px", height: "32px"}} alt="img"/>
                 </span>
 								<span>{row.productName}</span>
 							</div>

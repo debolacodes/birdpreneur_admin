@@ -1,13 +1,17 @@
-import React, { useState } from 'react'
+import React, { useState, useContext, useEffect } from 'react'
 import Sidebar from '../../components/Sidebar';
 import TopBar from '../../components/TopBar';
 import DetailsBox from '../../components/DetailsBox';
 import Tables from '../../components/Tables';
+import {mainFunctions} from "../../providers/MainProvider";
 import { formatToCurrency, getDateTimeFormatUK } from "../../utils";
 
 export default function CustomerDetails() {
+  const {
+    customerTransaction
+  } = useContext(mainFunctions)
   const [searchKey, setSearchKey] = useState("");
-
+  
   const handleSearch = (query) => {
 		setSearchKey(query);
 	};
@@ -38,126 +42,30 @@ export default function CustomerDetails() {
       dataIndex: "status",
     },
   ];
-  const tableData = [
-    {
-      id: 43178,
-      purchase: "DJI Mavic Pro 2",
-      purchaseValue: 345000,
-      rewardsValue: 345000,
-      date: new Date(),
-      status: "Success",
-    },
-    {
-      id: 93455,
-      purchase: "Coach Tabby",
-      purchaseValue: 345000,
-      rewardsValue: 345000,
-      date: new Date(),
-      status: "Pending",
-    },
-    {
-      id: 43178,
-      purchase: "Heimer Miller Sofa",
-      purchaseValue: 345000,
-      rewardsValue: 345000,
-      date: new Date(),
-      status: "Pending",
-    },
-    {
-      id: 43178,
-      purchase: "Brand New Bike",
-      purchaseValue: 345000,
-      rewardsValue: 345000,
-      date: new Date(),
-      status: "Success",
-    },
-    {
-      id: 43178,
-      purchase: "Gaming Chair",
-      purchaseValue: 345000,
-      rewardsValue: 345000,
-      date: new Date(),
-      status: "Failed",
-    },
-    {
-      id: 43178,
-      purchase: "Coach Tabby",
-      purchaseValue: 345000,
-      rewardsValue: 345000,
-      date: new Date(),
-      status: "Success",
-    },
-    {
-      id: 43178,
-      purchase: "Heimer Miller Sofa",
-      purchaseValue: 345000,
-      rewardsValue: 345000,
-      date: new Date(),
-      status: "Pending",
-    },
-    {
-      id: 43178,
-      purchase: "Brand New Bike",
-      purchaseValue: 345000,
-      rewardsValue: 345000,
-      date: new Date(),
-      status: "Success",
-    },
-    {
-      id: 43178,
-      purchase: "Gaming Chair",
-      purchaseValue: 345000,
-      rewardsValue: 345000,
-      date: new Date(),
-      status: "Failed",
-    },
-    {
-      id: 43178,
-      purchase: "Coach Tabby",
-      purchaseValue: 345000,
-      rewardsValue: 345000,
-      date: new Date(),
-      status: "Success",
-    },
-    {
-      id: 43178,
-      purchase: "Heimer Miller Sofa",
-      purchaseValue: 345000,
-      rewardsValue: 345000,
-      date: new Date(),
-      status: "Pending",
-    },
-    {
-      id: 43178,
-      purchase: "Brand New Bike",
-      purchaseValue: 345000,
-      rewardsValue: 345000,
-      date: new Date(),
-      status: "Success",
-    },
-    {
-      id: 43178,
-      purchase: "Gaming Chair",
-      purchaseValue: 345000,
-      rewardsValue: 345000,
-      date: new Date(),
-      status: "Failed",
-    },
-    {
-      id: 43178,
-      purchase: "Coach Tabby",
-      purchaseValue: 345000,
-      rewardsValue: 345000,
-      date: new Date(),
-      status: "Success",
-    },
-  ];
-  let filteredTableData = tableData;
-	if (searchKey) {
-		filteredTableData = tableData?.filter((data) =>
-			data.purchase.toLowerCase().includes(searchKey.toLocaleLowerCase())
-		);
-	}
+  const [filteredTableData, setFilteredTableData] = useState(customerTransaction)
+
+  useEffect(() => {
+    var fd = customerTransaction.filter((row, index) => {
+        var found = true;
+        for(var i = 0; i < tableColumns.length; i++){
+            if((typeof tableColumns[i].search === "undefined" || tableColumns[i].search === true)
+            && typeof row[tableColumns[i].dataIndex] !== "undefined"
+            ){
+                if(row[tableColumns[i].dataIndex].toString().toLowerCase().includes(searchKey.toLocaleLowerCase())){
+                    found = true
+                    break
+                }else{
+                    // eslint-disable-next-line no-unused-vars
+                    found = false
+                    continue
+                }
+            }
+        
+        }
+        return found;
+    })
+    setFilteredTableData(fd)
+},[searchKey])
   const dataSource =
     filteredTableData &&
       filteredTableData.length > 0

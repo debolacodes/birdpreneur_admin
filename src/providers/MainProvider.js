@@ -538,7 +538,7 @@ export default function MainProvider(props) {
         price: 345000,
         purchases: 700,
         date: new Date(),
-        image: "icons/avatar1.png",
+        image: "assets/icons/avatar1.png",
       },
       {
         id: 43178,
@@ -546,7 +546,7 @@ export default function MainProvider(props) {
         price: 345000,
         purchases: 700,
         date: new Date(),
-        image: "icons/avatar2.png",
+        image: "assets/icons/avatar2.png",
       },
       {
         id: 43178,
@@ -554,7 +554,7 @@ export default function MainProvider(props) {
         price: 345000,
         purchases: 700,
         date: new Date(),
-        image: "icons/avatar3.png",
+        image: "assets/icons/avatar3.png",
       },
     ];
 
@@ -753,7 +753,7 @@ export default function MainProvider(props) {
      price:"345000",
      type:"percentage",
      value:10,
-     image:"icons/pancake.jpg"     
+     image:"assets/icons/pancake.jpg"     
     },
     {
       id:"9717",
@@ -761,7 +761,7 @@ export default function MainProvider(props) {
       price:"345100",
       type:"percentage",
       value:10,
-      image:"icons/biscuit.jpg"     
+      image:"assets/icons/biscuit.jpg"     
      },
      {
       id:"3963",
@@ -769,7 +769,7 @@ export default function MainProvider(props) {
       price:"345000",
       type:"unit",
       value:1,
-      image:"icons/burger.jpg"
+      image:"assets/icons/burger.jpg"
      },
 
   
@@ -956,6 +956,122 @@ const filterDates = [
   },
 
 ]
+
+//Customer Details  - SuperAdmin
+const customerTransaction = [
+  {
+    id: 43178,
+    purchase: "DJI Mavic Pro 2",
+    purchaseValue: 345000,
+    rewardsValue: 345000,
+    date: new Date(),
+    status: "Success",
+  },
+  {
+    id: 93455,
+    purchase: "Coach Tabby",
+    purchaseValue: 345000,
+    rewardsValue: 345000,
+    date: new Date(),
+    status: "Pending",
+  },
+  {
+    id: 43178,
+    purchase: "Heimer Miller Sofa",
+    purchaseValue: 345000,
+    rewardsValue: 345000,
+    date: new Date(),
+    status: "Pending",
+  },
+  {
+    id: 43178,
+    purchase: "Brand New Bike",
+    purchaseValue: 345000,
+    rewardsValue: 345000,
+    date: new Date(),
+    status: "Success",
+  },
+  {
+    id: 43178,
+    purchase: "Gaming Chair",
+    purchaseValue: 345000,
+    rewardsValue: 345000,
+    date: new Date(),
+    status: "Failed",
+  },
+  {
+    id: 43178,
+    purchase: "Coach Tabby",
+    purchaseValue: 345000,
+    rewardsValue: 345000,
+    date: new Date(),
+    status: "Success",
+  },
+  {
+    id: 43178,
+    purchase: "Heimer Miller Sofa",
+    purchaseValue: 345000,
+    rewardsValue: 345000,
+    date: new Date(),
+    status: "Pending",
+  },
+  {
+    id: 43178,
+    purchase: "Brand New Bike",
+    purchaseValue: 345000,
+    rewardsValue: 345000,
+    date: new Date(),
+    status: "Success",
+  },
+  {
+    id: 43178,
+    purchase: "Gaming Chair",
+    purchaseValue: 345000,
+    rewardsValue: 345000,
+    date: new Date(),
+    status: "Failed",
+  },
+  {
+    id: 43178,
+    purchase: "Coach Tabby",
+    purchaseValue: 345000,
+    rewardsValue: 345000,
+    date: new Date(),
+    status: "Success",
+  },
+  {
+    id: 43178,
+    purchase: "Heimer Miller Sofa",
+    purchaseValue: 345000,
+    rewardsValue: 345000,
+    date: new Date(),
+    status: "Pending",
+  },
+  {
+    id: 43178,
+    purchase: "Brand New Bike",
+    purchaseValue: 345000,
+    rewardsValue: 345000,
+    date: new Date(),
+    status: "Success",
+  },
+  {
+    id: 43178,
+    purchase: "Gaming Chair",
+    purchaseValue: 345000,
+    rewardsValue: 345000,
+    date: new Date(),
+    status: "Failed",
+  },
+  {
+    id: 43178,
+    purchase: "Coach Tabby",
+    purchaseValue: 345000,
+    rewardsValue: 345000,
+    date: new Date(),
+    status: "Success",
+  },
+];
     return (
         <mainFunctions.Provider
         value={{
@@ -1028,6 +1144,8 @@ const filterDates = [
             storeFilter, 
             setStoreFilter,
             filterDates,
+            //Customer Details
+            customerTransaction
             
         }}
         >

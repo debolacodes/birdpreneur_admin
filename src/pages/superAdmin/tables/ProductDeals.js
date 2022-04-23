@@ -80,7 +80,8 @@ const dataSource =
 						name: (
 							<div>
                 <span style={{marginRight: "11px"}}>
-                  <img src={row.image} style={{
+                  <img src={require('../../../'+row.image)} 
+                  style={{
                     width: "32px", 
                     height: "32px",
                     objectFit:"cover"

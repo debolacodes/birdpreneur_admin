@@ -59,11 +59,6 @@ const {
   
   const [filteredTableData, setFilteredTableData] = useState(stores);
 
-// if (searchKey) {
-//     filteredTableData = tableData?.filter((data) =>
-//         data.customerName.toLowerCase().includes(searchKey.toLocaleLowerCase())
-//     );
-// }
   
 const dataSource =
     filteredTableData &&
@@ -110,7 +105,7 @@ useEffect(() => {
             var found = true;
             for(var i = 0; i < tableColumns.length; i++){
                 if(typeof tableColumns[i].search === "undefined" || tableColumns[i].search === true){
-                    if(thisStore[tableColumns[i].dataIndex].toString().toLowerCase().includes(searchKey)){
+                    if(thisStore[tableColumns[i].dataIndex].toString().toLowerCase().includes(searchKey).toLocaleLowerCase()){
                         found = true
                         break
                     }else{
