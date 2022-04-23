@@ -1,6 +1,7 @@
 import React, {useState, useContext, useEffect} from 'react'
 import {mainFunctions} from "../../../providers/MainProvider";
 import Tables from '../../../components/Tables';
+import {Link} from 'react-router-dom'
 import { formatToCurrency, getDateTimeFormatUK } from "../../../utils";
 import {
   BsThreeDots,
@@ -89,7 +90,9 @@ const dataSource =
                 ),
             name: (
 							<div>
-								{row.name}
+                <Link to={`/customers/${row.id}`}>
+								  {row.name}
+                </Link>
 							</div>
 						),
 						email: (
