@@ -29,9 +29,9 @@ export default function Products() {
             <TopBar 
               title="Products"
               button={{
-                title: "DOWNLOAD REPORT",
-                action: () => {}
+                title: "DOWNLOAD REPORT"
               }}
+              buttonAction={()=>{}}
             />
             <div className="mainbar-container">
               <PageFilters />

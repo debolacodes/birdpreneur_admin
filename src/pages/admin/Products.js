@@ -107,8 +107,8 @@ export default function Products() {
               title="Products" 
               button={{
                 title: "DOWNLOAD REPORT",
-                action: () => {}
               }}
+              buttonAction={()=>{}}
             />
             <div className="full-mainbar-container">
               <PageFilters showStoreFilter={false} />

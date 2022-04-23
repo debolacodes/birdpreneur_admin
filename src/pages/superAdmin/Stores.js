@@ -24,9 +24,9 @@ export default function Stores() {
             <TopBar 
               title="Stores"
               button={{
-                title: "DOWNLOAD REPORT",
-                action: () => {}
+                title: "DOWNLOAD REPORT"
               }}
+              buttonAction={()=>{}}
             />
             <div className="mainbar-container">
             <div className="page-filter">

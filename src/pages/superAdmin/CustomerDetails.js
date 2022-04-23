@@ -109,7 +109,12 @@ export default function CustomerDetails() {
     <div className='body'>
         <Sidebar />
         <div className="mainbar">
-            <TopBar title="Customer Details"/>
+            <TopBar title="Customer Details"
+            button={{
+              title: "EDIT ACCOUNT"
+            }}
+            buttonAction={()=>{}}
+            />
             <div className="full-mainbar-container">
               <div className='row pt-5 border-bottom'>
                 <DetailsBox title="Customer ID:" value="8845"/>

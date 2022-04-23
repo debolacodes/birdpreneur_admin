@@ -32,9 +32,9 @@ export default function Rewards() {
         <div className="mainbar">
             <TopBar title="Rewards"
             button={{
-              title: "DOWNLOAD REPORT",
-              action: () => {}
+              title: "DOWNLOAD REPORT"
             }}
+            buttonAction={()=>{}}
             />
             <div className="mainbar-container">
             <div style={{minHeight:"80px"}}>

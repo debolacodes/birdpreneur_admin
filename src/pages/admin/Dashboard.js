@@ -179,9 +179,9 @@ export default function Dashboard() {
         <TopBar 
           title="Dashboard"
           button={{
-            title: "DOWNLOAD REPORT",
-            action: () => {}
+            title: "DOWNLOAD REPORT"
           }}
+          buttonAction={()=>{}}
         />
         <div className="full-mainbar-container">
           <PageFilters showStoreFilter={false} />
