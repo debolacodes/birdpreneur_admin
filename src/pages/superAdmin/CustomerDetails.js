@@ -118,7 +118,7 @@ export default function CustomerDetails() {
                 <DetailsBox title="Date Joined:" value="12/10/2018"/>
               </div>
               <div className='row'>
-                <DetailsBox title="Last Visit:" value="22 Oct, 2020"/>
+                <DetailsBox title="Last Visit:" value="<p>22 Oct, 2020<br/>(2 months ago)</p>" />
                 <DetailsBox title="Number of Purchase:" value="196"/>
                 <DetailsBox title="Rewards Gotten:" value="556"/>
               </div>
