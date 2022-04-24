@@ -13,6 +13,7 @@ import SuperAdminRevenue from "../pages/superAdmin/Revenue"
 import SuperAdminCustomers from "../pages/superAdmin/Customers"
 import SuperAdminProducts from "../pages/superAdmin/Products"
 import SuperAdminCustomerDetails from "../pages/superAdmin/CustomerDetails"
+import SuperAdminTransactionDetails from "../pages/superAdmin/TransactionDetails"
 import SuperAdminStores from "../pages/superAdmin/Stores"
 import SuperAdminRewards from "../pages/superAdmin/Rewards"
 
@@ -76,6 +77,11 @@ export default function AllRoutes() {
             ? <AdminCustomerDetails /> 
             : "superadmin" 
             && <SuperAdminCustomerDetails/> }
+          />
+          <Route exact path="/transaction/:id" element={role === "admin" 
+            ? <AdminCustomerDetails /> 
+            : "superadmin" 
+            && <SuperAdminTransactionDetails /> }
           />
       </Routes>
     </div>

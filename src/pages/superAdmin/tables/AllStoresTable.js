@@ -4,10 +4,9 @@ import {mainFunctions} from "../../../providers/MainProvider";
 import EditStore from "../../../modals/EditStore"
 import DeactivateStore from '../../../modals/DeactivateStore';
 import Tables from '../../../components/Tables';
-import TabTitle from '../../../components/TabTitle';
 
 
-import { formatToCurrency, getDateTimeFormatUK } from "../../../utils";
+import { getDateTimeFormatUK } from "../../../utils";
 import {
   BsThreeDots,
 } from "react-icons/bs";

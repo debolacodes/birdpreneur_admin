@@ -530,6 +530,29 @@ export default function MainProvider(props) {
       }
     ];
 
+    //Transaction Details 
+    const itemsPurchased = [
+      {
+        title: "Coach Tabby 26 for sale",
+        value: 32341
+      },
+      {
+        title: "Air Jordan 1 Top 3 Sneaker (DS)",
+        value: 32341
+      },
+      {
+        title: "Macbook Pro 16 inch (2020 ) For Sale",
+        value: 32341
+      },
+      {
+        title: "Brand New Bike, Local buyer only",
+        value: 32341
+      },
+      {
+        title: "Gopro hero 7 (with receipt)",
+        value: 341
+      },
+    ]
     //Products SuperAdmin
     const productsData = [
       {
@@ -1122,6 +1145,7 @@ const customerTransaction = [
             totalPurchasesOverview,
             totalRevenueMadeOverview,
             transactionData,
+            itemsPurchased,
             //Product SuperAdmin
             totalProductsOverview,
             productsData,

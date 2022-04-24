@@ -110,6 +110,7 @@ export default function CustomerDetails() {
         <Sidebar />
         <div className="mainbar">
             <TopBar title="Customer Details"
+            small={true}
             button={{
               title: "EDIT ACCOUNT"
             }}

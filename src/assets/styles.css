@@ -21,6 +21,32 @@ a:active {
     z-index: 111111;
 }
 
+.back {
+    display: flex;
+    cursor: pointer;
+}
+
+.back_icon {
+    width: 8px;
+    height: 24px;
+    cursor: pointer;
+    background: url("./icons/back.svg");
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    margin-right: 6px;
+}
+
+.back_text {
+    font-family: 'Inter', sans-serif;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 24px;
+    /* identical to box height, or 171% */
+    color: #66687E;
+}
+
 ::-webkit-input-placeholder {
     /* Edge */
     color: #757688;
@@ -202,7 +228,8 @@ a:active {
     position: relative;
     min-height: 50px;
     border-bottom: 1px solid #0000001D;
-    padding: 1rem;
+    /* padding: 1rem; */
+    padding: 1rem 5.063rem;
 }
 
 .topbar .page-anchor {
@@ -229,13 +256,19 @@ a:active {
 
 .topbar .title {
     font-family: 'Inter', sans-serif;
-    ;
     font-style: normal;
     font-weight: 700;
     font-size: 24px;
     /* line-height: 84px; */
     color: #000000;
     /* margin-left: 22px; */
+}
+
+.topbar .title.small {
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 24px;
+    margin-left: 20px;
 }
 
 .right-box .download_btn {
@@ -258,6 +291,20 @@ a:active {
     color: #FFFFFF;
     line-height: 50px;
     cursor: pointer;
+}
+
+.table_btn {
+    font-style: normal;
+    font-weight: 400;
+    font-size: 12px;
+    /* identical to box height, or 171% */
+    font-family: 'Inter', sans-serif;
+    color: #000000;
+    background: #02965611;
+    text-align: center;
+    cursor: pointer;
+    border-radius: 4px;
+    border: 1px solid #029656;
 }
 
 .btn_orange {
@@ -288,6 +335,82 @@ a:active {
     border-radius: 6px;
 }
 
+.list_box {
+    width: 100%;
+    max-width: 616px;
+    height: auto;
+    background: #FDFDFF;
+    border: 1px solid #E0E0E0;
+    box-sizing: border-box;
+    border-radius: 6px;
+    padding: 0 32px
+}
+
+.list_item {
+    height: 64px;
+    display: flex;
+    justify-content: space-between;
+    border-bottom: 1px solid #00000020;
+}
+
+.list_item:last-child {
+    border-bottom: unset
+}
+
+.list_item .title {
+    font-family: 'Inter', sans-serif;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 20px;
+    /* identical to box height */
+    color: #353535;
+    padding-top: 24px;
+}
+
+.list_item .value {
+    font-family: 'Inter', sans-serif;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 17px;
+    text-align: right;
+    color: #353535;
+    padding-top: 24px;
+}
+
+.list_box_total {
+    width: 616px;
+    height: 70px;
+    left: 365px;
+    top: 741px;
+    background: #F2F2F7;
+    border: 1px solid #E0E0E0;
+    box-sizing: border-box;
+    border-radius: 6px;
+    margin-top: 20px;
+    display: flex;
+    justify-content: space-between;
+    padding: 24px 32px;
+}
+
+.list_box_total .title {
+    font-family: 'Inter', sans-serif;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 24px;
+    color: #000000;
+}
+
+.list_box_total .value {
+    font-family: 'Inter', sans-serif;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    color: #353535;
+}
+
 .settings_dropdown_list {
     font-style: normal;
     font-weight: 400;
@@ -314,7 +437,6 @@ a:active {
 
 .profile .profile-details {
     font-family: 'Inter', sans-serif;
-    ;
     margin-left: 15px;
 }
 
@@ -408,7 +530,7 @@ a:active {
 
 .details_box {
     box-sizing: border-box;
-    padding: 22px 0px;
+    padding: 22px 12px;
     overflow-x: auto;
 }
 
@@ -1235,6 +1357,7 @@ select:focus {
         position: absolute;
         right: 10px;
         top: 10px;
+        cursor: pointer;
     }
     .sidebar_ {
         width: 284px;
@@ -1252,6 +1375,8 @@ select:focus {
     }
     .topbar .page-anchor {
         display: block !important;
+        position: absolute;
+        left: 10px;
     }
     .topbar .title {
         display: none !important;
@@ -1278,6 +1403,10 @@ select:focus {
 }
 
 @media screen and (max-width: 650px) {
+    .topbar {
+        width: 100% !important;
+        padding: 0.813rem 2.063rem;
+    }
     .summary_box {
         width: 100%;
         margin-right: 0;
@@ -1285,13 +1414,26 @@ select:focus {
     .download_button {
         display: none;
     }
+    .btn_ {
+        width: 100%;
+    }
     .topbar .right-box {
         /* width: 250px */
     }
     .mainbar-container {
-        margin: 0.813rem 2.063rem;
+        padding: 0.813rem 2.063rem;
+        width: 100%;
+        margin: unset;
     }
     .full-mainbar-container {
         margin: 0.813rem 2.063rem;
+    }
+    .page-filter {
+        width: 100%;
+        position: unset;
+        height: auto !important;
+        margin-bottom: 20px;
+        justify-content: center !important;
+        z-index: 1111111111111111111111111111;
     }
 }
