@@ -33,51 +33,49 @@ export default function AllRoutes() {
 	);
 
   return (
-    <div className='body'>
-        <Routes>
-          <Route exact path="/" element={<Login/>} />
-          <Route exact path="/login" element={<Login/>} />
-          <Route exact path="/forgotpassword" element={<ForgotPassword/>} />
-          <Route exact path="/changepassword" element={<ChangePassword/>} />
-          <Route exact path="/account" element={<AccountSettings/>} />
-          <Route exact path="/dashboard" element={role === "admin" 
-            ? <AdminDashboard /> 
-            : role === "superadmin" 
-            ? <SuperAdminDashboard/> 
-            : role === "cashier"
-            && <CashierDashboard/> } 
-          />
-          <Route exact path="/revenue" element={role === "admin" 
-            ? <AdminRevenue /> 
-            : "superadmin" 
-            && <SuperAdminRevenue/> }
-          />
-          <Route exact path="/products" element={role === "admin" 
-            ? <AdminProducts /> 
-            : "superadmin" 
-            && <SuperAdminProducts/> }
-          />
-          <Route exact path="/stores" element={role === "admin" 
-            ? <AdminStoreCashiers /> 
-            : "superadmin" 
-            && <SuperAdminStores/> }
-          />
-          <Route exact path="/customers" element={role === "admin" 
-            ? <AdminCustomers /> 
-            : "superadmin" 
-            && <SuperAdminCustomers/> }
-          />
-          <Route exact path="/rewards" element={role === "admin" 
-            ? <AdminDashboard /> 
-            : "superadmin" 
-            && <SuperAdminRewards/> }
-          />
-          <Route exact path="/customers/:id" element={role === "admin" 
-            ? <AdminCustomerDetails /> 
-            : "superadmin" 
-            && <SuperAdminCustomerDetails/> }
-          />
-      </Routes>
-    </div>
+    <Routes>
+      <Route exact path="/" element={<Login/>} />
+      <Route exact path="/login" element={<Login/>} />
+      <Route exact path="/forgotpassword" element={<ForgotPassword/>} />
+      <Route exact path="/changepassword" element={<ChangePassword/>} />
+      <Route exact path="/account" element={<AccountSettings/>} />
+      <Route exact path="/dashboard" element={role === "admin" 
+        ? <AdminDashboard /> 
+        : role === "superadmin" 
+        ? <SuperAdminDashboard/> 
+        : role === "cashier"
+        && <CashierDashboard/> } 
+      />
+      <Route exact path="/revenue" element={role === "admin" 
+        ? <AdminRevenue /> 
+        : "superadmin" 
+        && <SuperAdminRevenue/> }
+      />
+      <Route exact path="/products" element={role === "admin" 
+        ? <AdminProducts /> 
+        : "superadmin" 
+        && <SuperAdminProducts/> }
+      />
+      <Route exact path="/stores" element={role === "admin" 
+        ? <AdminStoreCashiers /> 
+        : "superadmin" 
+        && <SuperAdminStores/> }
+      />
+      <Route exact path="/customers" element={role === "admin" 
+        ? <AdminCustomers /> 
+        : "superadmin" 
+        && <SuperAdminCustomers/> }
+      />
+      <Route exact path="/rewards" element={role === "admin" 
+        ? <AdminDashboard /> 
+        : "superadmin" 
+        && <SuperAdminRewards/> }
+      />
+      <Route exact path="/customers/:id" element={role === "admin" 
+        ? <AdminCustomerDetails /> 
+        : "superadmin" 
+        && <SuperAdminCustomerDetails/> }
+      />
+    </Routes>
   )
 }

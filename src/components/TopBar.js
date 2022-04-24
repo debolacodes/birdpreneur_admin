@@ -30,7 +30,7 @@ export default function TopBar(props) {
         </div>
         <div className='align-right right-box'>
           {props.button &&
-            <div className='btn_ btn_orange download_button'>{props.button.title}</div>
+            <div className='btn_ btn_orange download_button' onClick={props.button.action}>{props.button.title}</div>
           }
             <div className='profile'>
                 <div className='avatar'></div>

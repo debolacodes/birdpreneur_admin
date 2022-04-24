@@ -1,11 +1,22 @@
-import React, { useState } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
+import ActivePurchases from '../../components/ActivePurchases';
 import EmptyPurchases from '../../components/EmptyPurchases';
 import Tables from '../../components/Tables';
 import TopBar from '../../components/TopBar';
-import { formatToCurrency, getDateTimeFormatUK } from "../../utils";
+import UsePurchaseCodeModal from '../../modals/UsePurchaseCode';
+import { formatToCurrency } from "../../utils";
+import {mainFunctions} from "../../providers/MainProvider";
 
 export default function Dashboard() {
+  const {
+    setShowModal,
+    setModalPage,
+    USE_PURCHASECODE_MODAL,
+    setModalData
+  } = useContext(mainFunctions)
 	const [searchKey, setSearchKey] = useState("");
+  const [purchases, setPurchases] = useState([]);
+  const [activeTab, setActiveTab] = useState("");
 
   const handleSearch = (query) => {
 		setSearchKey(query);
@@ -131,7 +142,7 @@ export default function Dashboard() {
             action: (
               <div 
                 className='bg-success d-inline p-2 border rounded-circle cursor-pointer' 
-                onClick={() =>{}}
+                onClick={() =>addPurchaseItem(row)}
               >
                 <img src={"icons/shopping_bag.svg"} alt="img"/>
               </div>
@@ -139,19 +150,92 @@ export default function Dashboard() {
 					};
 			  })
 			: [];
+
+  const addPurchaseItem = (item) => {
+    let temp = [...purchases];
+    const index = temp.indexOf(activeTab);
+    if(index > -1){
+      temp[index].items.push({
+        id: item.id,
+        productName: item.productName,
+        price: item.price,
+        image: item.image,
+      })
+      setPurchases(temp);
+      return;
+    }else{
+      addPurchase();
+      addPurchaseItem(item);
+    };
+  }
+  
+  const addPurchase = () => {
+    let temp = [...purchases];
+    if(temp.length<5){
+      temp.push({
+        id: temp.length + 1,
+        items: []
+      })
+    }else{
+      //show error here to delete a purchase first
+    };
+    setPurchases(temp);
+  }
+  const handleProceed = () => {
+
+  }
+  const deletePurchase = (data) => {
+    let temp = [...purchases];
+    const index = temp.indexOf(data);
+    if (index > -1) 
+      temp.splice(index, 1);
+    setPurchases(temp);
+    if(purchases.length > 0)
+      setActiveTab(purchases[0]);
+  }
+  const deletePurchaseItem = (item) => {
+    let temp = [...purchases];
+    const purchaseIndex = temp.indexOf(activeTab);
+    const itemIndex = temp[purchaseIndex].items.indexOf(item);
+    if(itemIndex > -1){
+      temp[purchaseIndex].items.splice(itemIndex, 1);
+    }
+    setPurchases(temp);
+  }
+  useEffect(()=>{
+    const purchaseIndex = purchases.indexOf(activeTab);
+    if(!activeTab && purchases.length > 0){
+      setActiveTab(purchases[0])
+    }
+    if(!(purchaseIndex > -1) && purchases.length > 0){
+      setActiveTab(purchases[0])
+    }
+    if(!(purchases.length > 0)){
+      setActiveTab("")
+    }
+  },[purchases])
+  
+  const showUsePurchaseCodeModal = () => {
+    setModalPage(USE_PURCHASECODE_MODAL);
+    setModalData(
+      <UsePurchaseCodeModal />
+    );
+    setShowModal(true);
+    return;
+  }
   return (
     <div className='body'>
         {/* <Sidebar /> */}
-        <div className="mainbar w-100">
+        <div className="cashier-main w-100">
             <TopBar 
               title="All Products"
               handleSearch={handleSearch}
               button={{
                 title: "Use Customer Purchase Code",
-                action: () => {}
+                action: () =>showUsePurchaseCodeModal()
               }}
             />
-            <div className="d-flex flex-wrap h-100 w-100">
+            <div className="d-flex flex-wrap justify-content-center h-100 w-100">
               <div className='col px-5'>
                 <Tables 
                   columns={tableColumns}
@@ -160,17 +244,19 @@ export default function Dashboard() {
                 />
               </div>
               <div className='col bg-light'>
-                <EmptyPurchases />
-                {/* <div className='purchases_wrapper p-5'>
-                  <div className='d-flex justify-content-between'>
-                    <div className='title'>Active Purchases</div>
-                    <div 
-                      className='text-success cursor-pointer sub_title'
-                      onClick={() => {}}
-                    >+ Add A Purchase</div>
-                  </div>
-
-                </div> */}
+                
+                {purchases.length > 0 
+                  ? <ActivePurchases
+                      purchases={purchases}
+                      addPurchase={addPurchase}
+                      handleProceed={handleProceed}
+                      deletePurchase={deletePurchase}
+                      activeTab={activeTab}
+                      setActiveTab={setActiveTab}
+                      deletePurchaseItem={deletePurchaseItem}
+                    />
+                  : <EmptyPurchases />
+                }
               </div>
             </div>
         </div>
