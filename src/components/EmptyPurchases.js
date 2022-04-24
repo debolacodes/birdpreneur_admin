@@ -1,4 +1,5 @@
 import React from 'react'
+import EmptyCart from "../assets/icons/empty_cart.svg"
 
 export default function EmptyPurchases() {
   return (
@@ -7,7 +8,7 @@ export default function EmptyPurchases() {
 				<div className='title'>Active Purchases</div>
 			</div>
 			<div className='d-flex flex-column justify-content-center align-items-center'>
-        <img src={"icons/empty_cart.svg"} alt="img"/>
+        <img src={EmptyCart} alt="img"/>
 				<p>No Active Purchase Yet</p>
 			</div>
 			<div className='d-flex justify-content-center border-top p-5'>

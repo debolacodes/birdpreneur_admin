@@ -18,7 +18,7 @@ export default function TopBar(props) {
           setShowSidebar(true)
         }}
         ></div>
-        <div className='d-flex align-items-center'>
+        <div className='d-flex align-items-center gap-3'>
           {props.small &&
             <div className='back'>
               <div className='back_icon'></div>

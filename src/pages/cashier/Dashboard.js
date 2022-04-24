@@ -6,6 +6,7 @@ import TopBar from '../../components/TopBar';
 import UsePurchaseCodeModal from '../../modals/UsePurchaseCode';
 import { formatToCurrency } from "../../utils";
 import {mainFunctions} from "../../providers/MainProvider";
+import ShoppingBag from "../../assets/icons/shopping_bag.svg";
 
 export default function Dashboard() {
   const {
@@ -144,7 +145,7 @@ export default function Dashboard() {
                 className='bg-success d-inline p-2 border rounded-circle cursor-pointer' 
                 onClick={() =>addPurchaseItem(row)}
               >
-                <img src={require("../../assets/icons/shopping_bag.svg")} alt="img"/>
+                <img src={ShoppingBag} alt="img"/>
               </div>
             ),
 					};
@@ -213,6 +214,7 @@ export default function Dashboard() {
     if(!(purchases.length > 0)){
       setActiveTab("")
     }
+		//eslint-disable-next-line
   },[purchases])
   
   const showUsePurchaseCodeModal = () => {
@@ -224,7 +226,7 @@ export default function Dashboard() {
     return;
   }
   return (
-    <div className='body'>
+    <div className='w-100'>
         {/* <Sidebar /> */}
         <div className="cashier-main w-100">
             <TopBar 

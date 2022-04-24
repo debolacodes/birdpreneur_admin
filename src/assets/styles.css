@@ -1350,7 +1350,7 @@ select:focus {
 .challenge_box_td {
     min-width: 100px;
     display: flex;
-    justify-content: start;
+    justify-content: flex-start;
     flex-direction: row;
     padding-top: 9px;
 }
@@ -1490,7 +1490,7 @@ select:focus {
         position: unset;
         height: auto !important;
         margin-bottom: 20px;
-        justify-content: center !important;
+        /* justify-content: center !important; */
         z-index: 1111111111111111111111111111;
     }
 }
