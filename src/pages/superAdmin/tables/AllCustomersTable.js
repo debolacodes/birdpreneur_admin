@@ -1,7 +1,11 @@
 import React, {useState, useContext, useEffect} from 'react'
 import {mainFunctions} from "../../../providers/MainProvider";
 import Tables from '../../../components/Tables';
+import {Link} from 'react-router-dom'
 import { formatToCurrency, getDateTimeFormatUK } from "../../../utils";
+import {
+  BsThreeDots,
+} from "react-icons/bs";
 
 export default function CustomersDataTable() {
     const {
@@ -45,6 +49,10 @@ export default function CustomersDataTable() {
       title: "Last Visit",
       dataIndex: "lastVisit",
       sort: true,
+    },
+    {
+      title: "",
+      dataIndex:"option"
     }
   ];
  
@@ -59,11 +67,21 @@ export default function CustomersDataTable() {
   }
   
 const [filteredTableData, setFilteredTableData] = useState(customersData);
-  
+
+const [visibilities, setVisibilities] = React.useState(() =>
+  filteredTableData.map((x) => false)
+);
+
+const handleClick = (index) => {
+  const newVisibilities = [...visibilities];
+  newVisibilities[index] = !newVisibilities[index];
+  setVisibilities(newVisibilities);
+};
+
 const dataSource =
     filteredTableData &&
       filteredTableData.length > 0
-        ? filteredTableData.map((row) => {
+        ? filteredTableData.map((row, index) => {
 					return {
 						id: (
                 <div>
@@ -72,7 +90,9 @@ const dataSource =
                 ),
             name: (
 							<div>
-								{row.name}
+                <Link to={`/customers/${row.id}`}>
+								  {row.name}
+                </Link>
 							</div>
 						),
 						email: (
@@ -100,6 +120,35 @@ const dataSource =
 								{getDateTimeFormatUK(row.lastVisit)}
 							</div>
 						),
+            option: (
+							<div className="">
+								<div className="position-relative">
+									<div className="d-flex items-center" style={{cursor: "pointer"}}>
+                    <BsThreeDots
+									    onClick={() => handleClick(index)}
+                      size={24}
+                    />
+									</div>
+                  {visibilities[index] ? (
+                    <div className="position-absolute border border-muted px-3 w-32 bg-white" style={{right: "0", top: "100%", zIndex: "2", width:  "150px"}}>
+                      <div
+                        onClick={() => {
+                          // setEditStaff({
+                          //   fullName : row.cashierName,
+                          //   email: row.email,
+                          // });
+                          // setStaffModal(row);
+                        }}
+                        style={{cursor: "pointer"}}
+                        className="d-flex text-left py-3 border-bottom border-muted status-success hover:text-blue-dark text-small"
+                      >
+                        Edit Details
+                      </div>
+                    </div>
+                  ) : ""}
+								</div>
+              </div>
+						)
 						
 					};
 			  })
@@ -112,8 +161,7 @@ useEffect(() => {
                 if((typeof tableColumns[i].search === "undefined" || tableColumns[i].search === true)
                 && typeof thisStore[tableColumns[i].dataIndex] !== "undefined"
                 ){
-                  console.log(thisStore[tableColumns[i].dataIndex])
-                    if(thisStore[tableColumns[i].dataIndex].toString().toLowerCase().includes(searchKey)){
+                    if(thisStore[tableColumns[i].dataIndex].toString().toLowerCase().includes(searchKey.toLocaleLowerCase())){
                         found = true
                         break
                     }else{
@@ -124,7 +172,6 @@ useEffect(() => {
                 }
             
             }
-            console.log(found)
             return found;
         })
         setFilteredTableData(fd)
@@ -140,6 +187,8 @@ return (
     dataSource={dataSource}
     columns={tableColumns}
     handleSearch={setSearchKey}
+    showPagination={true}
+    showPageSize={true}
     ></Tables>
 </div>
 )

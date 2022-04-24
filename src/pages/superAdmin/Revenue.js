@@ -25,8 +25,8 @@ export default function Revenue() {
               title="Revenue"
               button={{
                 title: "DOWNLOAD REPORT",
-                action: () => {}
               }}
+              buttonAction={()=>{}}
             />
             <div className="mainbar-container">
               <PageFilters />

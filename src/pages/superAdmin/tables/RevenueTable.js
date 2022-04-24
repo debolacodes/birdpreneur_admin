@@ -2,6 +2,7 @@ import React, {useState, useContext, useEffect} from 'react'
 import {mainFunctions} from "../../../providers/MainProvider";
 import Tables from '../../../components/Tables';
 import { formatToCurrency, getDateTimeFormatUK } from "../../../utils";
+import {Link} from "react-router-dom"
 
 export default function RevenueTable() {
     const {
@@ -61,6 +62,11 @@ export default function RevenueTable() {
         sort: false,
         search:false
     },
+    {
+      title: "",
+      dataIndex:"details",
+      search:false
+    }
   ];
  
 
@@ -78,10 +84,10 @@ const dataSource =
         ? filteredTableData.map((row) => {
 					return {
 						id: (
-                            <div>
-                                ID: {row.id}
-                            </div>
-                            ),
+              <div>
+                  ID: {row.id}
+              </div>
+            ),
             store: (
 							<div>
 								{row.store}
@@ -107,21 +113,26 @@ const dataSource =
 								₦{formatToCurrency(row.rewardsValue, 1)}
 							</div>
 						),
-                        date: (
-                            <div>
-                                {getDateTimeFormatUK(row.date)}
-                            </div>
-                        ),
-                        status: (
-							<div className={`status ${row.status === "Success"
-                                ? "success"
-                                : row.status === "Pending"
-                                ? "pending"
-                                : "failed"
-                            }`}>
-								{row.status }
-							</div>
-						),
+            date: (
+                <div>
+                    {getDateTimeFormatUK(row.date)}
+                </div>
+            ),
+            status: (
+                <div className={`status-${row.status === "Success"
+                                  ? "success"
+                                  : row.status === "Pending"
+                                  ? "pending"
+                                  : "failed"
+                              }`}>
+                  {row.status }
+                </div>
+            ),
+            details:(
+              <div className="table_btn">
+                <Link to={`/transaction/${row.id}`}>Details</Link>
+              </div>
+            )
 					};
 			  })
 			: [];
@@ -146,7 +157,6 @@ useEffect(() => {
                 }
             
             }
-            console.log(found)
             return found;
         })
         setFilteredTableData(fd)

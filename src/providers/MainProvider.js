@@ -11,18 +11,32 @@ export default function MainProvider(props) {
     // modal pages
     const ADD_STORE_SUPER_MODAL = "addstore";
     const ADD_STORE_ADMIN_MODAL = "addstore_admin"
-    const ADD_NEW_USER_MODAL = "addnewuser"
+    const ADD_USER_MODAL = "addnewuser"
     const ADD_PRODUCT_MODAL = "addproduct"
     const ADD_STAFF_MODAL = "addstaff"
     const ADD_STORE_MODAL = "addstore"
+    const ADD_DEAL_MODAL = "adddeal"
+    const DEACTIVATE_USER_MODAL = "deactivateuser"
+    const DEACTIVATE_STORE_MODAL = "deactiveatestore"
+    const DATERANGE_MODAL = "daterange"
+    const EDIT_USER_MODAL = "edituser"
+    const EDIT_PRODUCT_MODAL = "editproduct"
+    const EDIT_DEALS_MODAL = "editdeals"
+    const EDIT_STORE_SUPER_MODAL = "addstore";
     const EDIT_CUSTOMER_MODAL = "editcustomer"
     const PRODUCT_DEAL_MODAL = "productdeal"
-    const DATERANGE_MODAL = "daterange"
-    const USE_PURCHASECODE_MODAL = "usepurchasecode"
     const PURCHASE_DETAILS_MODAL = "purchasedetails"
+    const REMOVE_PRODUCT_MODAL = "removeproduct"
+    const REMOVE_DEALS_MODAL = "removedeals"
+    const USE_PURCHASECODE_MODAL = "usepurchasecode"
+    
 
     const [showSidebar, setShowSidebar] = useState(false)
-
+    const allUserRoles = [
+      {id:1, name: "Super Admin"},
+      {id:2, name: "Admin"},
+      {id:3, name: "User"},
+    ] 
     const [showModal, setShowModal] = useState(false);
     const [modalPage, setModalPage] = useState("");
     const [modalData, setModalData] = useState({});
@@ -37,6 +51,9 @@ export default function MainProvider(props) {
         }
         navigate("/dashboard")
     }
+    const logout = () =>{
+      navigate("/")
+    }
     
     const resetpassword = () =>{
         navigate("/dashboard")
@@ -49,7 +66,7 @@ export default function MainProvider(props) {
     // Super Admin Dashboard
     const totalStoresOverview = {
         title:"Total Stores",
-        value:"243"
+        value:"23"
     }
     const totalSalesOverview = {
         title:"Total Sales Made",
@@ -64,7 +81,7 @@ export default function MainProvider(props) {
         { name: 'KFC Egbeda', value: 740 },
         { name: 'KFC VI 2', value: 700 },
         { name: 'KFC VI', value: 600 },
-        { name: 'KFC Banana Island', value: 523 },
+        { name: 'KFC Banana Island', value: 20 },
     ];
     const top5SalesPeriod =  [
       { name: 'January', value: 1080 },
@@ -200,7 +217,7 @@ export default function MainProvider(props) {
         total_customers:6
       },
       {
-        id: "43179",
+        id: "4311979",
         name: "KFC V1 2",
         location: "50 Adeola Odeku Rd, VI, Lagos",
         manager: "Ifeoma Oluoma",
@@ -233,14 +250,14 @@ export default function MainProvider(props) {
       },
       {
         id: "43183",
-        name: "KFC Ibadan",
+        name: "KFC Ibadan 2",
         location: "50 Challenge Rd, Ibadan",
         manager: "Stella Damasus",
         revenue: "895000",
         total_customers:325
       },
       {
-        id: "43184",
+        id: "4311184",
         name: "KFC Abuja",
         location: "50 Challenge Rd, Ibadan",
         manager: "Reece James",
@@ -248,16 +265,14 @@ export default function MainProvider(props) {
         total_customers:1125
       },
       {
-        id: "43184",
-        name: "KFC Abuja",
+        id: "4311185",
+        name: "KFC Abuja 2",
         location: "50 Rd, Ota",
         manager: "Reece James",
         revenue: "95000",
         total_customers:1125
       }
     ]
-      
-
     //   Revenue SuperAdmin
     const totalPurchasesOverview = {
         title:"Total Purchases",
@@ -515,6 +530,29 @@ export default function MainProvider(props) {
       }
     ];
 
+    //Transaction Details 
+    const itemsPurchased = [
+      {
+        title: "Coach Tabby 26 for sale",
+        value: 32341
+      },
+      {
+        title: "Air Jordan 1 Top 3 Sneaker (DS)",
+        value: 32341
+      },
+      {
+        title: "Macbook Pro 16 inch (2020 ) For Sale",
+        value: 32341
+      },
+      {
+        title: "Brand New Bike, Local buyer only",
+        value: 32341
+      },
+      {
+        title: "Gopro hero 7 (with receipt)",
+        value: 341
+      },
+    ]
     //Products SuperAdmin
     const productsData = [
       {
@@ -523,7 +561,7 @@ export default function MainProvider(props) {
         price: 345000,
         purchases: 700,
         date: new Date(),
-        image: "icons/avatar1.png",
+        image: "assets/icons/avatar1.png",
       },
       {
         id: 43178,
@@ -531,7 +569,7 @@ export default function MainProvider(props) {
         price: 345000,
         purchases: 700,
         date: new Date(),
-        image: "icons/avatar2.png",
+        image: "assets/icons/avatar2.png",
       },
       {
         id: 43178,
@@ -539,7 +577,7 @@ export default function MainProvider(props) {
         price: 345000,
         purchases: 700,
         date: new Date(),
-        image: "icons/avatar3.png",
+        image: "assets/icons/avatar3.png",
       },
     ];
 
@@ -557,6 +595,96 @@ export default function MainProvider(props) {
       value:"415"
     }
     const customersData = [
+      {
+        id:"43178",
+        name:"Joke Ojo",
+        email:"renny@yahoo.com",
+        totalPurchase:250,
+        purchaseValue:250000,
+        rewardsValue:30000,
+        lastVisit: new Date(),
+      },
+      {
+        id:"43178",
+        name:"Seyi Ojo",
+        email:"setyi@yahoo.com",
+        totalPurchase:250,
+        purchaseValue:250000,
+        rewardsValue:30000,
+        lastVisit: new Date(),
+      },
+      {
+        id:"43178",
+        name:"Fela Bisi",
+        email:"renny@yahoo.com",
+        totalPurchase:250,
+        purchaseValue:250000,
+        rewardsValue:30000,
+        lastVisit: new Date(),
+      },
+      {
+        id:"43178",
+        name:"Ireti Kunle",
+        email:"renny@yahoo.com",
+        totalPurchase:250,
+        purchaseValue:250000,
+        rewardsValue:30000,
+        lastVisit: new Date(),
+      },
+      {
+        id:"43178",
+        name:"Lolade Fajobi",
+        email:"renny@yahoo.com",
+        totalPurchase:250,
+        purchaseValue:250000,
+        rewardsValue:30000,
+        lastVisit: new Date(),
+      },
+      {
+        id:"43178",
+        name:"Joke Ojo",
+        email:"renny@yahoo.com",
+        totalPurchase:250,
+        purchaseValue:250000,
+        rewardsValue:30000,
+        lastVisit: new Date(),
+      },
+      {
+        id:"43178",
+        name:"Seyi Ojo",
+        email:"setyi@yahoo.com",
+        totalPurchase:250,
+        purchaseValue:250000,
+        rewardsValue:30000,
+        lastVisit: new Date(),
+      },
+      {
+        id:"43178",
+        name:"Fela Bisi",
+        email:"renny@yahoo.com",
+        totalPurchase:250,
+        purchaseValue:250000,
+        rewardsValue:30000,
+        lastVisit: new Date(),
+      },
+      {
+        id:"43178",
+        name:"Ireti Kunle",
+        email:"renny@yahoo.com",
+        totalPurchase:250,
+        purchaseValue:250000,
+        rewardsValue:30000,
+        lastVisit: new Date(),
+      },
+      {
+        id:"43178",
+        name:"Lolade Fajobi",
+        email:"renny@yahoo.com",
+        totalPurchase:250,
+        purchaseValue:250000,
+        rewardsValue:30000,
+        lastVisit: new Date(),
+      },
       {
         id:"43178",
         name:"Joke Ojo",
@@ -648,7 +776,7 @@ export default function MainProvider(props) {
      price:"345000",
      type:"percentage",
      value:10,
-     image:"icons/pancake.jpg"     
+     image:"assets/icons/pancake.jpg"     
     },
     {
       id:"9717",
@@ -656,7 +784,7 @@ export default function MainProvider(props) {
       price:"345100",
       type:"percentage",
       value:10,
-      image:"icons/biscuit.jpg"     
+      image:"assets/icons/biscuit.jpg"     
      },
      {
       id:"3963",
@@ -664,7 +792,7 @@ export default function MainProvider(props) {
       price:"345000",
       type:"unit",
       value:1,
-      image:"icons/burger.jpg"
+      image:"assets/icons/burger.jpg"
      },
 
   
@@ -774,7 +902,6 @@ export default function MainProvider(props) {
   ])
 
   const toggleChallenge = (id) =>{
-    // console.log(id)
     var challenge_temp = [...challenges]
     for(var i = 0; i < challenge_temp.length; i++){
       if(id.toString() === challenge_temp[i].id.toString()){
@@ -794,35 +921,35 @@ export default function MainProvider(props) {
       name: "Basirat Salihu",
       email:"rennyoni@yahoo.com",
       role:"Super Admin",
-      store:"KFC VI"
+      store:"KFC Egbeda"
+    },
+    {
+      id: 4378,
+      name: "Basirat Salihu",
+      email:"rennyoni@yahoo.com",
+      role:"Super Admin",
+      store:"KFC Lekki"
+    },
+    {
+      id: 4318,
+      name: "Basirat Salihu",
+      email:"rennyoni@yahoo.com",
+      role:"Super Admin",
+      store:"KFC VI 1"
+    },
+    {
+      id: 43199,
+      name: "Basirat Salihu",
+      email:"rennyoni@yahoo.com",
+      role:"Super Admin",
+      store:"KFC VI 2"
     },
     {
       id: 43178,
       name: "Basirat Salihu",
       email:"rennyoni@yahoo.com",
       role:"Super Admin",
-      store:"KFC VI"
-    },
-    {
-      id: 43178,
-      name: "Basirat Salihu",
-      email:"rennyoni@yahoo.com",
-      role:"Super Admin",
-      store:"KFC VI"
-    },
-    {
-      id: 43178,
-      name: "Basirat Salihu",
-      email:"rennyoni@yahoo.com",
-      role:"Super Admin",
-      store:"KFC VI"
-    },
-    {
-      id: 43178,
-      name: "Basirat Salihu",
-      email:"rennyoni@yahoo.com",
-      role:"Super Admin",
-      store:"KFC VI"
+      store:"Egbeda"
     },
 
 ]
@@ -852,20 +979,146 @@ const filterDates = [
   },
 
 ]
+
+//Customer Details  - SuperAdmin
+const customerTransaction = [
+  {
+    id: 43178,
+    purchase: "DJI Mavic Pro 2",
+    purchaseValue: 345000,
+    rewardsValue: 345000,
+    date: new Date(),
+    status: "Success",
+  },
+  {
+    id: 93455,
+    purchase: "Coach Tabby",
+    purchaseValue: 345000,
+    rewardsValue: 345000,
+    date: new Date(),
+    status: "Pending",
+  },
+  {
+    id: 43178,
+    purchase: "Heimer Miller Sofa",
+    purchaseValue: 345000,
+    rewardsValue: 345000,
+    date: new Date(),
+    status: "Pending",
+  },
+  {
+    id: 43178,
+    purchase: "Brand New Bike",
+    purchaseValue: 345000,
+    rewardsValue: 345000,
+    date: new Date(),
+    status: "Success",
+  },
+  {
+    id: 43178,
+    purchase: "Gaming Chair",
+    purchaseValue: 345000,
+    rewardsValue: 345000,
+    date: new Date(),
+    status: "Failed",
+  },
+  {
+    id: 43178,
+    purchase: "Coach Tabby",
+    purchaseValue: 345000,
+    rewardsValue: 345000,
+    date: new Date(),
+    status: "Success",
+  },
+  {
+    id: 43178,
+    purchase: "Heimer Miller Sofa",
+    purchaseValue: 345000,
+    rewardsValue: 345000,
+    date: new Date(),
+    status: "Pending",
+  },
+  {
+    id: 43178,
+    purchase: "Brand New Bike",
+    purchaseValue: 345000,
+    rewardsValue: 345000,
+    date: new Date(),
+    status: "Success",
+  },
+  {
+    id: 43178,
+    purchase: "Gaming Chair",
+    purchaseValue: 345000,
+    rewardsValue: 345000,
+    date: new Date(),
+    status: "Failed",
+  },
+  {
+    id: 43178,
+    purchase: "Coach Tabby",
+    purchaseValue: 345000,
+    rewardsValue: 345000,
+    date: new Date(),
+    status: "Success",
+  },
+  {
+    id: 43178,
+    purchase: "Heimer Miller Sofa",
+    purchaseValue: 345000,
+    rewardsValue: 345000,
+    date: new Date(),
+    status: "Pending",
+  },
+  {
+    id: 43178,
+    purchase: "Brand New Bike",
+    purchaseValue: 345000,
+    rewardsValue: 345000,
+    date: new Date(),
+    status: "Success",
+  },
+  {
+    id: 43178,
+    purchase: "Gaming Chair",
+    purchaseValue: 345000,
+    rewardsValue: 345000,
+    date: new Date(),
+    status: "Failed",
+  },
+  {
+    id: 43178,
+    purchase: "Coach Tabby",
+    purchaseValue: 345000,
+    rewardsValue: 345000,
+    date: new Date(),
+    status: "Success",
+  },
+];
     return (
         <mainFunctions.Provider
         value={{
             ADD_STORE_SUPER_MODAL,
+            EDIT_STORE_SUPER_MODAL,
+            EDIT_USER_MODAL,
             ADD_STORE_ADMIN_MODAL,
-            ADD_NEW_USER_MODAL,
+            ADD_USER_MODAL,
             ADD_PRODUCT_MODAL,
             ADD_STAFF_MODAL,
             ADD_STORE_MODAL,
+            ADD_DEAL_MODAL,
+            DEACTIVATE_USER_MODAL,
+            DEACTIVATE_STORE_MODAL,
             EDIT_CUSTOMER_MODAL,
+            EDIT_DEALS_MODAL,
             PRODUCT_DEAL_MODAL,
             DATERANGE_MODAL,
             USE_PURCHASECODE_MODAL,
             PURCHASE_DETAILS_MODAL,
+            EDIT_PRODUCT_MODAL,
+            REMOVE_PRODUCT_MODAL,
+            REMOVE_DEALS_MODAL,
+            allUserRoles,
             showModal, 
             setShowModal,
             modalPage, 
@@ -877,6 +1130,7 @@ const filterDates = [
             changepassword,
             showSidebar, 
             setShowSidebar,
+            logout,
             // Dashboard SuperAdmin
             totalSalesOverview,
             totalStoresOverview,
@@ -891,6 +1145,7 @@ const filterDates = [
             totalPurchasesOverview,
             totalRevenueMadeOverview,
             transactionData,
+            itemsPurchased,
             //Product SuperAdmin
             totalProductsOverview,
             productsData,
@@ -912,7 +1167,10 @@ const filterDates = [
             setDateFilter,
             storeFilter, 
             setStoreFilter,
-            filterDates
+            filterDates,
+            //Customer Details
+            customerTransaction
+            
         }}
         >
             {props.children}

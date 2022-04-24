@@ -169,8 +169,8 @@ export default function Customers() {
               title="Customers"
               button={{
                 title: "DOWNLOAD REPORT",
-                action: () => {}
               }}
+              buttonAction={()=>{}}
             />
             <div className="full-mainbar-container">
               <PageFilters showStoreFilter={false} />

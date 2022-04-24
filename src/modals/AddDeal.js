@@ -1,9 +1,11 @@
 import React, {useContext} from 'react'
 import {mainFunctions} from "../providers/MainProvider";
-
-const AddProduct = ({product}) => {
+import { formatToCurrency} from "../utils";
+const AddDeal = () => {
     const {
     setShowModal,
+    productsData,
+    productDeals
     } = useContext(mainFunctions)
   return (
     <div className='w-100 h-100 d-flex flex-column align-items-center justify-content-center add_staff_modal'>
@@ -14,32 +16,38 @@ const AddProduct = ({product}) => {
         This is place holder text. The basic dialog for modals should contain only valuable and relevant information. 
       </p>
         <div className='auth_form_container'>
+          
           <div className='fieldset'>
-            <label className='label'>Product Name</label>
+            <label className='label'>Product</label>
             <div className='input_box'>
-              <input 
-                type="text" 
-                onChange={()=>{}}
-              />
+              <select>
+                {productsData.map((row, index)=>{
+                return(
+                  <option value={row.id} key={index}>
+                    {row.productName}
+                  </option>
+                )})}
+              </select>
             </div>
-          </div>
-          <div className='fieldset'>
-            <label className='label'>Unit Price</label>
+            <label className='label'>Deal Type</label>
             <div className='input_box'>
-              <input 
-                type="email" 
-                value=""
-                onChange={(e) => {}}
-              />
+              <select>
+                {productDeals.map((row, index)=>{
+                return(
+                  <option value={row.id} key={index}>
+                    {row.name}( ₦{formatToCurrency(row.price, 1)})
+                  </option>
+                )})}
+              </select>
             </div>
           </div>
 
           <div className='btn_ btn_orange'  onClick={()=> {
             setShowModal(false)
-          }}>Add Product</div>
+          }}>Add Deal</div>
         </div> 
     </div>
   )
 }
 
-export default AddProduct
+export default AddDeal

@@ -371,9 +371,9 @@ export default function Revenue() {
         <TopBar 
           title="Revenue" 
           button={{
-            title: "DOWNLOAD REPORT",
-            action: () => {}
+            title: "DOWNLOAD REPORT"
           }}
+          buttonAction={()=>{}}
         />
         <div className="full-mainbar-container">
           <PageFilters showStoreFilter={false} />

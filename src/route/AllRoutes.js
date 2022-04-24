@@ -13,6 +13,7 @@ import SuperAdminRevenue from "../pages/superAdmin/Revenue"
 import SuperAdminCustomers from "../pages/superAdmin/Customers"
 import SuperAdminProducts from "../pages/superAdmin/Products"
 import SuperAdminCustomerDetails from "../pages/superAdmin/CustomerDetails"
+import SuperAdminTransactionDetails from "../pages/superAdmin/TransactionDetails"
 import SuperAdminStores from "../pages/superAdmin/Stores"
 import SuperAdminRewards from "../pages/superAdmin/Rewards"
 
@@ -33,49 +34,56 @@ export default function AllRoutes() {
 	);
 
   return (
-    <Routes>
-      <Route exact path="/" element={<Login/>} />
-      <Route exact path="/login" element={<Login/>} />
-      <Route exact path="/forgotpassword" element={<ForgotPassword/>} />
-      <Route exact path="/changepassword" element={<ChangePassword/>} />
-      <Route exact path="/account" element={<AccountSettings/>} />
-      <Route exact path="/dashboard" element={role === "admin" 
-        ? <AdminDashboard /> 
-        : role === "superadmin" 
-        ? <SuperAdminDashboard/> 
-        : role === "cashier"
-        && <CashierDashboard/> } 
-      />
-      <Route exact path="/revenue" element={role === "admin" 
-        ? <AdminRevenue /> 
-        : "superadmin" 
-        && <SuperAdminRevenue/> }
-      />
-      <Route exact path="/products" element={role === "admin" 
-        ? <AdminProducts /> 
-        : "superadmin" 
-        && <SuperAdminProducts/> }
-      />
-      <Route exact path="/stores" element={role === "admin" 
-        ? <AdminStoreCashiers /> 
-        : "superadmin" 
-        && <SuperAdminStores/> }
-      />
-      <Route exact path="/customers" element={role === "admin" 
-        ? <AdminCustomers /> 
-        : "superadmin" 
-        && <SuperAdminCustomers/> }
-      />
-      <Route exact path="/rewards" element={role === "admin" 
-        ? <AdminDashboard /> 
-        : "superadmin" 
-        && <SuperAdminRewards/> }
-      />
-      <Route exact path="/customers/:id" element={role === "admin" 
-        ? <AdminCustomerDetails /> 
-        : "superadmin" 
-        && <SuperAdminCustomerDetails/> }
-      />
-    </Routes>
+    <div className='body'>
+        <Routes>
+          <Route exact path="/" element={<Login/>} />
+          <Route exact path="/login" element={<Login/>} />
+          <Route exact path="/forgotpassword" element={<ForgotPassword/>} />
+          <Route exact path="/changepassword" element={<ChangePassword/>} />
+          <Route exact path="/account" element={<AccountSettings/>} />
+          <Route exact path="/dashboard" element={role === "admin" 
+            ? <AdminDashboard /> 
+            : role === "superadmin" 
+            ? <SuperAdminDashboard/> 
+            : role === "cashier"
+            && <CashierDashboard/> } 
+          />
+          <Route exact path="/revenue" element={role === "admin" 
+            ? <AdminRevenue /> 
+            : "superadmin" 
+            && <SuperAdminRevenue/> }
+          />
+          <Route exact path="/products" element={role === "admin" 
+            ? <AdminProducts /> 
+            : "superadmin" 
+            && <SuperAdminProducts/> }
+          />
+          <Route exact path="/stores" element={role === "admin" 
+            ? <AdminStoreCashiers /> 
+            : "superadmin" 
+            && <SuperAdminStores/> }
+          />
+          <Route exact path="/customers" element={role === "admin" 
+            ? <AdminCustomers /> 
+            : "superadmin" 
+            && <SuperAdminCustomers/> }
+          />
+          <Route exact path="/rewards" element={role === "admin" 
+            ? <AdminDashboard /> 
+            : "superadmin" 
+            && <SuperAdminRewards/> }
+          />
+          <Route exact path="/customers/:id" element={role === "admin" 
+            ? <AdminCustomerDetails /> 
+            : "superadmin" 
+            && <SuperAdminCustomerDetails/> }
+          />
+          <Route exact path="/transaction/:id" element={role === "admin" 
+            ? <AdminCustomerDetails /> 
+            : "superadmin" 
+            && <SuperAdminTransactionDetails /> }
+          />
+      </Routes>
+    </div>
   )
 }

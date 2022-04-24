@@ -60,21 +60,21 @@ export default function Stores() {
       cashierName: "Farouk Ogunleyei",
       email: "mo.yusuf@gmail.com",
       date: new Date(),
-      image: "icons/kfc.svg",
+      image: "assets/icons/kfc.svg",
     },
     {
       id: 43178,
       cashierName: "Demilade Agboola",
       email: "usman.yak@mail.com",
       date: new Date(),
-      image: "icons/kfc.svg",
+      image: "assets/icons/kfc.svg",
     },
     {
       id: 43178,
       cashierName: "Oluchi Uzo",
       email: "daniels_kunle78@hotmail.com",
       date: new Date(),
-      image: "icons/kfc.svg",
+      image: "assets/icons/kfc.svg",
     }
   ];
   let filteredTableData = tableData;
@@ -101,7 +101,7 @@ export default function Stores() {
 						cashierName: (
 							<div>
                 <span style={{marginRight: "11px"}}>
-                  <img src={row.image} style={{width: "32px", height: "32px"}} alt="img"/>
+                  <img src={require("../../"+row.image)} style={{width: "32px", height: "32px"}} alt="img"/>
                 </span>
 								<span>{row.cashierName}</span>
 							</div>

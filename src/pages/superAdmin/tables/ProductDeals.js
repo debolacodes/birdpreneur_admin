@@ -2,10 +2,20 @@ import React, {useState, useContext, useEffect} from 'react'
 import {mainFunctions} from "../../../providers/MainProvider";
 import Tables from '../../../components/Tables';
 import { formatToCurrency} from "../../../utils";
+import {
+  BsThreeDots,
+} from "react-icons/bs";
+import EditDeal from "../../../modals/EditDeal"
+import RemoveDeal from "../../../modals/RemoveDeal"
 
 export default function ProductDeals() {
     const {
-        productDeals
+        productDeals,
+        setModalPage,
+        setModalData,
+        setShowModal,
+        EDIT_DEALS_MODAL,
+        REMOVE_DEALS_MODAL
       } = useContext(mainFunctions)
 
   const [searchKey, setSearchKey] = useState("");
@@ -28,7 +38,11 @@ export default function ProductDeals() {
       dataIndex: "value",
       sort:false,
       search:false
-    }
+    },
+    {
+      title: "",
+      dataIndex: "option",
+    },
   ];
  
   const handleSearch = (query) => {
@@ -43,10 +57,20 @@ export default function ProductDeals() {
   
 const [filteredTableData, setFilteredTableData] = useState(productDeals);
 
+const [visibilities, setVisibilities] = React.useState(() =>
+  filteredTableData.map((x) => false)
+);
+
+const handleClick = (index) => {
+  const newVisibilities = [...visibilities];
+  newVisibilities[index] = !newVisibilities[index];
+  setVisibilities(newVisibilities);
+};
+
 const dataSource =
     filteredTableData &&
       filteredTableData.length > 0
-        ? filteredTableData.map((row) => {
+        ? filteredTableData.map((row, index) => {
 					return {
 						id: (
               <div>
@@ -56,7 +80,8 @@ const dataSource =
 						name: (
 							<div>
                 <span style={{marginRight: "11px"}}>
-                  <img src={row.image} style={{
+                  <img src={require('../../../'+row.image)} 
+                  style={{
                     width: "32px", 
                     height: "32px",
                     objectFit:"cover"
@@ -77,7 +102,49 @@ const dataSource =
                 : <div>{row.value}%</div>
                 }
 							</div>
-						)
+						),
+            option:(
+              <div className="">
+								<div className="position-relative">
+									<div className="d-flex items-center" style={{cursor: "pointer"}}>
+                    <BsThreeDots
+									    onClick={() => handleClick(index)}
+                      size={24}
+                    />
+									</div>
+                  {visibilities[index] ? (
+                    <div className="position-absolute border border-muted px-3 w-32 bg-white" style={{right: "0", top: "100%", zIndex: "2", width:  "150px"}}>
+                      <div
+                        onClick={async () => {
+                          await setModalPage(EDIT_DEALS_MODAL);
+                          await setModalData(
+                            <EditDeal deal={row}/>
+                          );
+                          setShowModal(true)
+                        }}
+                        style={{cursor: "pointer"}}
+                        className="d-flex text-left py-3 border-bottom border-muted status-success hover:text-blue-dark text-small"
+                      >
+                        Edit Deal
+                      </div>
+                      <div
+                        onClick={async () => {
+                          await setModalPage(REMOVE_DEALS_MODAL);
+                          await setModalData(
+                            <RemoveDeal deal={row}/>
+                          );
+                          setShowModal(true)
+                        }}
+                        style={{cursor: "pointer"}}
+                        className="d-flex text-left py-3 status-failed hover:text-blue-dark text-small"
+                      >
+                        Remove Deal
+                      </div>
+                    </div>
+                  ) : ""}
+								</div>
+              </div>
+            )
 					};
 			  })
 			: [];
@@ -100,7 +167,6 @@ useEffect(() => {
                 }
             
             }
-            console.log(found)
             return found;
         })
         setFilteredTableData(fd)

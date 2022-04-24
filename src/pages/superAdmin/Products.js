@@ -1,4 +1,4 @@
-import React, {useContext} from 'react'
+import React, {useContext, useState, useEffect} from 'react'
 import {mainFunctions} from "../../providers/MainProvider";
 
 import Sidebar from '../../components/Sidebar';
@@ -7,11 +7,20 @@ import Title from '../../components/Title';
 import SummaryBox from '../../components/SummaryBox';
 import ProductTable from './tables/ProductTable';
 import PageFilters from '../../components/PageFilters';
+import AddProduct from "../../modals/AddProduct"
 
 export default function Products() {
   const {
-    totalProductsOverview
+    totalProductsOverview,
+    ADD_PRODUCT_MODAL,
+    setModalPage,
+    setShowModal,
+    setModalData
   } = useContext(mainFunctions)
+
+  const [productModal, setProductModal] = useState("")
+
+ 
 
   return (
     <div className='body'>
@@ -20,13 +29,21 @@ export default function Products() {
             <TopBar 
               title="Products"
               button={{
-                title: "DOWNLOAD REPORT",
-                action: () => {}
+                title: "DOWNLOAD REPORT"
               }}
+              buttonAction={()=>{}}
             />
             <div className="mainbar-container">
               <PageFilters />
-              <div className='btn_ btn_green mb-3'>ADD PRODUCT</div>
+              <div className='btn_ btn_green mb-3'
+              onClick={async ()=>{
+                await setModalPage(ADD_PRODUCT_MODAL);
+                await setModalData(
+                  <AddProduct />
+                )
+                await setShowModal(true);
+              }}
+              >ADD PRODUCT</div>
               <div className="wrapper">
                 <SummaryBox 
                 title={totalProductsOverview.title} 

@@ -1,6 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700&display=swap');
 a {
     text-decoration: none !important;
+    color: unset;
 }
 
 a:link,
@@ -8,6 +9,7 @@ a:visited,
 a:hover,
 a:active {
     text-decoration: none !important;
+    color: unset;
 }
 
 .App,
@@ -17,6 +19,32 @@ a:active {
     height: 100vh;
     width: 100%;
     z-index: 111111;
+}
+
+.back {
+    display: flex;
+    cursor: pointer;
+}
+
+.back_icon {
+    width: 8px;
+    height: 24px;
+    cursor: pointer;
+    background: url("./icons/back.svg");
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    margin-right: 6px;
+}
+
+.back_text {
+    font-family: 'Inter', sans-serif;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 24px;
+    /* identical to box height, or 171% */
+    color: #66687E;
 }
 
 ::-webkit-input-placeholder {
@@ -176,6 +204,7 @@ a:active {
     position: relative;
     /* padding-top: 13px; */
 }
+
 .full-mainbar-container {
     margin: 0.813rem 5.063rem;
     position: relative;
@@ -205,7 +234,8 @@ a:active {
     position: relative;
     min-height: 50px;
     border-bottom: 1px solid #0000001D;
-    padding: 1rem;
+    /* padding: 1rem; */
+    padding: 1rem 5.063rem;
 }
 
 .topbar .page-anchor {
@@ -232,13 +262,19 @@ a:active {
 
 .topbar .title {
     font-family: 'Inter', sans-serif;
-    ;
     font-style: normal;
     font-weight: 700;
     font-size: 24px;
     /* line-height: 84px; */
     color: #000000;
     /* margin-left: 22px; */
+}
+
+.topbar .title.small {
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 24px;
+    margin-left: 20px;
 }
 
 .right-box .download_btn {
@@ -263,6 +299,20 @@ a:active {
     cursor: pointer;
 }
 
+.table_btn {
+    font-style: normal;
+    font-weight: 400;
+    font-size: 12px;
+    /* identical to box height, or 171% */
+    font-family: 'Inter', sans-serif;
+    color: #000000;
+    background: #02965611;
+    text-align: center;
+    cursor: pointer;
+    border-radius: 4px;
+    border: 1px solid #029656;
+}
+
 .btn_orange {
     background: #C76400;
     border: none;
@@ -279,6 +329,111 @@ a:active {
     align-items: center
 }
 
+.settings_dropdown {
+    position: absolute;
+    width: 121px;
+    height: 35px;
+    top: 56px;
+    right: 61px;
+    background: #FFFFFF;
+    border: 1px solid #E0E0E0;
+    box-sizing: border-box;
+    border-radius: 6px;
+}
+
+.list_box {
+    width: 100%;
+    max-width: 616px;
+    height: auto;
+    background: #FDFDFF;
+    border: 1px solid #E0E0E0;
+    box-sizing: border-box;
+    border-radius: 6px;
+    padding: 0 32px
+}
+
+.list_item {
+    height: 64px;
+    display: flex;
+    justify-content: space-between;
+    border-bottom: 1px solid #00000020;
+}
+
+.list_item:last-child {
+    border-bottom: unset
+}
+
+.list_item .title {
+    font-family: 'Inter', sans-serif;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 20px;
+    /* identical to box height */
+    color: #353535;
+    padding-top: 24px;
+}
+
+.list_item .value {
+    font-family: 'Inter', sans-serif;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 17px;
+    text-align: right;
+    color: #353535;
+    padding-top: 24px;
+}
+
+.list_box_total {
+    width: 616px;
+    height: 70px;
+    left: 365px;
+    top: 741px;
+    background: #F2F2F7;
+    border: 1px solid #E0E0E0;
+    box-sizing: border-box;
+    border-radius: 6px;
+    margin-top: 20px;
+    display: flex;
+    justify-content: space-between;
+    padding: 24px 32px;
+}
+
+.list_box_total .title {
+    font-family: 'Inter', sans-serif;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 24px;
+    color: #000000;
+}
+
+.list_box_total .value {
+    font-family: 'Inter', sans-serif;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    color: #353535;
+}
+
+.settings_dropdown_list {
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 35px;
+    /* identical to box height, or 171% */
+    color: #E11010;
+    text-align: center;
+    width: 100%;
+    cursor: pointer;
+    border-radius: 6px;
+}
+
+.settings_dropdown_list:hover {
+    background: #FCEAD8;
+}
+
 .profile .avatar {
     width: 32px;
     height: 32px;
@@ -288,7 +443,6 @@ a:active {
 
 .profile .profile-details {
     font-family: 'Inter', sans-serif;
-    ;
     margin-left: 15px;
 }
 
@@ -382,7 +536,7 @@ a:active {
 
 .details_box {
     box-sizing: border-box;
-    padding: 22px 0px;
+    padding: 22px 12px;
     overflow-x: auto;
 }
 
@@ -410,6 +564,17 @@ a:active {
 
 /* pie chart */
 
+#active-sector,
+.recharts-pie-sector {
+    z-index: 11 !important;
+}
+
+#tooltip {
+    z-index: 1111 !important;
+}
+
+.recharts-pie-sector {}
+
 .piechart_wrapper {
     width: 100%;
     height: auto;
@@ -425,7 +590,7 @@ a:active {
 }
 
 .piechart {
-    width: 169px;
+    width: 200px;
     height: 169px;
 }
 
@@ -440,6 +605,11 @@ a:active {
     display: flex;
     justify-content: flex-start;
     margin-top: 5px;
+}
+
+.piechart_details_item.active {
+    border: 1px solid #E0E0E0;
+    background: #FCEAD8;
 }
 
 .piechart_details_item .piechart_color_icon {
@@ -856,6 +1026,7 @@ select:focus {
     /* identical to box height, or 200% */
     font-family: 'Inter', sans-serif;
     color: #000000;
+    margin-top: 10px;
 }
 
 .auth_form_container .input_box {
@@ -873,12 +1044,30 @@ select:focus {
 .auth_form_container input {
     line-height: 40px;
     width: calc(100% - 45px);
-    padding: 0 20px;
+    padding: 0 20px 0 0;
     text-decoration: none;
     border: none;
     margin: 6px;
     background: none;
+    font-family: 'Inter', sans-serif;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 12px;
     /* background: #ccc; */
+}
+
+.auth_form_container select {
+    line-height: 40px;
+    width: 100%;
+    padding: 0 20px 0 0;
+    text-decoration: none;
+    border: none;
+    margin: 6px;
+    background: none;
+    font-family: 'Inter', sans-serif;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 12px;
 }
 
 .auth_form_container .more-info {
@@ -950,6 +1139,7 @@ select:focus {
     font-weight: 700;
     font-size: 24px;
     line-height: 32px;
+    margin-bottom: 10px;
 }
 
 .status-success {
@@ -978,10 +1168,13 @@ select:focus {
     box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
 }
 
+
 /* cashier portal */
+
 .cursor-pointer {
     cursor: pointer;
 }
+
 .purchases_wrapper .title {
     font-family: 'Inter', sans-serif;
     font-style: normal;
@@ -989,12 +1182,14 @@ select:focus {
     font-size: 24px;
     color: #000000;
 }
+
 .purchases_wrapper .sub_title {
     font-size: 14px;
     font-weight: 500;
     line-height: 24px;
     letter-spacing: 0px;
 }
+
 .purchases_wrapper .proceed_btn {
     display: inline-block;
     min-width: 320px;
@@ -1013,6 +1208,7 @@ select:focus {
     cursor: pointer;
     background: #029656;
 }
+
 .purchases_wrapper .proceed_btn.inactive {
     background: #C4C4C4;
 }
@@ -1067,6 +1263,7 @@ select:focus {
   color: #FF0000;
   cursor: pointer;
 }
+
 
 /* Challenge Page */
 
@@ -1217,6 +1414,7 @@ select:focus {
         position: absolute;
         right: 10px;
         top: 10px;
+        cursor: pointer;
     }
     .sidebar_ {
         width: 284px;
@@ -1234,6 +1432,8 @@ select:focus {
     }
     .topbar .page-anchor {
         display: block !important;
+        position: absolute;
+        left: 10px;
     }
     .topbar .title {
         display: none !important;
@@ -1260,6 +1460,10 @@ select:focus {
 }
 
 @media screen and (max-width: 650px) {
+    .topbar {
+        width: 100% !important;
+        padding: 0.813rem 2.063rem;
+    }
     .summary_box {
         width: 100%;
         margin-right: 0;
@@ -1267,13 +1471,26 @@ select:focus {
     .download_button {
         display: none;
     }
+    .btn_ {
+        width: 100%;
+    }
     .topbar .right-box {
         /* width: 250px */
     }
     .mainbar-container {
-        margin: 0.813rem 2.063rem;
+        padding: 0.813rem 2.063rem;
+        width: 100%;
+        margin: unset;
     }
     .full-mainbar-container {
         margin: 0.813rem 2.063rem;
+    }
+    .page-filter {
+        width: 100%;
+        position: unset;
+        height: auto !important;
+        margin-bottom: 20px;
+        justify-content: center !important;
+        z-index: 1111111111111111111111111111;
     }
 }

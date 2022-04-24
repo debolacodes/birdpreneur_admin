@@ -45,73 +45,73 @@ export default function Dashboard() {
       id: 43178,
       productName: "DJI Mavic Pro 2",
       price: 345000,
-      image: "icons/kfc.svg",
+      image: "assets/icons/kfc.svg",
     },
     {
       id: 43178,
       productName: "Coach Tabby",
       price: 345000,
-      image: "icons/kfc.svg",
+      image: "assets/icons/kfc.svg",
     },
     {
       id: 43178,
       productName: "Heimer Miller Sofa",
       price: 345000,
-      image: "icons/kfc.svg",
+      image: "assets/icons/kfc.svg",
     },
     {
       id: 43178,
       productName: "Heimer Miller Sofa",
       price: 345000,
-      image: "icons/kfc.svg",
+      image: "assets/icons/kfc.svg",
     },
     {
       id: 43178,
       productName: "Heimer Miller Sofa",
       price: 345000,
-      image: "icons/kfc.svg",
+      image: "assets/icons/kfc.svg",
     },
     {
       id: 43178,
       productName: "Heimer Miller Sofa",
       price: 345000,
-      image: "icons/kfc.svg",
+      image: "assets/icons/kfc.svg",
     },
     {
       id: 43178,
       productName: "Heimer Miller Sofa",
       price: 345000,
-      image: "icons/kfc.svg",
+      image: "assets/icons/kfc.svg",
     },
     {
       id: 43178,
       productName: "Heimer Miller Sofa",
       price: 345000,
-      image: "icons/kfc.svg",
+      image: "assets/icons/kfc.svg",
     },
     {
       id: 43178,
       productName: "Heimer Miller Sofa",
       price: 345000,
-      image: "icons/kfc.svg",
+      image: "assets/icons/kfc.svg",
     },
     {
       id: 43178,
       productName: "Heimer Miller Sofa",
       price: 345000,
-      image: "icons/kfc.svg",
+      image: "assets/icons/kfc.svg",
     },
     {
       id: 43178,
       productName: "Heimer Miller Sofa",
       price: 345000,
-      image: "icons/kfc.svg",
+      image: "assets/icons/kfc.svg",
     },
     {
       id: 43178,
       productName: "Heimer Miller Sofa",
       price: 345000,
-      image: "icons/kfc.svg",
+      image: "assets/icons/kfc.svg",
     },
   ];
   let filteredTableData = tableData;
@@ -129,7 +129,7 @@ export default function Dashboard() {
 						productName: (
 							<div>
                 <span style={{marginRight: "11px"}}>
-                  <img src={row.image} style={{width: "32px", height: "32px"}} alt="img"/>
+                  <img src={require("../../"+row.image)} style={{width: "32px", height: "32px"}} alt="img"/>
                 </span>
 								<span>{row.productName}</span>
 							</div>
@@ -144,7 +144,7 @@ export default function Dashboard() {
                 className='bg-success d-inline p-2 border rounded-circle cursor-pointer' 
                 onClick={() =>addPurchaseItem(row)}
               >
-                <img src={"icons/shopping_bag.svg"} alt="img"/>
+                <img src={require("../../assets/icons/shopping_bag.svg")} alt="img"/>
               </div>
             ),
 					};
@@ -231,9 +231,9 @@ export default function Dashboard() {
               title="All Products"
               handleSearch={handleSearch}
               button={{
-                title: "Use Customer Purchase Code",
-                action: () =>showUsePurchaseCodeModal()
+                title: "Use Customer Purchase Code"
               }}
+              buttonAction={showUsePurchaseCodeModal}
             />
             <div className="d-flex flex-wrap justify-content-center h-100 w-100">
               <div className='col px-5'>
