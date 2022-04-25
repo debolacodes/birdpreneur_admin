@@ -122,7 +122,8 @@ export default function Tables({
                   <div className='page-filter-options'>
                     {tableStatusOptions.map((status, index)=>{
                     return(
-                      <div  className={`page-filter-option ${status.value === tableStatus.value ? "active": ""}`}
+                      <div key={index}
+                      className={`page-filter-option ${status.value === tableStatus.value ? "active": ""}`}
                       onClick = {()=>setTableStatus(status)}
                       >{status.title}</div>
                     )})}
