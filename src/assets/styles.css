@@ -1293,7 +1293,7 @@ select:focus {
 .challenge_box_td {
     min-width: 100px;
     display: flex;
-    justify-content: start;
+    justify-content: flex-start;
     flex-direction: row;
     padding-top: 9px;
 }
