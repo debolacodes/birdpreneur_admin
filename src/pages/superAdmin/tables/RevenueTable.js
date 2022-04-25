@@ -178,12 +178,19 @@ useEffect(() => {
                 }
             
             }
+
+            if(tableStatus.value !== ""){
+              if(thisStore.status.toString().toLowerCase() !== tableStatus.value.toLowerCase()){
+                found = false
+              }
+            }
             return found;
+
         })
         setFilteredTableData(fd)
-  },[searchKey])
+  },[searchKey, tableStatus])
 
-
+  
 
 
 return (
