@@ -191,11 +191,12 @@ a:active {
     overflow-y: scroll;
     overflow-x: hidden;
 }
+
 .cashier-main {
-  height: 100%;
-  background: #fff;
-  overflow-y: hidden;
-  overflow-x: hidden;
+    height: 100%;
+    background: #fff;
+    overflow-y: hidden;
+    overflow-x: hidden;
 }
 
 .mainbar-container {
@@ -817,6 +818,11 @@ a:active {
 .table-date-filter {
     font-size: 14px;
     margin-right: 13px;
+    position: relative;
+}
+
+.table-status-filter .page-filter-options {
+    position: absolute;
 }
 
 .table-date-filter {
@@ -1212,56 +1218,64 @@ select:focus {
 .purchases_wrapper .proceed_btn.inactive {
     background: #C4C4C4;
 }
+
 .purchases_wrapper .checkout_title {
-  font-style: normal;
-  font-weight: 400;
-  font-size: 14px;
-  line-height: 24px;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 24px;
 }
+
 .purchases_wrapper .checkout_value {
-  font-style: normal;
-  font-weight: 500;
-  font-size: 18px;
-  line-height: 22px;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 18px;
+    line-height: 22px;
 }
+
 .purchase_tab_wrapper {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: flex-start;
-  gap: 2.5rem;
-  /* justify-content: space-between; */
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    gap: 2.5rem;
+    /* justify-content: space-between; */
 }
+
 .purchase_tab_wrapper.underline {
-  border-bottom: 1px solid #86889C;
+    border-bottom: 1px solid #86889C;
 }
+
 .purchase_tab_wrapper .purchase_tab-title {
-  font-style: normal;
-  font-weight: 500;
-  font-size: 14px;
-  line-height: 24px;
-  color: #86889C;
-  font-family: 'Inter', sans-serif;
-  cursor: pointer;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 24px;
+    color: #86889C;
+    font-family: 'Inter', sans-serif;
+    cursor: pointer;
 }
+
 .purchase_tab_wrapper .purchase_tab-title.active {
-  color:#000000;
-  border-bottom: 2px solid #000000;
+    color: #000000;
+    border-bottom: 2px solid #000000;
 }
+
 .purchase_item_title {
-  font-style: normal;
-  font-weight: 400;
-  font-size: 14px;
-  line-height: 17px;
-  color: #51545C;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 17px;
+    color: #51545C;
 }
+
 .purchase_item_delete {
-  font-style: normal;
-  font-weight: 400;
-  font-size: 13px;
-  line-height: 16px;
-  text-decoration-line: underline;
-  color: #FF0000;
-  cursor: pointer;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 13px;
+    line-height: 16px;
+    text-decoration-line: underline;
+    color: #FF0000;
+    cursor: pointer;
 }
 .purchase_item_quantity {
   display: flex;
