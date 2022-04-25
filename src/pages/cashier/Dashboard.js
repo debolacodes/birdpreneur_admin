@@ -7,12 +7,14 @@ import UsePurchaseCodeModal from '../../modals/UsePurchaseCode';
 import { formatToCurrency } from "../../utils";
 import {mainFunctions} from "../../providers/MainProvider";
 import ShoppingBag from "../../assets/icons/shopping_bag.svg";
+import PurchaseDetailsModal from '../../modals/PurchaseDetails';
 
 export default function Dashboard() {
   const {
     setShowModal,
     setModalPage,
     USE_PURCHASECODE_MODAL,
+    PURCHASE_DETAILS_MODAL,
     setModalData
   } = useContext(mainFunctions)
 	const [searchKey, setSearchKey] = useState("");
@@ -152,7 +154,7 @@ export default function Dashboard() {
 			  })
 			: [];
 
-  const addPurchaseItem = (item) => {
+  const addPurchaseItem = async (item) => {
     let temp = [...purchases];
     const index = temp.indexOf(activeTab);
     if(index > -1){
@@ -161,29 +163,46 @@ export default function Dashboard() {
         productName: item.productName,
         price: item.price,
         image: item.image,
+        quantity: 1
       })
       setPurchases(temp);
       return;
-    }else{
-      addPurchase();
-      addPurchaseItem(item);
-    };
+    }
+    const result = await addPurchase();
+    let tempPurchases = [...result];
+    setActiveTab(tempPurchases[0]);
+    tempPurchases[0].items.push({
+      id: item.id,
+      productName: item.productName,
+      price: item.price,
+      image: item.image,
+      quantity: 1
+    })
+    setPurchases(tempPurchases);
   }
-  
   const addPurchase = () => {
-    let temp = [...purchases];
-    if(temp.length<5){
-      temp.push({
-        id: temp.length + 1,
-        items: []
-      })
-    }else{
-      //show error here to delete a purchase first
-    };
-    setPurchases(temp);
+    return new Promise(resolve => {
+      let temp = [...purchases];
+      let lastPurchase = temp.slice(-1).pop();
+      if(temp.length<5){
+        temp.push({
+          id: lastPurchase ? lastPurchase.id + 1 : 1,
+          items: []
+        })
+      }else{
+        //show error here to delete a purchase first
+      };
+      setPurchases(temp);
+      resolve(temp);
+    });
   }
   const handleProceed = () => {
-
+    setModalPage(PURCHASE_DETAILS_MODAL);
+    setModalData(
+      <PurchaseDetailsModal confirmPurchase={()=>{}}/>
+    );
+    setShowModal(true);
+    return;
   }
   const deletePurchase = (data) => {
     let temp = [...purchases];
@@ -191,8 +210,9 @@ export default function Dashboard() {
     if (index > -1) 
       temp.splice(index, 1);
     setPurchases(temp);
-    if(purchases.length > 0)
-      setActiveTab(purchases[0]);
+    if(temp.length > 0){
+      setActiveTab(temp[0]);
+    }
   }
   const deletePurchaseItem = (item) => {
     let temp = [...purchases];
@@ -203,31 +223,52 @@ export default function Dashboard() {
     }
     setPurchases(temp);
   }
-  useEffect(()=>{
-    const purchaseIndex = purchases.indexOf(activeTab);
-    if(!activeTab && purchases.length > 0){
-      setActiveTab(purchases[0])
-    }
-    if(!(purchaseIndex > -1) && purchases.length > 0){
-      setActiveTab(purchases[0])
-    }
-    if(!(purchases.length > 0)){
-      setActiveTab("")
-    }
-		//eslint-disable-next-line
-  },[purchases])
-  
   const showUsePurchaseCodeModal = () => {
     setModalPage(USE_PURCHASECODE_MODAL);
     setModalData(
       <UsePurchaseCodeModal previewPurchase={previewPurchase}/>
     );
     setShowModal(true);
-    return;
   }
-  const previewPurchase =() => {
-    
+  const previewPurchase = async () => {
+    const result = await addPurchase();
+    let lastPurchase = result.slice(-1).pop();
+    setActiveTab(lastPurchase);
+    setShowModal(false);
   }
+  const increaseQty = (item) =>{
+    let temp = [...purchases];
+    const purchaseIndex = temp.indexOf(activeTab);
+    const itemIndex = temp[purchaseIndex].items.indexOf(item);
+    if(itemIndex > -1){
+      temp[purchaseIndex].items[itemIndex].quantity++;
+    }
+    setPurchases(temp);
+  }
+  const decreaseQty = (item) =>{
+    let temp = [...purchases];
+    const purchaseIndex = temp.indexOf(activeTab);
+    const itemIndex = temp[purchaseIndex].items.indexOf(item);
+    if(itemIndex > -1){
+      temp[purchaseIndex].items[itemIndex].quantity = temp[purchaseIndex].items[itemIndex].quantity - 1;
+      if(temp[purchaseIndex].items[itemIndex].quantity <= 0){
+        temp[purchaseIndex].items.splice(itemIndex, 1);
+      }
+    }
+    setPurchases(temp);
+  }
+  useEffect(()=>{
+    // const purchaseIndex = purchases.indexOf(activeTab);
+    if(!activeTab && purchases.length > 0){
+      setActiveTab(purchases[0])
+      console.log(1)
+    }
+    if(!(purchases.length > 0)){
+      setActiveTab("")
+      console.log(2)
+    }
+		//eslint-disable-next-line
+  },[purchases])
   return (
     <div className='w-100'>
         {/* <Sidebar /> */}
@@ -259,6 +300,8 @@ export default function Dashboard() {
                       activeTab={activeTab}
                       setActiveTab={setActiveTab}
                       deletePurchaseItem={deletePurchaseItem}
+                      decreaseQty={decreaseQty}
+                      increaseQty={increaseQty}
                     />
                   : <EmptyPurchases />
                 }

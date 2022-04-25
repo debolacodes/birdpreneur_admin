@@ -6,12 +6,14 @@ export default function PurchaseItems({
   items,
   handleProceed,
   deletePurchase,
-  deletePurchaseItem
+  deletePurchaseItem,
+  decreaseQty,
+  increaseQty
 }) {
   const getTotal =()=>{
     let total = 0;
     if(items)
-      total = items.reduce((n, {price}) => n + price, 0);
+      total = items.reduce((n, {price, quantity}) => n + (price * quantity), 0);
     return total;
   }
   return (
@@ -20,7 +22,7 @@ export default function PurchaseItems({
         {items && items.length > 0 && items.map((item, index) => (
           <div key={index} className='purchase_item d-flex justify-content-between align-items-center border-bottom py-3'>
             <div className='d-flex align-items-center gap-3'>
-              <img src={require("../"+item.image)} />
+              <img src={require("../"+item.image)} alt=""/>
               <div className='d-flex flex-column'>
                 <span className='purchase_item_title'>{item.productName}</span>
                 <span 
@@ -29,7 +31,21 @@ export default function PurchaseItems({
                 >remove Item</span>
               </div>
             </div>
-            <span className='checkout_value'>₦{formatToCurrency(item.price, 1)}</span>
+            <div className='d-flex flex-column align-items-end'>
+              <span className='checkout_value'>₦{formatToCurrency(item.price, 1)}</span>
+              <div className='purchase_item_quantity'>
+                <span 
+                  className='decrease' 
+                  onClick={() => decreaseQty(item)}
+                >-</span>
+                <span className='value'>{item.quantity}</span>
+                <span 
+                  className='increase'
+                  onClick={() => increaseQty(item)}
+                >+</span>
+              </div>
+
+            </div>
           </div>
         ))}
       </div>

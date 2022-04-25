@@ -1263,6 +1263,30 @@ select:focus {
   color: #FF0000;
   cursor: pointer;
 }
+.purchase_item_quantity {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border: 1px solid #DDDDDD;
+  box-sizing: border-box;
+} 
+.purchase_item_quantity .increase, .purchase_item_quantity .decrease {
+  background: #F4F6FA;
+  box-sizing: border-box;
+  width: 36px;
+  height: 26px;
+  text-align: center;
+  cursor: pointer;
+}
+.purchase_item_quantity .value {
+  background: #FFFFFF;
+  border-left: 1px solid #DDDDDD;
+  border-right: 1px solid #DDDDDD;
+  width: 36px;
+  height: 26px;
+  text-align: center;
+}
+
 
 
 /* Challenge Page */

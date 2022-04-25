@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React from 'react'
 import PurchaseItems from './PurchaseItems';
 import PurchasesTab 
   from './PurchasesTab'
@@ -11,11 +11,12 @@ export default function ActivePurchases({
   deletePurchase,
   deletePurchaseItem,
   activeTab,
-  setActiveTab
+  setActiveTab,
+  decreaseQty,
+  increaseQty
 }) {
   const onDeletePurchase =()=>{
     deletePurchase(activeTab);
-    setActiveTab(purchases[0]);
   }
   return (
     <div className='purchases_wrapper p-5'>
@@ -40,6 +41,8 @@ export default function ActivePurchases({
             handleProceed={handleProceed}
             deletePurchase={onDeletePurchase}
             deletePurchaseItem={deletePurchaseItem}
+            decreaseQty={decreaseQty}
+            increaseQty={increaseQty}
           />
 
 
