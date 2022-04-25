@@ -10,6 +10,7 @@ export default function MainProvider(props) {
     let navigate = useNavigate();
     // modal pages
     const ADD_STORE_SUPER_MODAL = "addstore";
+    const DATE_FILTER_MODAL = "datefiltermodal"
     const ADD_STORE_ADMIN_MODAL = "addstore_admin"
     const ADD_USER_MODAL = "addnewuser"
     const ADD_PRODUCT_MODAL = "addproduct"
@@ -1104,6 +1105,7 @@ const customerTransaction = [
             ADD_STORE_ADMIN_MODAL,
             ADD_USER_MODAL,
             ADD_PRODUCT_MODAL,
+            DATE_FILTER_MODAL,
             ADD_STAFF_MODAL,
             ADD_STORE_MODAL,
             ADD_DEAL_MODAL,

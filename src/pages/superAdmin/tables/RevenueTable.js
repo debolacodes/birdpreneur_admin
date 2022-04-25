@@ -3,14 +3,27 @@ import {mainFunctions} from "../../../providers/MainProvider";
 import Tables from '../../../components/Tables';
 import { formatToCurrency, getDateTimeFormatUK } from "../../../utils";
 import {Link} from "react-router-dom"
-
+import DateRange from '../../../modals/DateRange';
 export default function RevenueTable() {
     const {
         transactionData,
-
+        setModalData,
+        setModalPage,
+        setShowModal,
+        DATE_FILTER_MODAL,
       } = useContext(mainFunctions)
 
   const [searchKey, setSearchKey] = useState("");
+
+  const [startDateFilter, setStartDateFilter] = useState("")
+  const [endDateFilter, setEndDateFilter] = useState("")
+  const tableStatusOptions =  [
+    {title: "All", value:""},
+    {title: "Success", value:"success"},
+    {title: "Pending", value:"pending"},
+    {title: "Failed", value:"failed"}
+  ]
+  const [tableStatus, setTableStatus] = useState(tableStatusOptions[0]) 
 
   const tableColumns = [
     {
@@ -74,7 +87,15 @@ export default function RevenueTable() {
 
   }
   const handleDateFilter = () => {
-    
+    setModalPage(DATE_FILTER_MODAL);
+                          
+    setModalData(
+      <DateRange 
+      setStartDateFilter={setStartDateFilter}
+      setEndDateFilter={setEndDateFilter}
+      />
+    );
+    setShowModal(true)
   }
   
 const [filteredTableData, setFilteredTableData] = useState(transactionData);
@@ -176,6 +197,9 @@ return (
     showPageSize={true}
     handleDateFilter={handleDateFilter}
     handleStatusFilter={handleStatusFilter}
+    tableStatusOptions={tableStatusOptions}
+    tableStatus={tableStatus}
+    setTableStatus={setTableStatus}
     ></Tables>
 </div>
 )

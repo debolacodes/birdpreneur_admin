@@ -19,13 +19,12 @@ export default function Tables({
 	setCurrentPage,
   tabs = null,
   activeTab=null,
-  setActiveTab 
+  setActiveTab,
+  tableStatusOptions,
+  tableStatus,
+  setTableStatus
 }) {
-
-
-  
-
-
+  const [toggleStatusOptions, setToggleStatusOptions] = useState(false)
 	const [_columns, _setColumns] = useState([]);
 	const [_dataSource, _setDataSource] = useState([]);
 	const [pages, setPages] = useState(0);
@@ -113,10 +112,22 @@ export default function Tables({
             )}
             {handleStatusFilter && (
               <div className="table-status-filter">
-                <div className="button">
+                <div className="button"
+                onClick={()=>setToggleStatusOptions(!toggleStatusOptions)}
+                >
                   <div className="text">Status</div>
                   <div className="icon down"></div>
                 </div>
+                {toggleStatusOptions && tableStatusOptions &&
+                  <div className='page-filter-options'>
+                    {tableStatusOptions.map((status, index)=>{
+                    return(
+                      <div  className={`page-filter-option ${status.value === tableStatus.value ? "active": ""}`}
+                      onClick = {()=>setTableStatus(status)}
+                      >{status.title}</div>
+                    )})}
+                  </div>
+                }
               </div>
             )}
             {handleSearch && (
