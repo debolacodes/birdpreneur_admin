@@ -220,10 +220,13 @@ export default function Dashboard() {
   const showUsePurchaseCodeModal = () => {
     setModalPage(USE_PURCHASECODE_MODAL);
     setModalData(
-      <UsePurchaseCodeModal />
+      <UsePurchaseCodeModal previewPurchase={previewPurchase}/>
     );
     setShowModal(true);
     return;
+  }
+  const previewPurchase =() => {
+    
   }
   return (
     <div className='w-100'>
