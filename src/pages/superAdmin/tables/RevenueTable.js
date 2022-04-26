@@ -30,7 +30,7 @@ export default function RevenueTable() {
       title: "Store ID",
       dataIndex: "id",
       sort: false, 
-      search: true
+      search: false
     },
     {
       title: "Store Name",
@@ -49,7 +49,7 @@ export default function RevenueTable() {
       title: "Customer Name",
       dataIndex: "customerName",
       sort: false,
-      search:true
+      search: false
     },
     {
       title: "Purchase Value",
@@ -99,6 +99,7 @@ export default function RevenueTable() {
   }
   
 const [filteredTableData, setFilteredTableData] = useState(transactionData);
+
 const dataSource =
     filteredTableData &&
       filteredTableData.length > 0
@@ -159,6 +160,7 @@ const dataSource =
 			: [];
 
 useEffect(() => {
+
         var fd = transactionData.filter((thisStore, index) => {
             var found = true;
             for(var i = 0; i < tableColumns.length; i++){

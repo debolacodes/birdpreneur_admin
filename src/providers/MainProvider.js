@@ -8,6 +8,7 @@ export default function MainProvider(props) {
 	const dispatch = useDispatch();
     
     let navigate = useNavigate();
+    
     // modal pages
     const ADD_STORE_SUPER_MODAL = "addstore";
     const DATE_FILTER_MODAL = "datefiltermodal"
@@ -31,7 +32,6 @@ export default function MainProvider(props) {
     const REMOVE_DEALS_MODAL = "removedeals"
     const USE_PURCHASECODE_MODAL = "usepurchasecode"
     
-
     const [showSidebar, setShowSidebar] = useState(false)
     const allUserRoles = [
       {id:1, name: "Super Admin"},
@@ -554,6 +554,7 @@ export default function MainProvider(props) {
         value: 341
       },
     ]
+
     //Products SuperAdmin
     const productsData = [
       {
@@ -955,8 +956,7 @@ export default function MainProvider(props) {
 
 ]
 //Filters
-const [dateFilter, setDateFilter] = useState("")
-const [storeFilter, setStoreFilter] = useState("")
+
 const filterDates = [
   {
     id:"alltime",
@@ -980,7 +980,8 @@ const filterDates = [
   },
 
 ]
-
+const [dateFilter, setDateFilter] = useState(filterDates[0])
+const [storeFilter, setStoreFilter] = useState({id:-1, store: "All Locations"})
 //Customer Details  - SuperAdmin
 const customerTransaction = [
   {

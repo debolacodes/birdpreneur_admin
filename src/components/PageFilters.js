@@ -13,6 +13,7 @@ export default function PageFilters({
     stores,
     filterDates
   } = useContext(mainFunctions)
+
   const [showLocations, setShowLocations] = useState(false)
   const [showDates, setShowDates] = useState(false)
 
@@ -22,12 +23,12 @@ export default function PageFilters({
         <div className='page-filter-box'>
           <div className="button"
           onClick={()=>setShowLocations(!showLocations)}
-          ><div className="text">All Stores</div><div className={`icon ${showLocations ? "up": "down"} `}></div></div>
+          ><div className="text">{storeFilter.store}</div><div className={`icon ${showLocations ? "up": "down"} `}></div></div>
           {showLocations &&
           <div className='page-filter-options'>
-            <div  className={`page-filter-option ${storeFilter.id === 0 ? "active": ""}`}
+            <div  className={`page-filter-option ${storeFilter.id === -1 ? "active": ""}`}
             onClick = {()=>{
-              setStoreFilter({id:0, store: "All Stores"})
+              setStoreFilter({id:-1, store: "All Stores"})
             }}
             >All Locations</div>
 
@@ -35,7 +36,7 @@ export default function PageFilters({
             return(
               <div className={`page-filter-option ${thisStore.id === storeFilter.id ? "active": ""}`}  key={index} 
               onClick={()=>{
-                setStoreFilter(thisStore)
+                setStoreFilter({id:thisStore.id, store: thisStore.name})
               }}>
                 {thisStore.name}
               </div>
@@ -50,7 +51,7 @@ export default function PageFilters({
         <div className='page-filter-box'>
           <div className="button"
           onClick={()=>setShowDates(!showDates)}
-          ><div className="text">This Year</div><div className={`icon ${showDates ? "up": "down"} `}></div></div>
+          ><div className="text">{dateFilter.title}</div><div className={`icon ${showDates ? "up": "down"} `}></div></div>
           {showDates &&
           <div className='page-filter-options'>
             {filterDates.map((thisDate, index)=>{

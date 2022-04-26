@@ -25,7 +25,9 @@ const AddUser = ({product}) => {
           <div className='fieldset'>
             <label className='label'>Date to</label>
             <div className='input_box'>
-              <input type="date" style={{width:"100%"}}></input>
+              <input type="date" 
+              style={{width:"100%"}}
+              ></input>
             </div>
           </div>
 
