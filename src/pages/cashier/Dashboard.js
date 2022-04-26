@@ -283,7 +283,7 @@ export default function Dashboard() {
                   columns={tableColumns}
                   dataSource={dataSource}
                   showPagination={true}
-                  handleSearch={()=>{}}
+                  handleSearch={true}
                   source={tableData}
                   setFilteredTableData={setFilteredTableData}
                 />
