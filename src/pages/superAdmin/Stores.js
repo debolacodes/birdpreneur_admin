@@ -7,6 +7,7 @@ import SummaryBox from '../../components/SummaryBox';
 import Title from '../../components/Title';
 import AllStoresTable from './tables/AllStoresTable';
 import AddStore from '../../modals/AddStore';
+import PageFilters from '../../components/PageFilters';
 export default function Stores() {
   const {
     totalStoresOverview,
@@ -29,10 +30,7 @@ export default function Stores() {
               buttonAction={()=>{}}
             />
             <div className="mainbar-container">
-            <div className="page-filter">
-              <div className="button"><div className="text">All Stores</div><div className="icon down"></div></div>
-              <div className="button"><div className="text">This Year</div><div className="icon down"></div></div>
-            </div>
+            <PageFilters />
             <div className='btn_ btn_green mb-3'
             onClick={async ()=>{
               await setModalPage(ADD_STORE_SUPER_MODAL)

@@ -646,14 +646,14 @@ a:active {
     width: 250px;
     height: 40px;
     display: flex;
-    justify-content: space-between;
+    justify-content: flex-end;
     position: absolute;
     right: 0;
     top: 13px;
 }
 
 .page-filter .button {
-    width: 130px;
+    width: 135px;
     height: 40px;
     background: #FCEAD8;
     border: 1px solid #C76400;
