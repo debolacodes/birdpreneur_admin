@@ -200,10 +200,11 @@ a:active {
 }
 
 .mainbar-container {
-    width: 80%;
+    width: 90%;
     margin: 0.813rem 5.063rem;
+    margin: auto;
     position: relative;
-    /* padding-top: 13px; */
+    padding-top: 0.813rem;
 }
 
 .full-mainbar-container {
@@ -237,6 +238,7 @@ a:active {
     border-bottom: 1px solid #0000001D;
     /* padding: 1rem; */
     padding: 1rem 5.063rem;
+    padding: 1rem 5%;
 }
 
 .topbar .page-anchor {
@@ -649,7 +651,7 @@ a:active {
     justify-content: flex-end;
     position: absolute;
     right: 0;
-    top: 13px;
+    top: 25px;
 }
 
 .page-filter .button {
@@ -909,7 +911,7 @@ select:focus {
 
 .select_ {
     width: 178px;
-    height: 40px;
+    height: 50px;
     left: 365px;
     top: 110px;
     background: #F2F2F7;
@@ -921,6 +923,8 @@ select:focus {
     font-weight: 400;
     font-size: 14px;
     line-height: 24px;
+    padding: 0;
+    margin: 0;
     /* identical to box height, or 171% */
     color: #51545C;
 }
