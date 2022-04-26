@@ -117,12 +117,8 @@ export default function Dashboard() {
       image: "assets/icons/kfc.svg",
     },
   ];
-  let filteredTableData = tableData;
-	if (searchKey) {
-		filteredTableData = tableData?.filter((data) =>
-			data.productName.toLowerCase().includes(searchKey.toLocaleLowerCase())
-		);
-	}
+  let [filteredTableData, setFilteredTableData] = useState([]);
+	
   const dataSource =
     filteredTableData &&
       filteredTableData.length > 0
@@ -275,7 +271,6 @@ export default function Dashboard() {
         <div className="cashier-main w-100">
             <TopBar 
               title="All Products"
-              handleSearch={handleSearch}
               button={{
                 title: "Use Customer Purchase Code"
               }}
@@ -287,6 +282,9 @@ export default function Dashboard() {
                   columns={tableColumns}
                   dataSource={dataSource}
                   showPagination={true}
+                  handleSearch={()=>{}}
+                  source={tableData}
+                  setFilteredTableData={setFilteredTableData}
                 />
               </div>
               <div className='col bg-light'>

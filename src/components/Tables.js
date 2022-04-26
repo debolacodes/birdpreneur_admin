@@ -193,7 +193,7 @@ export default function Tables({
             )}
           </div>
         </div>
-        <div className='table'>
+        <div className='table mt-2'>
           <table>
             <thead>
               <tr>
