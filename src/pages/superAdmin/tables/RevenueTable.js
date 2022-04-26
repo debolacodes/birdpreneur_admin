@@ -157,58 +157,35 @@ const dataSource =
             )
 					};
 			  })
-			: [];
-
-useEffect(() => {
-
-        var fd = transactionData.filter((thisStore, index) => {
-            var found = true;
-            for(var i = 0; i < tableColumns.length; i++){
-
-                if((typeof tableColumns[i].search === "undefined" || tableColumns[i].search === true)
-                && typeof thisStore[tableColumns[i].dataIndex] !== "undefined" && searchKey !== ""
-                ){
-                  
-                    if(thisStore[tableColumns[i].dataIndex].toString().toLowerCase().includes(searchKey)){
-                        found = true
-                        break
-                    }else{
-                        // eslint-disable-next-line no-unused-vars
-                        found = false
-                        continue
-                    }
-                }
-            
-            }
-
-            if(tableStatus.value !== ""){
-              if(thisStore.status.toString().toLowerCase() !== tableStatus.value.toLowerCase()){
-                found = false
-              }
-            }
-            return found;
-
-        })
-        setFilteredTableData(fd)
-  },[searchKey, tableStatus])
-
-  
+			: [];  
 
 
 return (
 <div>
     <Tables
     title="All Transactions"
-    dataSource={dataSource}
+    //base props
     columns={tableColumns}
-    handleSearch={setSearchKey}
-    showPagination={true}
-    showPageSize={true}
-    handleDateFilter={handleDateFilter}
+    dataSource={dataSource}
+    source={transactionData}
+    setFilteredTableData={setFilteredTableData}
+    //Filters Props
     handleStatusFilter={handleStatusFilter}
+    handleDateFilter={handleDateFilter}
     tableStatusOptions={tableStatusOptions}
     tableStatus={tableStatus}
     setTableStatus={setTableStatus}
+    //search prop
+    handleSearch={setSearchKey}
+    // pagination props
+    showPagination={true}
+    showPageSize={true}
+    //active Tabs
+    // tabs={[ACTIVE_STORES_TAB, DEACTIVATED_STORES_TAB]} 
+    // activeTab={activeChartTab}
+    // setActiveTab={setActiveChartTab}
+    
+    
     ></Tables>
 </div>
 )

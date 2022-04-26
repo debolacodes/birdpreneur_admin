@@ -77,14 +77,10 @@ export default function Stores() {
       image: "assets/icons/kfc.svg",
     }
   ];
-  let filteredTableData = tableData;
-	if (searchKey) {
-		filteredTableData = tableData?.filter((data) =>
-			data.cashierName.toLowerCase().includes(searchKey.toLocaleLowerCase())
-		);
-	}
+  let [filteredTableData, setFilteredTableData] = useState([])
+	
   const [visibilities, setVisibilities] = React.useState(() =>
-    filteredTableData.map((x) => false)
+    tableData.map((x) => false)
 	);
 
   const handleClick = (index) => {
@@ -197,6 +193,8 @@ export default function Stores() {
             dataSource={dataSource}
             handleSearch={handleSearch}
             showPagination={true}
+            source={tableData}
+            setFilteredTableData={setFilteredTableData}
           />
         </div>
       </div>

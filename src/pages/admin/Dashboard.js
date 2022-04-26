@@ -1,4 +1,4 @@
-import React from 'react'
+import React,{useState} from 'react'
 import SummaryBox from "../../components/SummaryBox";
 import Title from "../../components/Title";
 import TopBar from "../../components/TopBar";
@@ -101,7 +101,7 @@ export default function Dashboard() {
     {
       id: 43178,
       purchase: "DJI Mavic Pro 2",
-      customerName: "Adunoluwa Adeyemi",
+      customerName: "Seyi Adeyemi",
       purchaseValue: 345000,
       rewardsValue: 345000,
       date: new Date(),
@@ -126,10 +126,21 @@ export default function Dashboard() {
       status: "Failed",
     }
   ];
+
+  const tableStatusOptions =  [
+    {title: "All", value:""},
+    {title: "Success", value:"success"},
+    {title: "Pending", value:"pending"},
+    {title: "Failed", value:"failed"}
+  ]
+  const [tableStatus, setTableStatus] = useState(tableStatusOptions[0]) 
+
+  const [filteredTableData, setFilteredTableData] = useState([])
+
   const dataSource =
-		tableData &&
-      tableData.length > 0
-        ? tableData.map((row) => {
+  filteredTableData &&
+    filteredTableData.length > 0
+        ? filteredTableData.map((row) => {
 					return {
 						id: row.id,
 						purchase: (
@@ -198,8 +209,17 @@ export default function Dashboard() {
           
           <Tables 
             title="Recent Transactions"
+            //basic props
             columns={tableColumns}
             dataSource={dataSource}
+            handleSearch={()=>{}}
+            source={tableData}
+            setFilteredTableData={setFilteredTableData}
+            //Filters Props
+            handleStatusFilter={()=>{}}
+            tableStatusOptions={tableStatusOptions}
+            tableStatus={tableStatus}
+            setTableStatus={setTableStatus}
           />
         </div>
       </div>

@@ -19,19 +19,14 @@ export default function AllStoresTable() {
   setModalData,
   setShowModal,
   EDIT_STORE_SUPER_MODAL,
-  DEACTIVATE_STORE_MODAL,
   } = useContext(mainFunctions)
 
-  const [storeModal, setStoreModal] = useState("")
-  const [currentStore, setCurrentStore] = useState(null)
+
 
   const ACTIVE_STORES_TAB = {id:"active", title:"Active Stores", data:storeList};
   const DEACTIVATED_STORES_TAB = {id:"deactivated", title:"Deactivated Stores", data:storeList};
   const [activeChartTab, setActiveChartTab ] = useState(ACTIVE_STORES_TAB);
   
-
-  
-  const [searchKey, setSearchKey] = useState("");
 
   const tableColumns = [
     {
@@ -64,15 +59,8 @@ export default function AllStoresTable() {
     }
   ];
  
-  const handleSearch = (query) => {
-		setSearchKey(query);
-	};
-  const handleStatusFilter = () => {
-
-  }
-  const handleDateFilter = () => {
-    
-  }
+  const handleSearch = (query) => {};
+  
   
   const [filteredTableData, setFilteredTableData] = useState(storeList);
   
@@ -160,50 +148,7 @@ export default function AllStoresTable() {
           })
         : [];
 
-  useEffect(() => {
-      var fd = storeList.filter((thisStore, index) => {
-          var found = true;
-          
 
-          for(var i = 0; i < tableColumns.length; i++){
-              if((activeChartTab.id === "active" && !thisStore.active) ||
-              (activeChartTab.id !== "active" && thisStore.active)
-              ){
-                  found = false
-                  break;
-              }
-              if((typeof tableColumns[i].search === "undefined" || tableColumns[i].search === true)
-              && typeof thisStore[tableColumns[i].dataIndex] !== "undefined"
-              ){
-                  if(thisStore[tableColumns[i].dataIndex].toString().toLowerCase().includes(searchKey.toLocaleLowerCase())){
-                      found = true
-                      break
-                  }else{
-                      // eslint-disable-next-line no-unused-vars
-                      found = false
-                      continue
-                  }
-              }
-          }
-          return found;
-      })
-      setFilteredTableData(fd)
-    },[searchKey, activeChartTab])
-
-  useEffect(() => {
-    if(storeModal && currentStore !== null){
-    setModalPage(EDIT_STORE_SUPER_MODAL);
-    if(storeModal ){
-      if(storeModal === "edit"){
-        setModalData(<EditStore store={currentStore}/>);
-      }else if(storeModal === "deactivate"){
-        setModalData(<DeactivateStore store={currentStore}/>);
-      }
-      setShowModal(true);
-    }
-  }
-  //eslint-disable-next-line
-  }, [storeModal]);
 
 return (
 <div>
@@ -212,12 +157,14 @@ return (
     title={activeChartTab.title}
     dataSource={dataSource}
     columns={tableColumns}
-    handleSearch={setSearchKey}
+    handleSearch={handleSearch}
     showPagination={true}
     showPageSize={true}
     tabs={[ACTIVE_STORES_TAB, DEACTIVATED_STORES_TAB]} 
     activeTab={activeChartTab}
     setActiveTab={setActiveChartTab}
+    source={storeList}
+    setFilteredTableData={setFilteredTableData}
     ></Tables>
 </div>
 )

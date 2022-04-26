@@ -44,6 +44,7 @@ const {
       title: "Total Customers",
       dataIndex: "total_customers",
       sort: false,
+      search:false
     }
   ];
  
@@ -66,11 +67,11 @@ const dataSource =
         ? filteredTableData.map((row) => {
 					return {
 						id: (
-                            <div>
-                                ID: {row.id}
-                            </div>
-                            ),
-                        name: (
+                <div>
+                    ID: {row.id}
+                </div>
+                ),
+            name: (
 							<div>
 								{row.name}
 							</div>
@@ -99,39 +100,16 @@ const dataSource =
 			  })
 			: [];
 
-useEffect(() => {
-    if(searchKey){
-        var fd = stores.filter((thisStore, index) => {
-            var found = true;
-            for(var i = 0; i < tableColumns.length; i++){
-                if(typeof tableColumns[i].search === "undefined" || tableColumns[i].search === true){
-                    if(thisStore[tableColumns[i].dataIndex].toString().toLowerCase().includes(searchKey).toLocaleLowerCase()){
-                        found = true
-                        break
-                    }else{
-                        // eslint-disable-next-line no-unused-vars
-                        found = false
-                        continue
-                    }
-                }
-            
-            }
-            return found;
-        })
-        setFilteredTableData(fd)
-    }
-  },[searchKey])
-
-
-
 
 return (
 <div>
     <Tables
-    title="My Stores"
+    title="Stores"
     dataSource={dataSource}
     columns={tableColumns}
+    source = {stores}
     handleSearch={setSearchKey}
+    setFilteredTableData={setFilteredTableData}
     ></Tables>
 </div>
 )

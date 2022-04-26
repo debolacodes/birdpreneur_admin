@@ -21,9 +21,7 @@ const {
   
 } = useContext(mainFunctions)
 
-const [searchKey, setSearchKey] = useState("");
 
-const [currentRow, setCurrentRow] = useState({});
 
 const tableColumns = [
   {
@@ -53,7 +51,7 @@ const tableColumns = [
 ];
 
 const handleSearch = (query) => {
-  setSearchKey(query);
+
 };
 
 const handleStatusFilter = () => {
@@ -62,7 +60,8 @@ const handleStatusFilter = () => {
 const handleDateFilter = () => {
   
 }
-   
+
+
 const [filteredTableData, setFilteredTableData] = useState(productsData);
 
 const [visibilities, setVisibilities] = React.useState(() =>
@@ -156,37 +155,19 @@ const dataSource =
 			  })
 			: [];
 
-      useEffect(() => {
-        var fd = productsData.filter((thisStore, index) => {
-            var found = true;
-            for(var i = 0; i < tableColumns.length; i++){
-                if((typeof tableColumns[i].search === "undefined" || tableColumns[i].search === true)
-                && typeof thisStore[tableColumns[i].dataIndex] !== "undefined"
-                ){
-                    if(thisStore[tableColumns[i].dataIndex].toString().toLowerCase().includes(searchKey.toLocaleLowerCase())){
-                        found = true
-                        break
-                    }else{
-                        // eslint-disable-next-line no-unused-vars
-                        found = false
-                        continue
-                    }
-                }
-            
-            }
-            return found;
-        })
-        setFilteredTableData(fd)
-      },[searchKey])
+     
 return (
 <div>
     <Tables
     title="All Products"
     dataSource={dataSource}
     columns={tableColumns}
-    handleSearch={setSearchKey}
+    handleSearch={handleSearch}
     showPagination={true}
     showPageSize={true}
+    setFilteredTableData={setFilteredTableData}
+    source={productsData}
+
     ></Tables>
 </div>
 )

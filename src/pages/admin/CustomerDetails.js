@@ -152,12 +152,13 @@ export default function CustomerDetails() {
       status: "Success",
     },
   ];
-  let filteredTableData = tableData;
-	if (searchKey) {
-		filteredTableData = tableData?.filter((data) =>
-			data.purchase.toLowerCase().includes(searchKey.toLocaleLowerCase())
-		);
-	}
+  const [filteredTableData, setFilteredTableData] = useState([])
+  
+	// if (searchKey) {
+	// 	filteredTableData = tableData?.filter((data) =>
+	// 		data.purchase.toLowerCase().includes(searchKey.toLocaleLowerCase())
+	// 	);
+	// }
   const dataSource =
     filteredTableData &&
       filteredTableData.length > 0
@@ -223,6 +224,8 @@ export default function CustomerDetails() {
                 dataSource={dataSource}
                 handleSearch={handleSearch}
                 showPagination={true}
+                source={tableData}
+                setFilteredTableData={setFilteredTableData}
               />
             </div>
         </div>

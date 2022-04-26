@@ -61,12 +61,7 @@ export default function Products() {
       image: "assets/icons/kfc.svg",
     },
   ];
-  let filteredTableData = tableData;
-	if (searchKey) {
-		filteredTableData = tableData?.filter((data) =>
-			data.productName.toLowerCase().includes(searchKey.toLocaleLowerCase())
-		);
-	}
+  let [filteredTableData, setFilteredTableData] = useState(tableData);
   const dataSource =
     filteredTableData &&
       filteredTableData.length > 0
@@ -122,6 +117,8 @@ export default function Products() {
                   dataSource={dataSource}
                   handleSearch={handleSearch}
                   showPagination={true}
+                  source={tableData}
+                  setFilteredTableData={setFilteredTableData}
                 />
               </div>
             </div>

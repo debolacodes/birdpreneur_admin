@@ -51,7 +51,7 @@ export default function Rewards() {
                 }
               </div>
               <div>
-                <select className='select_' style={{marginTop:"13px"}}
+                <select className='select_ top_btn'
                 onChange={(e)=>setRewardPage(e.target.value)}
                 value={rewardPage}
                 >

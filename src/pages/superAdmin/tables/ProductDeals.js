@@ -149,29 +149,6 @@ const dataSource =
 			  })
 			: [];
 
-useEffect(() => {
-        var fd = productDeals.filter((thisStore, index) => {
-            var found = true;
-            for(var i = 0; i < tableColumns.length; i++){
-                if((typeof tableColumns[i].search === "undefined" || tableColumns[i].search === true)
-                && typeof thisStore[tableColumns[i].dataIndex] !== "undefined"
-                ){
-                    if(thisStore[tableColumns[i].dataIndex].toString().toLowerCase().includes(searchKey)){
-                        found = true
-                        break
-                    }else{
-                        // eslint-disable-next-line no-unused-vars
-                        found = false
-                        continue
-                    }
-                }
-            
-            }
-            return found;
-        })
-        setFilteredTableData(fd)
-    
-  },[searchKey])
 
 
 
@@ -185,6 +162,8 @@ return (
     handleSearch={setSearchKey}
     showPagination={true}
     showPageSize={true}
+    source={productDeals}
+    setFilteredTableData={setFilteredTableData}
     ></Tables>
 </div>
 )

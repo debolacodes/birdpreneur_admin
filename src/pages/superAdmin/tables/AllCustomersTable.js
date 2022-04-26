@@ -154,32 +154,6 @@ const dataSource =
 			  })
 			: [];
 
-useEffect(() => {
-        var fd = customersData.filter((thisStore, index) => {
-            var found = true;
-            for(var i = 0; i < tableColumns.length; i++){
-                if((typeof tableColumns[i].search === "undefined" || tableColumns[i].search === true)
-                && typeof thisStore[tableColumns[i].dataIndex] !== "undefined"
-                ){
-                    if(thisStore[tableColumns[i].dataIndex].toString().toLowerCase().includes(searchKey.toLocaleLowerCase())){
-                        found = true
-                        break
-                    }else{
-                        // eslint-disable-next-line no-unused-vars
-                        found = false
-                        continue
-                    }
-                }
-            
-            }
-            return found;
-        })
-        setFilteredTableData(fd)
-  },[searchKey])
-
-
-
-
 return (
 <div>
     <Tables
@@ -189,6 +163,8 @@ return (
     handleSearch={setSearchKey}
     showPagination={true}
     showPageSize={true}
+    source={customersData}
+    setFilteredTableData={setFilteredTableData}
     ></Tables>
 </div>
 )

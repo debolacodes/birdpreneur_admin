@@ -154,30 +154,6 @@ const handleClick = (index) => {
   newVisibilities[index] = !newVisibilities[index];
   setVisibilities(newVisibilities);
 };
-useEffect(() => {
-    if(searchKey){
-        var fd = userRoles.filter((thisStore, index) => {
-            var found = true;
-            for(var i = 0; i < tableColumns.length; i++){
-                if(typeof tableColumns[i].search === "undefined" || tableColumns[i].search === true){
-                    if(thisStore[tableColumns[i].dataIndex].toString().toLowerCase().includes(searchKey.toLowerCase())){
-                        found = true
-                        break
-                    }else{
-                        // eslint-disable-next-line no-unused-vars
-                        found = false
-                        continue
-                    }
-                }
-            
-            }
-            return found;
-        })
-        setFilteredTableData(fd)
-    }
-  },[searchKey])
-
-
 
 
 return (
@@ -187,6 +163,8 @@ return (
     dataSource={dataSource}
     columns={tableColumns}
     handleSearch={setSearchKey}
+    source={userRoles}
+    setFilteredTableData={setFilteredTableData}
     ></Tables>
 </div>
 )

@@ -31,7 +31,7 @@ export default function Stores() {
             />
             <div className="mainbar-container">
             <PageFilters />
-            <div className='btn_ btn_green mb-3'
+            <div className='btn_ btn_green mb-3 top_btn'
             onClick={async ()=>{
               await setModalPage(ADD_STORE_SUPER_MODAL)
               await setModalData(<AddStore />)

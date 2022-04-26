@@ -302,6 +302,10 @@ a:active {
     cursor: pointer;
 }
 
+.top_btn {
+    margin-top: 12px;
+}
+
 .table_btn {
     font-style: normal;
     font-weight: 400;
@@ -812,7 +816,7 @@ a:active {
     display: flex;
     justify-content: flex-end;
     /* background: #ccc; */
-    padding: 7px;
+    /* padding: 7px; */
     align-items: center;
 }
 
@@ -912,8 +916,8 @@ select:focus {
 .select_ {
     width: 178px;
     height: 50px;
-    left: 365px;
-    top: 110px;
+    /* left: 365px; */
+    /* top: 110px; */
     background: #F2F2F7;
     border: 1px solid #E0E0E0;
     box-sizing: border-box;
@@ -923,8 +927,8 @@ select:focus {
     font-weight: 400;
     font-size: 14px;
     line-height: 24px;
-    padding: 0;
-    margin: 0;
+    /* padding: 0; */
+    /* margin: 0; */
     /* identical to box height, or 171% */
     color: #51545C;
 }

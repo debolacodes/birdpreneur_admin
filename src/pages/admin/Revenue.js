@@ -289,6 +289,14 @@ export default function Revenue() {
   const handleSearch = (query) => {
 		setSearchKey(query);
 	};
+  const tableStatusOptions =  [
+    {title: "All", value:""},
+    {title: "Success", value:"success"},
+    {title: "Pending", value:"pending"},
+    {title: "Failed", value:"failed"}
+  ]
+  const [tableStatus, setTableStatus] = useState(tableStatusOptions[0]) 
+
   const handleStatusFilter = () => {
 
   }
@@ -302,17 +310,13 @@ export default function Revenue() {
     );
     setShowModal(true);
   }
-  let filteredTableData = tableData;
-	if (searchKey) {
-		filteredTableData = filteredTableData?.filter((data) =>
-			data.customerName.toLowerCase().includes(searchKey.toLocaleLowerCase())
-		);
-	}
-  if (dateFilterFrom && dateFilterTo){
-    filteredTableData = filteredTableData?.filter((data) =>
-      new Date(data.date).getTime() >= new Date(dateFilterFrom).getTime() && new Date(data.date).getTime() <= new Date(dateFilterTo).getTime()
-		);
-  }
+  let [filteredTableData, setFilteredTableData] = useState([]);
+	
+  // if (dateFilterFrom && dateFilterTo){
+  //   filteredTableData = filteredTableData?.filter((data) =>
+  //     new Date(data.date).getTime() >= new Date(dateFilterFrom).getTime() && new Date(data.date).getTime() <= new Date(dateFilterTo).getTime()
+	// 	);
+  // }
   const dataSource =
     filteredTableData &&
       filteredTableData.length > 0
@@ -390,11 +394,19 @@ export default function Revenue() {
             title="All Transactions"
             columns={tableColumns}
             dataSource={dataSource}
+            source={tableData}
+            setFilteredTableData={setFilteredTableData}
             handleSearch={handleSearch}
             showPagination={true}
             showPageSize={true}
+            
+            //Filters Props
+            handleStatusFilter={()=>{}}
             handleDateFilter={handleDateFilter}
-            handleStatusFilter={handleStatusFilter}
+            tableStatusOptions={tableStatusOptions}
+            tableStatus={tableStatus}
+            setTableStatus={setTableStatus}
+
           />
         </div>
       </div>

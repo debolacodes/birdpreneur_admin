@@ -22,9 +22,7 @@ export default function Tables({
   setActiveTab,
   tableStatusOptions,
   tableStatus,
-  setTableStatus,
-  setFilteredTableData,
-  source
+  setTableStatus
 }) {
   const [toggleStatusOptions, setToggleStatusOptions] = useState(false)
 	const [_columns, _setColumns] = useState([]);
@@ -32,7 +30,6 @@ export default function Tables({
 	const [pages, setPages] = useState(0);
 	const [activeIndex, setActiveIndex] = useState(1);
 	const [canExpand, setCanExpand] = useState(false);
-  const [searchKey, setSearchKey] = useState("");
 
   useEffect(() => {
 		const _columns = columns.map((column) => {
@@ -94,49 +91,6 @@ export default function Tables({
 		}
 	};
 
-  useEffect(() => {
-    if(source && setFilteredTableData){
-    var fd = source.filter((row, index) => {
-        var found = true;
-        for(var i = 0; i < columns.length; i++){
-          if(activeTab && row.active){
-            console.log("here1")
-          if((activeTab.id === "active" && !row.active) ||
-              (activeTab.id !== "active" && row.active)
-              ){
-                  found = false
-                  continue;
-              }
-          }
-          if(typeof row[columns[i].dataIndex] !== "undefined"){
-            if((typeof columns[i].search === "undefined" || columns[i].search === true)){
-                if(row[columns[i].dataIndex].toString().toLowerCase().includes(searchKey.toLowerCase())){
-                    found = true
-                    break;
-                }else{
-                    // eslint-disable-next-line no-unused-vars
-                    found = false
-                    continue
-                }
-            }
-          }
-        }
-        if(tableStatus && setTableStatus && tableStatusOptions){
-        if(tableStatus.value !== ""){
-          console.log(row.status ,"----", tableStatus.value)
-          if(row.status.toString().toLowerCase() !== tableStatus.value.toLowerCase()){
-            found = false
-          }
-        }
-      }
-
-        return found;
-    })
-    setFilteredTableData(fd)
-  }
-  //eslint-disable-next-line
-  },[searchKey, tableStatus, activeTab])
-
   return (
     <>
       <div style={{overflowX: "auto", marginTop: "1rem"}}>
@@ -156,12 +110,12 @@ export default function Tables({
                 <span>Filter Date</span>
               </div>
             )}
-            {handleStatusFilter && tableStatus && (
+            {handleStatusFilter && (
               <div className="table-status-filter">
                 <div className="button"
                 onClick={()=>setToggleStatusOptions(!toggleStatusOptions)}
                 >
-                  <div className="text">{tableStatus.title}</div>
+                  <div className="text">Status</div>
                   <div className="icon down"></div>
                 </div>
                 {toggleStatusOptions && tableStatusOptions &&
@@ -184,10 +138,9 @@ export default function Tables({
                   className='search_input' 
                   placeholder='Search...' 
                   type="text"
-                  onChange={(e) =>{
+                  onChange={(e) =>
                     handleSearch(e.currentTarget.value)
-                    setSearchKey(e.currentTarget.value)
-                  }}
+                  }
                 />
               </div>
             )}
