@@ -6,21 +6,9 @@ import BarChartComponent from '../../components/BarchartComponent';
 import Sidebar from '../../components/Sidebar';
 import Tables from '../../components/Tables';
 import { formatToCurrency, getDateTimeFormatUK } from "../../utils";
-import {mainFunctions} from "../../providers/MainProvider";
-import SelectDateRangeModal from '../../modals/SelectDateRange';
 import PageFilters from '../../components/PageFilters';
 
 export default function Revenue() {
-  const {
-    setShowModal,
-    setModalPage,
-    DATERANGE_MODAL,
-    setModalData
-  } = useContext(mainFunctions)
-
-	const [searchKey, setSearchKey] = useState("");
-	const [dateFilterFrom, setDateFilterFrom] = useState();
-	const [dateFilterTo, setDateFilterTo] = useState();
 
   const SALES_DATA = [
     {
@@ -81,27 +69,30 @@ export default function Revenue() {
     {
       title: "Store Name",
       dataIndex: "storeName",
-      sort: false,
+      sort: true,
+      search: true
     },
     {
       title: "Purchase",
       dataIndex: "purchase",
-      sort: false,
+      sort: true,
+      search: true
     },
     {
       title: "Customer Name",
       dataIndex: "customerName",
-      sort: false,
+      sort: true,
+      search: true
     },
     {
       title: "Purchase Value",
       dataIndex: "purchaseValue",
-      sort: false,
+      sort: true,
     },
     {
       title: "Rewards Value",
       dataIndex: "rewardsValue",
-      sort: false,
+      sort: true,
     },
     {
       title: "Date",
@@ -286,9 +277,6 @@ export default function Revenue() {
       status: "Failed",
     }
   ];
-  const handleSearch = (query) => {
-		setSearchKey(query);
-	};
   const tableStatusOptions =  [
     {title: "All", value:""},
     {title: "Success", value:"success"},
@@ -296,20 +284,7 @@ export default function Revenue() {
     {title: "Failed", value:"failed"}
   ]
   const [tableStatus, setTableStatus] = useState(tableStatusOptions[0]) 
-
-  const handleStatusFilter = () => {
-
-  }
-  const handleDateFilter = () => {
-    setModalPage(DATERANGE_MODAL);
-    setModalData(
-      <SelectDateRangeModal 
-        getDateFilterFrom={(value) => setDateFilterFrom(value)}
-        getDateFilterTo={(value) => setDateFilterTo(value)}
-      />
-    );
-    setShowModal(true);
-  }
+  
   let [filteredTableData, setFilteredTableData] = useState([]);
 	
   // if (dateFilterFrom && dateFilterTo){
@@ -379,7 +354,7 @@ export default function Revenue() {
           }}
           buttonAction={()=>{}}
         />
-        <div className="full-mainbar-container">
+        <div className="mainbar-container">
           <PageFilters showStoreFilter={false} />
           <div className="wrapper pt-5">
             <SummaryBox title="Total Purchases" value="2,403"/>
@@ -396,13 +371,13 @@ export default function Revenue() {
             dataSource={dataSource}
             source={tableData}
             setFilteredTableData={setFilteredTableData}
-            handleSearch={handleSearch}
+            handleSearch={true}
             showPagination={true}
             showPageSize={true}
             
             //Filters Props
-            handleStatusFilter={()=>{}}
-            handleDateFilter={handleDateFilter}
+            handleStatusFilter={true}
+            handleDateFilter={true}
             tableStatusOptions={tableStatusOptions}
             tableStatus={tableStatus}
             setTableStatus={setTableStatus}

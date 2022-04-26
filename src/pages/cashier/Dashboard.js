@@ -33,6 +33,7 @@ export default function Dashboard() {
     {
       title: "Product Name",
       dataIndex: "productName",
+      search: true
     },
     {
       title: "Unit Price",

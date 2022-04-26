@@ -12,8 +12,6 @@ export default function Customers() {
   const goToCustomerDetails = (id) =>{
     navigate(`/customers/${id}`)
   }
-
-	const [searchKey, setSearchKey] = useState("");
   
   const tableColumns = [
     {
@@ -23,22 +21,29 @@ export default function Customers() {
     {
       title: "Name",
       dataIndex: "name",
+      sort: true,
+      search: true
     },
     {
       title: "Email",
       dataIndex: "email",
+      sort: true,
+      search: true
     },
     {
       title: "Total Purchases",
       dataIndex: "purchases",
+      sort: true,
     },
     {
       title: "Purchase Value",
       dataIndex: "purchaseValue",
+      sort: true,
     },
     {
       title: "Rewards Value",
       dataIndex: "rewardsValue",
+      sort: true,
     },
     {
       title: "Last Visit",
@@ -110,9 +115,6 @@ export default function Customers() {
       date: new Date(),
     },
   ];
-  const handleSearch = (query) => {
-		setSearchKey(query);
-	};
 
   let [filteredTableData, setFilteredTableData] = useState(tableData);
   
@@ -168,7 +170,7 @@ export default function Customers() {
               }}
               buttonAction={()=>{}}
             />
-            <div className="full-mainbar-container">
+            <div className="mainbar-container">
               <PageFilters showStoreFilter={false} />
               <div className="wrapper pt-5">
                 <SummaryBox title="Total No of Customers" value="2,403"/>
@@ -180,7 +182,7 @@ export default function Customers() {
                 title="All Customers"
                 columns={tableColumns}
                 dataSource={dataSource}
-                handleSearch={handleSearch}
+                handleSearch={true}
                 showPagination={true}
                 source={tableData}
                 setFilteredTableData={setFilteredTableData}
