@@ -6,10 +6,13 @@ import { formatToCurrency, getDateTimeFormatUK } from "../../../utils";
 import {
   BsThreeDots,
 } from "react-icons/bs";
+import EditCustomerDetails from "../../../modals/EditCustomerDetails"
 
 export default function CustomersDataTable() {
     const {
-        customersData
+        customersData,
+        setShowModal,
+        setModalData
       } = useContext(mainFunctions)
 
   const [searchKey, setSearchKey] = useState("");
@@ -74,7 +77,10 @@ const [visibilities, setVisibilities] = React.useState(() =>
 
 const handleClick = (index) => {
   const newVisibilities = [...visibilities];
-  newVisibilities[index] = !newVisibilities[index];
+  newVisibilities.map((thisVisibility, ind) => {
+    index !== ind ? newVisibilities[ind] = false : newVisibilities[index] = !newVisibilities[index];
+    return 0
+  })
   setVisibilities(newVisibilities);
 };
 
@@ -133,11 +139,10 @@ const dataSource =
                     <div className="position-absolute border border-muted px-3 w-32 bg-white" style={{right: "0", top: "100%", zIndex: "2", width:  "150px"}}>
                       <div
                         onClick={() => {
-                          // setEditStaff({
-                          //   fullName : row.cashierName,
-                          //   email: row.email,
-                          // });
-                          // setStaffModal(row);
+                          setModalData(
+                            <EditCustomerDetails user={row}/>
+                          );
+                          setShowModal(true)
                         }}
                         style={{cursor: "pointer"}}
                         className="d-flex text-left py-3 border-bottom border-muted status-success hover:text-blue-dark text-small"

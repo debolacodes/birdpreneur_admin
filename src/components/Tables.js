@@ -164,7 +164,12 @@ export default function Tables({
 
   return (
     <>
-      <div style={{overflowX: "auto", marginTop: "1rem"}}>
+      <div style={{height:"auto", 
+      overflowY:"hidden",
+      overflowX:"auto",
+      marginTop: "1rem",
+      paddingBottom: "5em",
+      }}>
         <div className='d-flex justify-content-between'>
           <div className="table-title">
             {tabs === null 
