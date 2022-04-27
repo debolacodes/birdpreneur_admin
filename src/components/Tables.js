@@ -1,9 +1,11 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useContext } from "react";
 import Title from './Title';
 import {ReactComponent as TableSort} from '../assets/icons/table_sort.svg';
 import { isElement } from "../utils";
 import Pagination from "./Pagination";
 import { testTableColumns, testTableDataSource } from "./enum";
+import {mainFunctions} from "../providers/MainProvider";
+import SelectDateRangeModal from '../modals/SelectDateRange';
 
 import TabTitle from "./TabTitle";
 export default function Tables({
@@ -26,6 +28,12 @@ export default function Tables({
   setFilteredTableData,
   source
 }) {
+  const {
+    setShowModal,
+    setModalPage,
+    DATERANGE_MODAL,
+    setModalData
+  } = useContext(mainFunctions)
   const [toggleStatusOptions, setToggleStatusOptions] = useState(false)
 	const [_columns, _setColumns] = useState([]);
 	const [_dataSource, _setDataSource] = useState([]);
@@ -33,6 +41,8 @@ export default function Tables({
 	const [activeIndex, setActiveIndex] = useState(1);
 	const [canExpand, setCanExpand] = useState(false);
   const [searchKey, setSearchKey] = useState("");
+	const [dateFilterFrom, setDateFilterFrom] = useState(null);
+	const [dateFilterTo, setDateFilterTo] = useState(null);
 
   useEffect(() => {
 		const _columns = columns.map((column) => {
@@ -123,8 +133,12 @@ export default function Tables({
         }
         if(tableStatus && setTableStatus && tableStatusOptions){
         if(tableStatus.value !== ""){
-          console.log(row.status ,"----", tableStatus.value)
           if(row.status.toString().toLowerCase() !== tableStatus.value.toLowerCase()){
+            found = false
+          }
+        }
+        if (dateFilterFrom && dateFilterTo){
+          if(!(new Date(row.date).getTime() >= new Date(dateFilterFrom).getTime() && new Date(row.date).getTime() <= new Date(dateFilterTo).getTime())){
             found = false
           }
         }
@@ -135,7 +149,18 @@ export default function Tables({
     setFilteredTableData(fd)
   }
   //eslint-disable-next-line
-  },[searchKey, tableStatus, activeTab])
+  },[searchKey, tableStatus, activeTab, dateFilterFrom, dateFilterTo])
+
+  const openDateFilter = () => {
+    setModalPage(DATERANGE_MODAL);
+    setModalData(
+      <SelectDateRangeModal 
+        getDateFilterFrom={(value) => setDateFilterFrom(value)}
+        getDateFilterTo={(value) => setDateFilterTo(value)}
+      />
+    );
+    setShowModal(true);
+  }
 
   return (
     <>
@@ -155,7 +180,7 @@ export default function Tables({
           </div>
           <div className='table-filters'>
             {handleDateFilter && (
-              <div className="table-date-filter" onClick={handleDateFilter}>
+              <div className="table-date-filter" onClick={openDateFilter}>
                 <span className="icon"></span>
                 <span>Filter Date</span>
               </div>
@@ -189,7 +214,6 @@ export default function Tables({
                   placeholder='Search...' 
                   type="text"
                   onChange={(e) =>{
-                    handleSearch(e.currentTarget.value)
                     setSearchKey(e.currentTarget.value)
                   }}
                 />

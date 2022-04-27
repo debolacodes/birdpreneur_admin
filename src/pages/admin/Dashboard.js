@@ -194,7 +194,7 @@ export default function Dashboard() {
           }}
           buttonAction={()=>{}}
         />
-        <div className="full-mainbar-container">
+        <div className="mainbar-container">
           <PageFilters showStoreFilter={false} />
           <Title title="Overview"/>
           <div className="wrapper">
@@ -212,11 +212,11 @@ export default function Dashboard() {
             //basic props
             columns={tableColumns}
             dataSource={dataSource}
-            handleSearch={()=>{}}
+            handleSearch={false}
             source={tableData}
             setFilteredTableData={setFilteredTableData}
             //Filters Props
-            handleStatusFilter={()=>{}}
+            handleStatusFilter={false}
             tableStatusOptions={tableStatusOptions}
             tableStatus={tableStatus}
             setTableStatus={setTableStatus}

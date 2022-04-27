@@ -17,7 +17,6 @@ export default function Stores() {
     ADD_STAFF_MODAL,
     setModalData
   } = useContext(mainFunctions)
-	const [searchKey, setSearchKey] = useState("");
 	const [staffModal, setStaffModal] = useState("");
   const [newStaff, setNewStaff] = useState({
       fullName: "",
@@ -28,10 +27,6 @@ export default function Stores() {
       email: "",
   });
 
-  const handleSearch = (query) => {
-		setSearchKey(query);
-	};
-
   const tableColumns = [
     {
       title: "Cashier ID",
@@ -40,10 +35,12 @@ export default function Stores() {
     {
       title: "Cashier Name",
       dataIndex: "cashierName",
+      search: true
     },
     {
       title: "Email Address",
       dataIndex: "email",
+      search: true
     },
     {
       title: "Start Date",
@@ -181,7 +178,7 @@ export default function Stores() {
       <Sidebar />
       <div className="mainbar">
         <TopBar title="Store Cashier" />
-        <div className="full-mainbar-container">
+        <div className="mainbar-container">
             <div className='btn_ btn_green mb-3' onClick={() => setStaffModal("add")}>ADD A CASHIER</div>
           <div className="wrapper">
             <SummaryBox title="No of Staff" value="25"/>
@@ -191,7 +188,7 @@ export default function Stores() {
             title="All Cashiers"
             columns={tableColumns}
             dataSource={dataSource}
-            handleSearch={handleSearch}
+            handleSearch={true}
             showPagination={true}
             source={tableData}
             setFilteredTableData={setFilteredTableData}

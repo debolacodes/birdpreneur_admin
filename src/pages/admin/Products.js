@@ -7,11 +7,6 @@ import { formatToCurrency, getDateTimeFormatUK } from "../../utils";
 import PageFilters from '../../components/PageFilters';
 
 export default function Products() {
-	const [searchKey, setSearchKey] = useState("");
-
-  const handleSearch = (query) => {
-		setSearchKey(query);
-	};
 
   const tableColumns = [
     {
@@ -21,10 +16,12 @@ export default function Products() {
     {
       title: "Product Name",
       dataIndex: "productName",
+      sort: true,
     },
     {
       title: "Unit Price",
       dataIndex: "price",
+      sort: true,
     },
     {
       title: "No of Purchases",
@@ -105,7 +102,7 @@ export default function Products() {
               }}
               buttonAction={()=>{}}
             />
-            <div className="full-mainbar-container">
+            <div className="mainbar-container">
               <PageFilters showStoreFilter={false} />
               <div className="wrapper pt-5">
                 <SummaryBox title="Total Products" value="2,405" />
@@ -115,7 +112,7 @@ export default function Products() {
                   title="All Products"
                   columns={tableColumns}
                   dataSource={dataSource}
-                  handleSearch={handleSearch}
+                  handleSearch={true}
                   showPagination={true}
                   source={tableData}
                   setFilteredTableData={setFilteredTableData}

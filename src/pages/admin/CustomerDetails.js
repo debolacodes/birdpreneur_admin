@@ -6,11 +6,6 @@ import Tables from '../../components/Tables';
 import { formatToCurrency, getDateTimeFormatUK } from "../../utils";
 
 export default function CustomerDetails() {
-  const [searchKey, setSearchKey] = useState("");
-
-  const handleSearch = (query) => {
-		setSearchKey(query);
-	};
 
   const tableColumns = [
     {
@@ -20,14 +15,18 @@ export default function CustomerDetails() {
     {
       title: "Purchase",
       dataIndex: "purchase",
+      sort: true,
+      search: true
     },
     {
       title: "Purchase Value",
       dataIndex: "purchaseValue",
+      sort: true,
     },
     {
       title: "Rewards Value",
       dataIndex: "rewardsValue",
+      sort: true,
     },
     {
       title: "Date",
@@ -153,12 +152,7 @@ export default function CustomerDetails() {
     },
   ];
   const [filteredTableData, setFilteredTableData] = useState([])
-  
-	// if (searchKey) {
-	// 	filteredTableData = tableData?.filter((data) =>
-	// 		data.purchase.toLowerCase().includes(searchKey.toLocaleLowerCase())
-	// 	);
-	// }
+
   const dataSource =
     filteredTableData &&
       filteredTableData.length > 0
@@ -205,7 +199,7 @@ export default function CustomerDetails() {
             <TopBar title="Customer Details"
             small={true}
             />
-            <div className="full-mainbar-container">
+            <div className="mainbar-container">
               <div className='row pt-5 border-bottom'>
                 <DetailsBox title="Customer ID:" value="8845"/>
                 <DetailsBox title="Customer Name:" value="Precious Ogar"/>
@@ -222,7 +216,7 @@ export default function CustomerDetails() {
                 title="All Transactions"
                 columns={tableColumns}
                 dataSource={dataSource}
-                handleSearch={handleSearch}
+                handleSearch={true}
                 showPagination={true}
                 source={tableData}
                 setFilteredTableData={setFilteredTableData}

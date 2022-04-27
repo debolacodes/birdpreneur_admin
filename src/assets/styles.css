@@ -195,7 +195,7 @@ a:active {
 .cashier-main {
     height: 100%;
     background: #fff;
-    overflow-y: hidden;
+    /* overflow-y: hidden; */
     overflow-x: hidden;
 }
 
@@ -1311,6 +1311,21 @@ select:focus {
     width: 36px;
     height: 26px;
     text-align: center;
+}
+.purchase_details_modal .total_title {
+    background: #F2F2F7;
+}
+.purchase_details_modal .total_title {
+    font-weight: 400;
+    font-style: normal;
+    font-size: 14px;
+    line-height: 17px;
+}
+.purchase_details_modal .total_value {
+    font-weight: 500;
+    font-style: Medium;
+    font-size: 18px;
+    line-height: 22px;
 }
 
 

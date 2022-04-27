@@ -33,6 +33,7 @@ export default function Dashboard() {
     {
       title: "Product Name",
       dataIndex: "productName",
+      search: true
     },
     {
       title: "Unit Price",
@@ -195,10 +196,21 @@ export default function Dashboard() {
   const handleProceed = () => {
     setModalPage(PURCHASE_DETAILS_MODAL);
     setModalData(
-      <PurchaseDetailsModal confirmPurchase={()=>{}}/>
+      <PurchaseDetailsModal confirmPurchase={confirmPurchase} data={activeTab}/>
     );
     setShowModal(true);
     return;
+  }
+  const confirmPurchase = (data) => {
+    let temp = [...purchases];
+    const index = temp.indexOf(data);
+    if (index > -1) 
+      temp.splice(index, 1);
+    setPurchases(temp);
+    if(temp.length > 0){
+      setActiveTab(temp[0]);
+    }
+    setShowModal(false);
   }
   const deletePurchase = (data) => {
     let temp = [...purchases];
@@ -257,11 +269,9 @@ export default function Dashboard() {
     // const purchaseIndex = purchases.indexOf(activeTab);
     if(!activeTab && purchases.length > 0){
       setActiveTab(purchases[0])
-      console.log(1)
     }
     if(!(purchases.length > 0)){
       setActiveTab("")
-      console.log(2)
     }
 		//eslint-disable-next-line
   },[purchases])
@@ -276,13 +286,13 @@ export default function Dashboard() {
               }}
               buttonAction={showUsePurchaseCodeModal}
             />
-            <div className="d-flex flex-wrap justify-content-center h-100 w-100">
+            <div className="row h-100 w-100">
               <div className='col px-5'>
                 <Tables 
                   columns={tableColumns}
                   dataSource={dataSource}
                   showPagination={true}
-                  handleSearch={()=>{}}
+                  handleSearch={true}
                   source={tableData}
                   setFilteredTableData={setFilteredTableData}
                 />

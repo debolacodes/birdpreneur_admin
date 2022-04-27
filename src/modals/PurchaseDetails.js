@@ -1,33 +1,40 @@
 import React from 'react'
+import Barcode from "../assets/images/barcode.png"
+import { formatToCurrency } from '../utils';
 
 const PurchaseDetailsModal = ({
-  confirmPurchase
+  confirmPurchase,
+  data
 }) => {
+  const getTotal =()=>{
+    let total = 0;
+    if(data)
+      total = data.items.reduce((n, {price, quantity}) => n + (price * quantity), 0);
+    return total+25;
+  }
   return (
-    <div className='w-100 h-100 d-flex flex-column align-items-center justify-content-center add_staff_modal'>
+    <div className='purchase_details_modal w-100 h-100 d-flex flex-column align-items-center justify-content-center add_staff_modal'>
       <div className='title'>
        Purchase Details
       </div>
       <p className='subtitle text-center'>
         This is place holder text. The basic dialog for modals should contain only valuable and relevant information. 
       </p>
-      <div className='auth_form_container pt-3 pb-0'>
-        <div className='fieldset pb-5'>
-          <label className='label'>Purchase Code</label>
-          <div className='input_box mb-5'>
-            <input 
-              type="text" 
-              value={""}
-              onChange={(e) => {}}
-            />
-          </div>
+      <div className='pt-3 pb-0 w-100'>
+        <div className='total_amount rounded mx-5 p-2'>
+          <div className='total_title'>Total Amount</div>
+          <div className='total_value'>₦{formatToCurrency(getTotal(), 1)}</div>
         </div>
-
-        <div className='btn_ btn_green mt-5'  onClick={confirmPurchase}>Confirm Manual Payment</div>
-        <p 
-          className='text-danger cursor-pointer'
-          onClick={confirmPurchase}
-        >Payment Not Made</p>
+        <div className='d-flex justify-content-center mt-4'>
+          <img src={Barcode} alt="barcode" />
+        </div>
+        <div className='mt-5 w-100 d-flex align-items-center flex-column'>
+          <div className='btn_ btn_green px-5'  onClick={()=>confirmPurchase(data)}>Confirm Manual Payment</div>
+          <p 
+            className='text-danger cursor-pointer mt-3'
+            onClick={()=>confirmPurchase(data)}
+          >Payment Not Made</p>
+        </div>
       </div> 
     </div>
   )
