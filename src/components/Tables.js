@@ -166,6 +166,7 @@ export default function Tables({
     <>
       <div style={{height:"auto", 
       overflowY:"hidden",
+      overflowX:"auto",
       marginTop: "1rem",
       paddingBottom: "5em",
       }}>
