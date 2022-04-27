@@ -63,7 +63,10 @@ const [visibilities, setVisibilities] = React.useState(() =>
 
 const handleClick = (index) => {
   const newVisibilities = [...visibilities];
-  newVisibilities[index] = !newVisibilities[index];
+  newVisibilities.map((thisVisibility, ind) => {
+    index !== ind ? newVisibilities[ind] = false : newVisibilities[index] = !newVisibilities[index];
+    return 0
+  })
   setVisibilities(newVisibilities);
 };
 
