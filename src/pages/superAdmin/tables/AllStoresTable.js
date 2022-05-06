@@ -133,14 +133,20 @@ export default function AllStoresTable() {
                         <div
                           onClick={() => {
                             setModalPage(EDIT_STORE_SUPER_MODAL);
-                            setModalData(<DeactivateStore store={row}/>);
+                            setModalData(<DeactivateStore store={row}
+                            active={row.active}
+                            />);
                             setShowModal(true);
                           }}
                           style={{cursor: "pointer"}}
-                          className="d-flex text-left py-3 status-failed hover:text-blue-dark text-small"
+                          className={`d-flex text-left py-3 
+                          hover:text-blue-dark text-small
+                          ${row.active ? "status-failed" : "status-success"}
+                          `}
                         >
-                          Deactivate Store
+                          {row.active ? "Deactivate Store" : "Activate Store" }
                         </div>
+                        
                       </div>
                     ) : ""}
                   </div>
