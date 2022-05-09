@@ -10,7 +10,7 @@ const AddDeal = () => {
   return (
     <div className='w-100 h-100 d-flex flex-column align-items-center justify-content-center add_staff_modal'>
       <div className='title'>
-          Add Product
+          Add Product Deal
       </div>
       <p className='subtitle text-center'>
         This is place holder text. The basic dialog for modals should contain only valuable and relevant information. 
